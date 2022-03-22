@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>Login</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="email" placeholder="login" class="form-control">
+        <input type="password" name="password" placeholder="password" class="form-control">
+
+        {% for message in messages %}
+            <p id="message">{{ message }}</p>
+        {% endfor %}
+
+        <div class="btn-success">
+            <button class="btn" type="submit">Login</button>
+        </div>
+
+    </form>
+</body>
+</html>
