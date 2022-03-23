@@ -9,3 +9,4 @@ def send(user_email, login, password):
         [user_email],
         fail_silently=False,
     )
+
