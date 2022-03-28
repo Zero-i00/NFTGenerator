@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*font-family: 'Montserrat';*/
+}
+
+body {
+    min-height: 100vh;
+}
+
+#header {
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    left: 0;
+    top: 0;
+    padding: 28px 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+
+    background: #1B1C43;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 1300px) {
+    #header .logo-img {
+        visibility: hidden;
+        display: none;
+    }
+    #header .logo {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+#header .logo {
+    position: absolute;
+    width: 160px;
+    height: 34px;
+    margin-left: calc(5%);
+    justify-content: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27.8484px;
+    line-height: 34px;
+    text-decoration: none;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+.B {
+    position: absolute;
+    left: calc(10.3%);
+    top: calc(38%);
+
+}
+
+#header .navigations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header .navigations li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+#header .navigations li a {
+    text-decoration: none;
+    padding: 6px 10px;
+    color: #fff;
+    border-radius: 20px;
+    width: 82px;
+    height: 21px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17.1813px;
+    line-height: 21px;
+    /* identical to box height */
+}
+
+#header .navigations li img {
+    cursor: pointer;
+}
+
+#header .navigations li .btn-join-us {
+    width: 109.08px;
+    height: 51.33px;
+    background: linear-gradient(82.16deg, #B04EFF -7.87%, #70E1FF 110.23%);
+    border: 1px solid #000000;
+    /*box-sizing: border-box;*/
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25.6647px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17.1813px;
+    line-height: 21px;
+    /* identical to box height */
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+main {
+    top: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+
+.create-nft img {
+    position: relative;
+    width: 100%;
+}
+div .create-blur {
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.header {
+    width: 100%;
+    height: 169px;
+    display: table;
+    text-align: center;
+    background: linear-gradient(89.36deg, #A665FF -14.52%, #78CEFF 107.83%);
+    background-blend-mode: soft-light;
+}
+
+.header h1 {
+	display: table-cell;
+	vertical-align: middle;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44.27px;
+    line-height: 140%;
+    /* identical to box height, or 62px */
+
+
+    color: #FFFFFF;
+}
+
+main .create-nft .blur {
+    position: absolute;
+    width: 100%;
+    height: 1185px;
+    top: 50px;
+
+    background: rgba(255, 255, 255, 0.4);
+}
+
+main .create-content .content-right img {
+    /*position: absolute;*/
+    width: calc(100%);
+    height: calc(100%);
+
+    filter: drop-shadow(43px 41px 31px rgba(0, 0, 0, 0.25));
+    border-radius: 63px;
+}
+
+main .create-content .content-right {
+    position: absolute;
+    flex: 1;
+    top: calc(8%);
+    left: calc(65%);
+}
+
+main .create-content .content-left {
+    position: absolute;
+    flex: 1;
+    top: calc(8%);
+    left: calc(10%);
+}
+
+main .create-content .content-left h1 {
+    position: absolute;
+    width: 550px;
+    height: 128px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43px;
+    line-height: 140%;
+    /* or 60px */
+
+
+    color: #000000;
+
+}
+
+main .create-content .content-left p {
+    position: absolute;
+    width: 550px;
+    height: 90px;
+    margin-top: 200px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 140%;
+    /* or 29px */
+
+
+    color: #000000;
+}
+
+main .create-content .content-left a {
+    position: absolute;
+    width: 210px;
+    height: 65.62px;
+    cursor: pointer;
+    top: 400px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    background: linear-gradient(85.89deg, #B04FFF -19.81%, #70E0FF 120.52%);
+    box-shadow: 11px 13px 21px rgba(0, 0, 0, 0.25);
+    border-radius: 32.8125px;
+}
+
+main .create-content .content-left a h1 {
+    position: absolute;
+    width: 134px;
+    height: 35px;
+    padding-top: 7%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25.125px;
+    line-height: 140%;
+    /* or 35px */
+
+
+    color: #FFFFFF;
+}
+
+main .what-is-nft .blur {
+    position: absolute;
+    width: 100%;
+    height: 1085px;
+    top: calc(52.8%);
+
+    background: rgba(255, 255, 255, 0.55);
+}
+
+main .what-is-nft img {
+    position: relative;
+    width: 100%;
+}
+
+.what-is-nft .nft-content {
+     display: flex;
+}
+
+
+.what-is-nft .nft-content .content-right {
+    position: absolute;
+    flex: 1;
+    top: calc(58%);
+    left: calc(50%);
+
+}
+
+.what-is-nft .content-right h1 span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43px;
+    line-height: 140%;
+    /* or 60px */
+
+
+    color: #6D0EF3;
+}
+
+.what-is-nft .content-right h1 {
+    width: 490px;
+    height: 128px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43px;
+    line-height: 140%;
+    /* or 60px */
+
+
+    color: #1B1C43;
+}
+
+.what-is-nft .content-right p {
+
+    width: 490px;
+    height: 283px;
+    margin-top: 50px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 140%;
+    /* or 29px */
+
+
+    color: #000000;
+
+}
+
+
+.what-is-nft .content-left .nft-preview{
+    position: absolute;
+    width: 35%;
+    height: 25%;
+    top: calc(58%);
+    left: calc(10%);
+    filter: drop-shadow(40px 40px 31px rgba(0, 0, 0, 0.25));
+    border-radius: 63px;
+}
+
+.questions {
+    position: absolute;
+    width: 100%;
+    height: 1150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background: #1B1C43;
+}
+
+
+.pesontedan {
+    position: relative;
+    width: calc(70%);
+    min-height: 80.02px;
+    color: #f3f1f1;
+    overflow: hidden;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22.8471px;
+    line-height: 28px;
+    margin-bottom: 10px;
+
+}
+
+.pesontedan input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.pesontedan label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background: #353A75;
+    border-radius: 40.0107px;
+    line-height: 3;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22.8471px;
+    /* identical to box height */
+
+
+color: #FFFFFF;
+
+}
+
+.pesontedan-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #353A75;
+    transition: max-height .40s;
+    font-family: 'Cera Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24.7125px;
+    line-height: 140%;
+    /* or 35px */
+
+
+    color: #C8C8C8;
+}
+
+.pesontedan-content {
+    background: #1B1C43;
+    border-bottom-left-radius: 40.0107px;
+    border-bottom-right-radius: 40.0107px;
+}
+
+.pesontedan-content p {
+    margin: 1em;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24.7125px;
+    line-height: 140%;
+}
+/* :checked */
+.pesontedan input:checked ~ .pesontedan-content {
+  max-height: 100vh;
+}
+
+/* Icon */
+.pesontedan label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .40s;
+    -o-transition: all .40s;
+    transition: all .40s;
+}
+
+
+.pesontedan input[type=checkbox] + label::after {
+    color:#886EC5;
+    content: "+";
+}
+
+
+.pesontedan input[type=radio] + label::after {
+  content: "\25BC";
+}
+
+.pesontedan input[type=checkbox]:checked + label::after {
+  transform: rotate(315deg);
+}
+.pesontedan input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+}
+

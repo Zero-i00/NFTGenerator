@@ -1,11 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <strong><a href="?download-files=0">Download zip</a></strong>
-    <span><a href="{% url 'logout' %}">Logout</a></span>
-</body>
-</html>
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <body>
+        <header id="header">
+            <a href="/">
+                <div class="logo-img">
+                <img src="{% static 'img/logo_icon.png' %}" alt="logo">
+                <img class="B" src="{% static 'img/B.png' %}" alt="B">
+            </div>
+            </a>
+            <div class="logo">
+                <a href="/" class="logo">Begin2NFT</a>
+            </div>
+            <ul class="navigations" id="home">
+                <li><img src="{% static 'img/discord_icon.png' %}" alt="discord"></li>
+                <li><img src="{% static 'img/twitter_icon.png' %}" alt="twitter"></li>
+                <li><img src="{% static 'img/ship_icon.png' %}" alt="ship"></li>
+                <li><a href="#home">Homepage</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#faq">F.A.Q</a></li>
+                <li><a href="">My Area</a></li>
+                <li><button class="btn-join-us">Join us</button></li>
+            </ul>
+        </header>
+        <main>
+            <div class="create-nft">
+                <img src="{% static 'img/create-nft-background.png' %}" alt="nft">
+                <div class="blur"></div>
+                <div class="create-content">
+                    <div class="content-left">
+                        <h1>Create your own NFT
+                            collection with Begin2NFT
+                        </h1>
+                        <p>Maecenas at nibh porta, semper lacus et, luctus libero. Quisque quis lorem et odio vulputate congue. Curabitur pellentesque diam at nisl elementum consectetur.</p>
+                        <a class="let-it-go">
+                            <h1>LET IT GO</h1>
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <img class="create-preview" src="{% static 'img/1e7be1130553681 8.png' %}" alt="nft">
+                    </div>
+                </div>
+            </div>
+            <div class="header" id="about">
+                <h1>About us</h1>
+            </div>
+            <div class="what-is-nft">
+                <img src="{% static 'img/about-us-background.png' %}" alt="nft">
+                <div class="blur"></div>
+               <div class="nft-content">
+                    <div class="content-left">
+                    <img class="nft-preview" src="{% static 'img/5360615 11.png' %}" alt="nft">
+                </div>
+                <div class="content-right">
+                    <h1><span>NFT</span> is the future of the contemporary art market</h1>
+                    <p>Curabitur porttitor consequat varius. Proin semper a metus in congue. Sed in ultrices dolor. Sed ullamcorper arcu vitae est consectetur iaculis. Nulla facilisi. Etiam sit amet odio dapibus. Nam pellentesque purus id accumsan tristique. Vestibulum id congue ligula. Praesent maximus sagittis molestie. Proin sagittis a lectus nec pellentesque.</p>
+                </div>
+               </div>
+            </div>
+            <div class="header" id="faq">
+                <h1>F.A.Q</h1>
+            </div>
+            <div class="questions">
+                <div class="pesontedan">
+                    <input id="pesontedan-one" type="checkbox" name="pesontedans">
+                    <label for="pesontedan-one">What NFTs nulla vel orci ullamcorper fringilla?</label>
+                    <div class="pesontedan-content">
+                        <p>Curabitur porttitor consequat varius. Proin semper a metus in congue. Sed in ultrices dolor. Sed ullamcorper arcu vitae est consectetur iaculis. Nulla facilisi. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci, sed vehicula augue aliquet ut. Etiam pulvinar gravida iaculis. Phasellus bibendum risus eu dui lobortis</p>
+                    </div>
+                </div>
+
+                <div class="pesontedan">
+                    <input id="pesontedan-two" type="checkbox" name="pesontedans">
+                    <label for="pesontedan-two">How does ultricies sem?</label>
+                    <div class="pesontedan-content">
+                        <p>two</p>
+                    </div>
+                </div>
+
+                <div class="pesontedan">
+                      <input id="pesontedan-three" type="checkbox" name="pesontedans">
+                      <label for="pesontedan-three">Which is purus justo, mattis NFT convallis?</label>
+                      <div class="pesontedan-content">
+                        <p>three</p>
+                      </div>
+                </div>
+
+                <div class="pesontedan">
+                      <input id="pesontedan-four" type="checkbox" name="pesontedans">
+                      <label for="pesontedan-four">Why is vehicula elementum, augue nisi ferm?</label>
+                      <div class="pesontedan-content">
+                        <p>four</p>
+                      </div>
+                  </div>
+
+                <div class="pesontedan">
+                      <input id="pesontedan-five" type="checkbox" name="pesontedans">
+                      <label for="pesontedan-five">What rola ed rhoncus lobortis tortor?</label>
+                      <div class="pesontedan-content">
+                        <p>five</p>
+                      </div>
+                  </div>
+
+                <div class="pesontedan">
+                      <input id="pesontedan-six" type="checkbox" name="pesontedans">
+                      <label for="pesontedan-six">How liquam Begin2NFT purus non mauris tincidunt?</label>
+                      <div class="pesontedan-content">
+                        <p>Curabitur porttitor consequat varius. Proin semper a metus in congue. Sed in ultrices dolor. Sed ullamcorper arcu vitae est consectetur iaculis. Nulla facilisi. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci.
+
+Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci, sed vehicula augue aliquet ut. Etiam pulvinar gravida iaculis. Phasellus bibendum risus eu dui lobortis
+</p>
+                      </div>
+                  </div>
+            </div>
+        </main>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script src="http://code.jquery.com/jquery-plugins.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>\
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="{% static 'home/main.js' %}"></script>
+{% endblock %}
