@@ -31,12 +31,47 @@ body {
 
 @media screen and (max-width: 1300px) {
     #header .logo-img {
+        width: 50px;
+        height: 50px;
         visibility: hidden;
         display: none;
     }
     #header .logo {
         visibility: hidden;
         display: none;
+    }
+    main .create-content .content-left a {
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main .create-content .content-right img {
+        display: none;
+    }
+}
+
+@media screen and (max-width:  800px) {
+    ul li {
+        display: none;
+    }
+    main .create-content .content-right img {
+        display: none;
+    }
+    .create-content .content-left p {
+        display: none;
+    }
+    .create-content .content-left .title {
+        display: none;
+    }
+    .what-is-nft {
+        display: none;
+    }
+    .header .header-about {
+        display: none;
+    }
+    main .create-content .content-left a {
+        left: 60px;
     }
 }
 
@@ -60,8 +95,10 @@ body {
 
 .B {
     position: absolute;
-    left: calc(10.3%);
-    top: calc(38%);
+    /*left: calc(10.3%);*/
+    /*top: calc(38%);*/
+    margin-left: -34px;
+    margin-top: 15px;
 
 }
 
@@ -120,12 +157,13 @@ main {
     position: relative;
     width: 100%;
     /*display: flex;*/
-    /*flex-direction: column;*/
+    flex-direction: column;
 }
 
 .create-nft img {
     position: relative;
     width: 100%;
+
 }
 div .create-blur {
     position: absolute;
@@ -168,8 +206,8 @@ main .create-nft .blur {
 main .create-content .content-right img {
     /*position: absolute;*/
     width: calc(100%);
-    height: calc(100%);
-
+    height: calc(1100%);
+    flex: 1;
     filter: drop-shadow(43px 41px 31px rgba(0, 0, 0, 0.25));
     border-radius: 63px;
 }
@@ -177,22 +215,23 @@ main .create-content .content-right img {
 main .create-content .content-right {
     position: absolute;
     flex: 1;
-    top: calc(8%);
+    top: calc(9%);
     left: calc(65%);
 }
 
 main .create-content .content-left {
     position: absolute;
+    min-height: 100%;
     flex: 1;
     top: calc(8%);
-    left: calc(10%);
+    left: calc(15%);
 }
 
 main .create-content .content-left h1 {
     position: absolute;
-    width: 550px;
-    height: 128px;
-
+    width: 500px;
+    /*min-height: 100%;*/
+    /*display: flex;*/
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -207,8 +246,8 @@ main .create-content .content-left h1 {
 
 main .create-content .content-left p {
     position: absolute;
-    width: 550px;
-    height: 90px;
+    width: 500px;
+    min-height: 100%;
     margin-top: 200px;
     font-family: 'Montserrat';
     font-style: normal;
@@ -226,7 +265,7 @@ main .create-content .content-left a {
     width: 210px;
     height: 65.62px;
     cursor: pointer;
-    top: 400px;
+    top: calc(20%);
     display: flex;
     text-align: center;
     justify-content: center;
@@ -239,7 +278,7 @@ main .create-content .content-left a {
 main .create-content .content-left a h1 {
     position: absolute;
     width: 134px;
-    height: 35px;
+min-height: 100%;
     padding-top: 7%;
     font-family: 'Montserrat';
     font-style: normal;
@@ -293,7 +332,7 @@ main .what-is-nft img {
 
 .what-is-nft .content-right h1 {
     width: 490px;
-    height: 128px;
+min-height: 100%;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -308,7 +347,7 @@ main .what-is-nft img {
 .what-is-nft .content-right p {
 
     width: 490px;
-    height: 283px;
+min-height: 100%;
     margin-top: 50px;
     font-family: 'Montserrat';
     font-style: normal;
