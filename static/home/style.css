@@ -33,45 +33,68 @@ body {
     #header .logo-img {
         width: 50px;
         height: 50px;
-        visibility: hidden;
-        display: none;
+        margin-bottom: 15px;
     }
     #header .logo {
         visibility: hidden;
         display: none;
     }
-    main .create-content .content-left a {
-        margin-top: 60px;
+    main .create-content .content-left p {
+        display: none;
     }
-}
-
-@media screen and (max-width: 1000px) {
-    main .create-content .content-right img {
+    main .generate .generate-nft-img-1 {
+        display: none;
+    }
+    main .generate .generate-nft-img-2 {
+        display: none;
+    }
+    main .generate .generate-nft-scheme {
+        display: none;
+    }
+    .about .content-left .nft-preview {
         display: none;
     }
 }
 
-@media screen and (max-width:  800px) {
+@media screen and (max-width: 1600px) {
+    .logo {
+       display: none;
+    }
+    .about .content-left .nft-preview {
+        display: none;
+    }
+   main .generate .generate-nft-img-1 {
+        display: none;
+    }
+    main .generate .generate-nft-img-2 {
+        display: none;
+    }
+    main .generate .generate-nft-scheme {
+        display: none;
+    }
+}
+
+@media screen and (max-width:  900px) {
     ul li {
         display: none;
     }
-    main .create-content .content-right img {
+    main .about {
         display: none;
     }
-    .create-content .content-left p {
+    main .questions {
+       display: none;
+    }
+    main .generate .content-info p {
         display: none;
     }
-    .create-content .content-left .title {
+    main .content-left .title {
         display: none;
     }
-    .what-is-nft {
-        display: none;
+    main .content-right .create-preview {
+        margin-top: calc(25%);
     }
-    .header .header-about {
-        display: none;
-    }
-    main .create-content .content-left a {
-        left: 60px;
+    main .header {
+       display: none;
     }
 }
 
@@ -151,26 +174,24 @@ body {
     cursor: pointer;
 }
 
-main {
+main .create-nft {
+    position: relative;
+}
+
+main .create-nft img {
+    position: relative;
+    width: 100%;
+
+}
+
+main .create-nft .blur {
+    /*position: absolute;*/
+    width: 100%;
+    /*height: 148.2%;*/
     top: 0;
-    left: 0;
-    position: relative;
-    width: 100%;
-    /*display: flex;*/
-    flex-direction: column;
-}
-
-.create-nft img {
-    position: relative;
-    width: 100%;
-
-}
-div .create-blur {
-    position: absolute;
-    width: 100%;
+    right: 0;
     background: rgba(255, 255, 255, 0.4);
 }
-
 .header {
     width: 100%;
     height: 169px;
@@ -181,8 +202,53 @@ div .create-blur {
 }
 
 .header h1 {
-	display: table-cell;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44.27px;
+    line-height: 140%;
+    display: table-cell;
 	vertical-align: middle;
+    /* identical to box height, or 62px */
+    color: #FFFFFF;
+}
+
+main .about {
+    position: relative;
+}
+
+main .about img {
+    width: 100%;
+}
+
+main .about .blur {
+    /*position: absolute;*/
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+main .questions {
+    position: relative;
+}
+
+main .questions {
+    /*position: absolute;*/
+    width: 100%;
+    height: 909px;
+
+    background: #1B1C43;
+}
+
+main .my-area-header {
+    /*position: absolute;*/
+    width: 100%;
+    height: 169px;
+    display: table;
+    text-align: center;
+    background: #8668FF;
+}
+
+main .my-area-header h1 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -192,37 +258,41 @@ div .create-blur {
 
 
     color: #FFFFFF;
+
+    display: table-cell;
+	vertical-align: middle;
 }
 
-main .create-nft .blur {
-    position: absolute;
+main .my-area {
+    position: relative;
     width: 100%;
-    height: 1185px;
-    top: 50px;
-
-    background: rgba(255, 255, 255, 0.4);
+    height: 909px;
+    background: linear-gradient(69.21deg, #A172FF -58.15%, #81BDFF 107.17%);
 }
+
+
 
 main .create-content .content-right img {
     /*position: absolute;*/
     width: calc(100%);
-    height: calc(1100%);
+    height: calc(100%);
     flex: 1;
+    padding-top: calc(25%);
     filter: drop-shadow(43px 41px 31px rgba(0, 0, 0, 0.25));
     border-radius: 63px;
 }
 
 main .create-content .content-right {
     position: absolute;
-    flex: 1;
     top: calc(9%);
     left: calc(65%);
 }
 
 main .create-content .content-left {
     position: absolute;
-    min-height: 100%;
+    min-height: 150%;
     flex: 1;
+    padding-top: calc(10%);
     top: calc(8%);
     left: calc(15%);
 }
@@ -265,7 +335,7 @@ main .create-content .content-left a {
     width: 210px;
     height: 65.62px;
     cursor: pointer;
-    top: calc(20%);
+    top: calc(35%);
     display: flex;
     text-align: center;
     justify-content: center;
@@ -278,7 +348,7 @@ main .create-content .content-left a {
 main .create-content .content-left a h1 {
     position: absolute;
     width: 134px;
-min-height: 100%;
+    min-height: 100%;
     padding-top: 7%;
     font-family: 'Montserrat';
     font-style: normal;
@@ -291,34 +361,35 @@ min-height: 100%;
     color: #FFFFFF;
 }
 
-main .what-is-nft .blur {
+main .questions .questions-header {
+    display: table;
+    text-align: center;
+    margin-top: calc(5%);
+}
+
+main .questions .questions-header h1 {
+    display: table-cell;
+	vertical-align: middle;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44.27px;
+    line-height: 140%;
+    /* identical to box height, or 62px */
+
+    text-transform: capitalize;
+
+    color: #FFFFFF;
+}
+
+.about .nft-content .content-right {
     position: absolute;
-    width: 100%;
-    height: 1085px;
-    top: calc(52.8%);
-
-    background: rgba(255, 255, 255, 0.55);
-}
-
-main .what-is-nft img {
-    position: relative;
-    width: 100%;
-}
-
-.what-is-nft .nft-content {
-     display: flex;
-}
-
-
-.what-is-nft .nft-content .content-right {
-    position: absolute;
-    flex: 1;
-    top: calc(58%);
-    left: calc(50%);
+    top: calc(20%);
+    right: calc(15%);
 
 }
 
-.what-is-nft .content-right h1 span {
+.about .content-right h1 span {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -330,9 +401,9 @@ main .what-is-nft img {
     color: #6D0EF3;
 }
 
-.what-is-nft .content-right h1 {
-    width: 490px;
-min-height: 100%;
+.about .content-right h1 {
+    width: 633px;
+    min-height: 100%;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -344,11 +415,10 @@ min-height: 100%;
     color: #1B1C43;
 }
 
-.what-is-nft .content-right p {
+.about .content-right p {
+    width: 544px;
+    height: 283px;
 
-    width: 490px;
-min-height: 100%;
-    margin-top: 50px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -362,18 +432,18 @@ min-height: 100%;
 }
 
 
-.what-is-nft .content-left .nft-preview{
+.about .content-left .nft-preview {
     position: absolute;
-    width: 35%;
-    height: 25%;
-    top: calc(58%);
-    left: calc(10%);
+    width: 534px;
+    height: 534px;
+    top: calc(20%);
+    left: calc(15%);
     filter: drop-shadow(40px 40px 31px rgba(0, 0, 0, 0.25));
     border-radius: 63px;
 }
 
 .questions {
-    position: absolute;
+    position: static;
     width: 100%;
     height: 1150px;
     display: flex;
@@ -493,3 +563,255 @@ color: #FFFFFF;
   transform: rotateX(180deg);
 }
 
+
+main  .my-area {
+    position: relative;
+}
+
+main .my-area .course-header {
+    text-align: center;
+}
+
+main .my-area .course-header h1 {
+	vertical-align: middle;
+    padding-top: calc(5%);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44.27px;
+    line-height: 140%;
+    /* identical to box height, or 62px */
+
+    text-transform: capitalize;
+
+    color: #FFFFFF;
+}
+
+
+.courses-container {
+    position: relative;
+    width: 80%;
+    display: flex;
+    top: calc(10%);
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+
+
+.courses-container .card {
+        position: relative;
+        width: 329.45px;
+        height: 437.3px;
+        background: #FFFFFF;
+        margin: 20px;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        filter: drop-shadow(30px 30px 65px rgba(0, 0, 0, 0.25));
+}
+
+.courses-container .card .card-body {
+    position: relative;
+    align-items: center;
+}
+
+.courses-container .card .card-body h5 {
+    width: 200px;
+    height: 29px;
+    margin-top: calc(10%);
+    margin-left: calc(8%);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24.1176px;
+    line-height: 29px;
+    color: #1B1C43;
+}
+
+.courses-container .card .card-body p {
+    width: 250px;
+    height: 24px;
+    margin-top: calc(20%);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19.4848px;
+    line-height: 24px;
+    /* identical to box height */
+
+
+    color: #738492;
+}
+
+.courses-container .card .card-body a {
+    position: absolute;
+    width: 190.58px;
+    height: 59.09px;
+    text-align: center;
+    padding-top: calc(6%);
+    padding-left: calc(5%);
+    margin-left: calc(4%);
+    text-decoration: none;
+    background: linear-gradient(86.38deg, #A667FF -24.38%, #7BC8FF 98.99%);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 29.5473px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21.0277px;
+    line-height: 26px;
+    left: calc(12%);
+    bottom: calc(10%);
+    /* identical to box height */
+
+
+color: #FFFFFF;
+}
+
+.vector-right {
+    position: absolute;
+    right: 0;
+}
+
+.vector-left {
+    position: absolute;
+    left: 0;
+}
+
+main .generate {
+    position: relative;
+}
+
+main .generate img {
+    position: relative;
+    width: 100%;
+}
+
+main .generate .generate-header {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    top: calc(5%);
+
+}
+
+main .generate .generate-header h1 {
+    /*position: absolute;*/
+	vertical-align: middle;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44.27px;
+    line-height: 140%;
+    /* identical to box height, or 62px */
+    text-transform: capitalize;
+    color: #2D2F89;
+
+}
+
+main .generate .content-info {
+    width: 703px;
+    position: absolute;
+    top: calc(25%);
+    left: calc(10%)
+}
+main .generate .content-info h1 {
+    width: 626px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43px;
+    line-height: 140%;
+    /* or 60px */
+
+
+    color: #1B1C43;
+}
+
+main .generate .content-info h1 span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43px;
+    line-height: 140%;
+    /* or 60px */
+
+
+    color: #6D0EF3;
+}
+
+main .generate .content-info p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 140%;
+    /* or 29px */
+
+
+    color: #000000;
+
+}
+
+main .generate .content-info .get-started {
+    position: absolute;
+    width: 264px;
+    height: 66px;
+    margin-top: calc(5%);
+    text-decoration: none;
+    background: linear-gradient(85.89deg, #B04FFF -19.81%, #70E0FF 120.52%);
+    box-shadow: 11px 13px 21px rgba(0, 0, 0, 0.25);
+    border-radius: 32.8125px
+}
+
+main .generate .content-info .get-started h1 {
+    margin: 15px 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25.125px;
+    line-height: 140%;
+    /* or 35px */
+
+
+    color: #FFFFFF;
+}
+
+main .generate .generate-nft-img-1 {
+    position: absolute;
+    width: 268px;
+    height: 268px;
+    top: calc(5%);
+    right: calc(10%);
+    filter: drop-shadow(10.7305px 11.2539px 8.11328px rgba(0, 0, 0, 0.25));
+    border-radius: 38.2857px;
+}
+
+main .generate .generate-nft-img-2 {
+    position: absolute;
+    width: 198px;
+    height: 198px;;
+    left: calc(15%);
+    bottom: calc(15%);
+    filter: drop-shadow(12.6844px 13.3031px 9.59062px rgba(0, 0, 0, 0.25));
+    border-radius: 19.4906px;
+}
+
+main .generate .generate-nft-scheme {
+    position: absolute;
+    width: 705px;
+    height: 401.23px;
+    right: calc(20%);
+    bottom: calc(20%);
+}
