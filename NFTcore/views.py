@@ -12,7 +12,8 @@ from django.contrib.auth import logout as auth_logout
 import shutil
 from scripts.nft_generator import check_paths, make_art
 from django.views.generic.edit import FormView
-from .forms import FileFieldForm, UserRegistrationForm
+from .forms import UserRegistrationForm, FileGroupForm, ScriptDataForm
+from .models import *
 
 
 class Home(TemplateView):
@@ -46,43 +47,81 @@ class Home(TemplateView):
 
 
 class FileFieldView(FormView):
-    form_class = FileFieldForm
+    # form_class = FileFieldForm
     template_name = 'create/create_nft.html'  # Replace with your template.
-    success_url = '/'  # Replace with your URL or reverse().
+    # success_url = '/'
+
+    def get(self, request):
+        file_group_form = FileGroupForm(self.request.GET or None)
+        script_data_form = ScriptDataForm(self.request.GET or None)
+
+        all_layers = FileGroup.objects.all()
+
+        return render(request, self.template_name, {
+            'file_group_form': file_group_form,
+            'script_data_form': script_data_form,
+            'all_layers': all_layers,
+        })
 
     def post(self, request, *args, **kwargs):
-        if os.path.exists('scripts/Input'):
-            shutil.rmtree('scripts/Input')
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
+
+
+        file_group_form = FileGroupForm(request.POST, request.FILES)
+        script_data_form = ScriptDataForm(request.POST)
+
+        all_layers = FileGroup.objects.all()
 
         files = request.FILES.getlist('attachments')
-        collection_name = request.POST.get('collection_name')
-        collection_description = request.POST.get('collection_description')
-        file_count = 1
 
-        if not os.path.exists('scripts/Input'):
-            os.mkdir('scripts/Input')
-        check_paths()
-        export_path_for_meta_data_global = os.path.join('scripts', 'Output', '_metadata', '_metadata.json')
-        with open(export_path_for_meta_data_global, 'a') as f:
-            f.write('[\n')
 
-        if form.is_valid():
-            for f in files:
-                if not os.path.exists(f'scripts/Input/0{file_count}'):
-                    path = os.mkdir(f'scripts/Input/0{file_count}')
+        if file_group_form.is_valid():
+            group = FileGroup.objects.create(user=request.user, layer_name=file_group_form.cleaned_data['layer_name'])
 
-                img = default_storage.save(f'scripts/Input/0{file_count}/nft_img{file_count}.png', ContentFile(f.read()))
+            for image in files:
+                file = File(fg=group, file=image)
+                file.save()
+
+        if script_data_form.is_valid():
+
+            file_count = 1
+
+            if not os.path.exists('scripts/Input'):
+                os.mkdir('scripts/Input')
+            check_paths()
+            export_path_for_meta_data_global = os.path.join('scripts', 'Output', '_metadata', '_metadata.json')
+            with open(export_path_for_meta_data_global, 'a') as f:
+                f.write('[\n')
+
+            project_name = script_data_form['project_name'].value()
+            product_description = script_data_form['product_description'].value()
+            collection_size = script_data_form['collection_size'].value()
+            dimension_1 = script_data_form['dimension_1'].value()
+            dimension_2 = script_data_form['dimension_2'].value()
+
+            users_file_group = FileGroup.objects.filter(user=request.user)
+
+            for image in users_file_group:
+                all_images = File.objects.filter(fg=image) # file list
+                for file in all_images:
+                    if not os.path.exists(f'scripts/Input/0{file_count}'):
+                        path = os.mkdir(f'scripts/Input/0{file_count}')
+                        file = str(file.file).split('/')[-1]
+                        os.replace('media/scripts/Input/' + file, f'scripts/Input/0{file_count}/' + file)
+                    else:
+                        file = str(file.file).split('/')[-1]
+                        os.path.join(f'scripts/Input/0{file_count}/', file)
+
+                    make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
+                    with open(export_path_for_meta_data_global, 'a') as f:
+                        f.write(']')
                 file_count += 1
 
-            make_art(collection_name, collection_description)
-            with open(export_path_for_meta_data_global, 'a') as f:
-                f.write(']')
 
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+        return render(request, self.template_name, {
+            'file_group_form': file_group_form,
+            'script_data_form': script_data_form,
+            'all_layers': all_layers,
+        })
 
 
 

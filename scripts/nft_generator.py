@@ -142,7 +142,7 @@ def check_paths():
         # global_metada_data = []
 
 
-def make_art(collection_name, collection_description):
+def make_art(collection_name, collection_description, collection_size, dimension_1, dimension_2):
     check_paths()
     pattern = re.compile(r"^\d+\.")
     while len(extracted_data) < number_of_combinations:

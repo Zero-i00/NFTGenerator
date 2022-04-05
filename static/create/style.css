@@ -1,0 +1,690 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+body {
+    min-height: 100vh;
+}
+
+#header {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    left: 0;
+    top: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+
+    background: #0b0d1c;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#header .logo h4 {
+    width: 71px;
+    height: 29px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20.7242px;
+    line-height: 140%;
+    /* identical to box height, or 29px */
+
+
+    color: #FFFFFF;
+
+}
+
+main {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #0b0d1c;
+}
+
+main .left-menu {
+    position: absolute;
+    width: 95%;
+    top: 60px;
+    left: 20px;
+}
+
+main .layer {
+    position: relative;
+    width: 326px;
+    height: 46px;
+    margin-top: 10px;
+    background: #325DAF;
+    border-radius: 6px;
+    padding: 12px;
+
+    text-align: center;
+}
+
+main .layer h1 {
+    width: 92px;
+    height: 20px;
+
+    /*font-family: 'Montserrat';*/
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.4091px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #FFFFFF;
+}
+
+
+
+main .new-layer-name {
+    width: 246px;
+    height: 26px;
+    padding: 5px;
+    background: #1D3D7A;
+}
+
+main .new-layer-name h3 {
+    width: 59px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10.8752px;
+    line-height: 140%;
+    /* or 15px */
+
+
+    color: #DDDDDD;
+
+}
+
+main .layer button {
+    position: absolute;
+    outline: none;
+    text-align: center;
+    top: 17px;
+    margin-left: 130px;
+    background: rgba(0, 0, 0, 0);
+    border: rgba(0, 0, 0, 0);
+
+}
+
+main .seperator {
+    /*position: absolute;*/
+    width: 292px;
+    height: 0px;
+    margin: 20px 10px;
+    border: 1px solid #FFFFFF;
+}
+
+main .middle-menu {
+    position: absolute;
+    width: 676px;
+    height: 89px;
+    background: rgba(0, 0, 0, 0.55);
+    top: 60px;
+    margin: 0 25%;
+    border: 1px solid #626262;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+main .right-layer-settings {
+    position: absolute;
+    width: 326px;
+    height: 148px;
+    margin-top: 25%;
+    right: 0;
+    background: rgba(0, 33, 95, 0.5);
+    border: 1.25px solid #686BFF;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+main .right-layer-settings .layer-input {
+    /*position: absolute;*/
+    margin: 30px 10px;
+    width: 304px;
+    height: 39px;
+    background: rgba(0, 33, 95, 0.5);
+    border: 1.25px solid #4144C8;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    padding: 10px;
+    /* or 20px */
+
+
+    color: #FFFFFF;
+}
+
+main .right-layer-settings .layer-input:focus {
+    outline: none;
+    background: rgba(0, 33, 95, 0.5);
+    color: #FFFFFF;
+}
+
+main .right-layer-settings .rarity-btn {
+    position: absolute;
+    width: 304px;
+    height: 39px;
+    margin: 0 10px;
+    border: 1.25px solid #4144C8;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    text-decoration: none;
+    display: table-cell;
+    text-align: center;
+    padding-top: 8px;
+    /* or 20px */
+
+    color: #FFFFFF;
+
+}
+
+main .btn-preview {
+    position: absolute;
+    width: 91px;
+    height: 40px;
+    left: 20px;
+    margin-top: 400px;
+    background: #5D48FF;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.4091px;
+    line-height: 140%;
+    border: rgba(0, 0, 0, 0);
+    /* or 20px */
+
+
+    color: #E3E0FF;
+}
+
+main .btn-generate-collection {
+    position: absolute;
+    width: 214px;
+    height: 40px;
+    left: 120px;
+    margin-top: 400px;
+    background: #398CF0;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.4091px;
+    line-height: 140%;
+    border: rgba(0, 0, 0, 0);
+    /* or 20px */
+
+
+    color: #FFFFFF;
+}
+
+main .right-menu {
+    position: absolute;
+    margin-top: 80px;
+    right: 68px;
+    width: 326px;
+    height: 399px;
+    padding-top: 10px;
+    background: rgba(0, 33, 95, 0.5);
+    border: 1.25px solid #686BFF;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #FFFFFF;
+}
+
+main .form-input {
+    width: 304px;
+    height: 39px;
+    margin: 10px 10px;
+    border: 1.25px solid #4144C8;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    /* or 20px */
+
+    background: rgba(0, 33, 95, 0.5);
+    color: #FFFFFF;
+}
+
+main .form-input:focus {
+    outline: none;
+    background: rgba(0, 33, 95, 0.5);
+    color: #FFFFFF;
+}
+
+
+main .project-settings .dimension {
+    margin-top: 10px;
+    text-align: center;
+}
+
+main .project-settings .dimension h3 {
+/*position: absolute;*/
+    width: 84px;
+    height: 24px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+
+    color: #FFFFFF;
+}
+
+main .project-settings .dimension-input {
+    width: 149px;
+    height: 39px;
+    padding: 10px;
+    background: rgba(0, 33, 95, 0.5);
+    border: 1.25px solid #4144C8;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    /* or 20px */
+
+    color: #FFFFFF;
+}
+
+main .project-settings .dimension-input:focus {
+    outline: none;
+    background: rgba(0, 33, 95, 0.5);
+    color: #FFFFFF;
+}
+
+main .project-settings .export-btn {
+    position: absolute;
+    width: 304px;
+    height: 39px;
+    bottom: 10px;
+    margin: 0 10px;
+    border: 1.25px solid #4144C8;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    text-align: center;
+    background: rgba(0, 33, 95, 0.5);
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    cursor: pointer;
+    /* or 20px */
+
+
+    color: #FFFFFF;
+}
+
+
+
+
+/*main .form-prj-name {*/
+/*    !*position: absolute;*!*/
+/*    width: 304px;*/
+/*    height: 39px;*/
+/*    margin-top: 20px;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .form-prj-name:focus {*/
+/*    outline: none;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+
+/*main .right-menu {*/
+/*    position: absolute;*/
+/*    width: 326px;*/
+/*    height: 399px;*/
+/*    right: 1%;*/
+/*    top: 10%;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    border: 1.25px solid #686BFF;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.3708px;*/
+/*    line-height: 140%;*/
+/*    !* or 20px *!*/
+/*    display: table;*/
+/*    text-align: center;*/
+/*    padding: 10px;*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .right-menu .export-btn {*/
+/*    position: absolute;*/
+/*    width: 304px;*/
+/*    height: 39px;*/
+/*    display: table-cell;*/
+/*	vertical-align: middle;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.3708px;*/
+/*    line-height: 140%;*/
+/*    padding: 8px;*/
+/*    bottom: 20px;*/
+/*    text-decoration: none;*/
+/*    color: #FFFFFF;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*main .form-prj-name {*/
+/*    !*position: absolute;*!*/
+/*    width: 304px;*/
+/*    height: 39px;*/
+/*    margin-top: 20px;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .form-prj-name:focus {*/
+/*    outline: none;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .form-prj-desc {*/
+/*    !*position: absolute;*!*/
+/*    width: 304px;*/
+/*    height: 39px;*/
+/*    margin-top: 20px;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+
+/*main .form-prj-desc:focus {*/
+/*    outline: none;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .form-coll-size {*/
+/*    !*position: absolute;*!*/
+/*    width: 304px;*/
+/*    height: 39px;*/
+/*    margin-top: 20px;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .form-coll-size:focus {*/
+/*    outline: none;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .add-img {*/
+/*    position: absolute;*/
+/*    top: 15%;*/
+/*    left: 25%;*/
+/*}*/
+
+/*main .add-img-field {*/
+/*    position: absolute;*/
+/*    width: 900px;*/
+/*    height: 89px;*/
+/*    background: rgba(0, 0, 0, 0.55);*/
+/*    border: 1px solid #626262;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 6px;*/
+/*}*/
+
+/*main .left-menu {*/
+/*    position: absolute;*/
+/*    top: 10%;*/
+/*    left: 2%;*/
+/*}*/
+
+/*main .left-menu .project {*/
+/*    !*position: absolute;*!*/
+/*    width: 326px;*/
+/*    height: 46px;*/
+/*    display: table;*/
+/*    padding: 0 10px;*/
+/*    background: #325DAF;*/
+/*    border-radius: 6px;*/
+/*}*/
+
+/*main .left-menu .project h1 {*/
+/*    display: table-cell;*/
+/*    vertical-align: middle;*/
+/*    width: 92px;*/
+/*    height: 20px;*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.4091px;*/
+/*    line-height: 140%;*/
+/*    !* or 20px *!*/
+
+
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .left-menu .seperator {*/
+/*    !*position: absolute;*!*/
+/*    width: 292px;*/
+/*    height: 0px;*/
+/*    margin: 20px;*/
+/*    border: 1px solid rgba(209, 209, 209, 0.5);*/
+/*}*/
+
+/*main .left-menu .row-btns {*/
+/*    position: absolute;*/
+/*}*/
+
+/*main .left-menu .btn-preview {*/
+/*    !*position: absolute;*!*/
+/*    width: 91px;*/
+/*    height: 40px;*/
+/*    padding: 12px;*/
+/*    background: #5D48FF;*/
+/*    border-radius: 6px;*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.4091px;*/
+/*    line-height: 140%;*/
+/*    text-decoration: none;*/
+/*    !* or 20px *!*/
+
+
+/*    color: #E3E0FF;*/
+/*}*/
+
+/*main .left-menu .generate-btn {*/
+/*    !*position: absolute;*!*/
+/*    width: 214px;*/
+/*    height: 40px;*/
+/*    padding: 12px;*/
+/*    margin-left: 70px;*/
+/*    background: #398CF0;*/
+/*    border-radius: 6px;*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.4091px;*/
+/*    line-height: 140%;*/
+/*    text-decoration: none;*/
+/*    !* or 20px *!*/
+
+
+/*    color: #FFFFFF;*/
+
+/*}*/
+
+/*main .bottom-menu {*/
+/*    position: absolute;*/
+/*    width: 326px;*/
+/*    height: 148px;*/
+/*    right: 1%;*/
+/*    top: 60%;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    border: 1.25px solid #686BFF;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.3708px;*/
+/*    line-height: 140%;*/
+/*    !* or 20px *!*/
+/*    display: table;*/
+/*    text-align: center;*/
+/*    padding: 10px;*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .bottom-menu .rarity-btn {*/
+/*    position: absolute;*/
+/*    width: 304px;*/
+/*    height: 39px;*/
+/*    display: table-cell;*/
+/*	vertical-align: middle;*/
+/*    padding: 10px;*/
+/*    margin-top: 20px;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.3708px;*/
+/*    line-height: 140%;*/
+/*    text-decoration: none;*/
+/*    !* or 20px *!*/
+
+
+/*    color: #FFFFFF;*/
+/*}*/
+
+
+/*main .layer-name-field {*/
+/*    !*position: absolute;*!*/
+/*    width: 304px;*/
+/*    height: 39px;*/
+/*    margin-top: 10px;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+
+/*main .layer-name-field:focus {*/
+/*    outline: none;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .dimension {*/
+/*    position: absolute;*/
+/*    width: 326px;*/
+/*    height: 148px;*/
+/*    right: 1%;*/
+/*    top: 60%;*/
+
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-size: 14.3708px;*/
+/*    line-height: 140%;*/
+/*    !* or 20px *!*/
+/*    !*display:inline-block;*!*/
+/*    !*text-align: center;*!*/
+/*    padding: 10px;*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .dimension .dimension_1 {*/
+/*    position: absolute;*/
+/*    width: 149px;*/
+/*    height: 39px;*/
+/*    !*display: inline-block;*!*/
+/*    right: 5px;*/
+/*    bottom: 60px;*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    padding-left: 15px;*/
+/*    margin-top: 20px;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .dimension .dimension_2 {*/
+/*    position: absolute;*/
+/*    width: 149px;*/
+/*    height: 39px;*/
+/*    left: 15px;*/
+/*    bottom: 60px;*/
+/*    padding-left: 15px;*/
+/*    !*display: inline-block;*!*/
+/*    border: 1.25px solid #4144C8;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 3px;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .dimension .dimension_1:focus {*/
+/*    outline: none;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/
+
+/*main .dimension .dimension_2:focus {*/
+/*    outline: none;*/
+/*    background: rgba(0, 33, 95, 0.5);*/
+/*    color: #FFFFFF;*/
+/*}*/

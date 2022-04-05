@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'NFTcore',
+    'crispy_forms',
+    'widget_tweaks',
+    'jquery',
 ]
 
 AUTH_USER_MODEL = 'NFTcore.User'

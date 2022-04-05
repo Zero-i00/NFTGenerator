@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import User
+from .models import User, File, FileGroup
 
 
 @admin.register(User)
@@ -21,4 +21,14 @@ class CustomUserAdmin(UserAdmin):
     )
     search_fields = ('email',)
     ordering = ('email',)
+
+
+class FileInline(admin.TabularInline):
+    model = File
+
+@admin.register(FileGroup)
+class FileGroupAdmin(admin.ModelAdmin):
+    inlines = [
+        FileInline,
+    ]
 

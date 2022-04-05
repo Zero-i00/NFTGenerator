@@ -60,4 +60,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
+class FileGroup(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=None)
+    layer_name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.layer_name
+
+class File(models.Model):
+    fg = models.ForeignKey(to=FileGroup, on_delete=models.CASCADE, default=0)
+    file = models.FileField(upload_to='scripts/Input')
