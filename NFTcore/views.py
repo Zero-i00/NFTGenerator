@@ -1,7 +1,5 @@
 import os
 import zipfile
-from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate
@@ -9,11 +7,11 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-import shutil
 from scripts.nft_generator import check_paths, make_art
 from django.views.generic.edit import FormView
-from .forms import UserRegistrationForm, FileGroupForm, ScriptDataForm
+from .forms import FileGroupForm, ScriptDataForm
 from .models import *
+from .services import test
 
 
 class Home(TemplateView):
@@ -22,7 +20,7 @@ class Home(TemplateView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             download_files = request.GET.get('download-files')
-
+            # test.delay()
             if download_files:
                 file_paths = list()
 
