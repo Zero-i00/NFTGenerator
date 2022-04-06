@@ -17,7 +17,7 @@ body {
     height: 90px;
     left: 0;
     top: 0;
-    padding: 28px 180px;
+    padding: 28px 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -610,10 +610,13 @@ main .my-area .course-header h1 {
     align-items: center;
 }
 
+.courses-container .card img {
+    height: 200px;
+}
+
 .courses-container .card .card-body h5 {
     width: 200px;
     height: 29px;
-    margin-top: calc(10%);
     margin-left: calc(8%);
     font-style: normal;
     font-weight: 700;
@@ -625,7 +628,7 @@ main .my-area .course-header h1 {
 .courses-container .card .card-body p {
     width: 250px;
     height: 24px;
-    margin-top: calc(20%);
+    margin-top: 10px;
     font-style: normal;
     font-weight: 500;
     font-size: 19.4848px;
@@ -641,7 +644,7 @@ main .my-area .course-header h1 {
     width: 190.58px;
     height: 59.09px;
     text-align: center;
-    padding-top: calc(6%);
+    padding-top: calc(5.5%);
     padding-left: calc(5%);
     margin-left: calc(4%);
     text-decoration: none;
@@ -755,7 +758,7 @@ main .generate .content-info .get-started {
 }
 
 main .generate .content-info .get-started h1 {
-    margin: 15px 30px;
+    margin: 15px 35px;
     font-style: normal;
     font-weight: 700;
     font-size: 25.125px;

@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+body {
+    min-height: 100vh;
+}
+
+#header {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    left: 0;
+    top: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+
+    background: #0b0d1c;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#header .logo h4 {
+    width: 71px;
+    height: 29px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20.7242px;
+    line-height: 140%;
+    /* identical to box height, or 29px */
+
+
+    color: #FFFFFF;
+
+}
+
+main {
+    /*position: relative;*/
+    padding-top: 60px;
+    width: 100%;
+    height: 100%;
+    background: #0b0d1c;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 1300px) {
+    main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+main .layer {
+    /*position: relative;*/
+    width: 326px;
+    height: 46px;
+    margin-top: 10px;
+    background: #325DAF;
+    border-radius: 6px;
+    padding: 12px;
+
+    text-align: center;
+}
+
+main .layer h1 {
+    width: 92px;
+    height: 20px;
+    padding: 2px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.4091px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #FFFFFF;
+}
+
+
+main .seperator {
+    /*position: absolute;*/
+    width: 256.8px;
+    height: 0px;
+    margin: 20px 0;
+    border: 1px solid #FFFFFF;
+}
+
+main .right-menu {
+    /*position: absolute;*/
+    width: 326px;
+    height: 359px;
+    /*margin-top: 70px;*/
+    /*margin-right: 20px;*/
+    background: rgba(0, 33, 95, 0.5);
+    border: 1.25px solid #686BFF;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+main .right-menu h3 {
+    /*position: absolute;*/
+    width: 77px;
+    height: 26.4px;
+    margin: 10px 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15.8079px;
+    line-height: 140%;
+    /* or 22px */
+
+
+    color: #FFFFFF
+}
+
+main .right-menu img {
+    width: 302px;
+    height: 302px;
+    margin: 0 10px;
+}
+
+
+main .middle-menu {
+    width: 326px;
+    height: 400px;
+    /*margin: 0 auto;*/
+    /*margin-top: 70px;*/
+    /*margin-right: 400px;*/
+    padding: 20px 10px;
+    background: rgba(0, 33, 95, 0.5);
+    border: 1.25px solid #686BFF;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #FFFFFF;
+}
+
+main .form-input {
+    width: 304px;
+    height: 39px;
+    margin: 10px auto;
+    border: 1.25px solid #4144C8;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    /* or 20px */
+
+    background: rgba(0, 33, 95, 0.5);
+    color: #FFFFFF;
+}
+
+main .form-input:focus {
+    outline: none;
+    background: rgba(0, 33, 95, 0.5);
+    color: #FFFFFF;
+}
+
+
+main .middle-menu .dimension {
+    margin-top: 30px;
+    text-align: center;
+}
+
+main .middle-menu .dimension h3 {
+/*position: absolute;*/
+    width: 84px;
+    height: 24px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+
+    color: #FFFFFF;
+}
+
+main .middle-menu .dimension-input {
+    width: 149px;
+    height: 39px;
+    padding: 10px;
+    background: rgba(0, 33, 95, 0.5);
+    border: 1.25px solid #4144C8;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+    /* or 20px */
+
+    color: #FFFFFF;
+}
+
+main .middle-menu .dimension-input:focus {
+    outline: none;
+    background: rgba(0, 33, 95, 0.5);
+    color: #FFFFFF;
+}
+
+
+main .middle-menu .generate {
+    width: 256.8px;
+    height: 48px;
+    margin: 100px 30px;
+    background: linear-gradient(85.89deg, #B04FFF -19.81%, #70E0FF 120.52%);
+    box-shadow: 11px 13px 21px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17.2909px;
+    line-height: 140%;
+    border: rgba(0, 0, 0, 0);
+    /* or 24px */
+
+
+    color: #FFFFFF;
+}
+
+main .left-menu .back-to-settings {
+    width: 256.8px;
+    height: 48px;
+    background: #5D48FF;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    border: rgba(0, 0, 0, 0);
+    /* or 24px */
+
+
+    color: #FFFFFF;
+}

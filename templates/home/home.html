@@ -18,14 +18,14 @@
                     <a href="/" class="logo">Begin2NFT</a>
                 </div>
                 <ul class="navigations" id="home">
-                    <li><img src="{% static 'img/discord_icon.png' %}" alt="discord"></li>
-                    <li><img src="{% static 'img/twitter_icon.png' %}" alt="twitter"></li>
-                    <li><img src="{% static 'img/ship_icon.png' %}" alt="ship"></li>
-                    <li><a href="#">Homepage</a></li>
+                    <li><a href="https://discord.gg/h8saB2AcfQ"><img src="{% static 'img/discord_icon.png' %}" alt="discord"></a></li>
+                    <li><a href="https://twitter.com/NorthParkClub"><img src="{% static 'img/twitter_icon.png' %}" alt="twitter"></a></li>
+                    <li><a href="https://opensea.io/collection/north-park-club"><img src="{% static 'img/ship_icon.png' %}" alt="ship"></a></li>
+                    <li><a href="/">Homepage</a></li>
                     <li><a href="#about">About us</a></li>
-                    <li><a href="#faq">F.A.Q</a></li>
+{#                    <li><a href="#faq">F.A.Q</a></li>#}
                     <li><a href="#myarea">My Area</a></li>
-                    <li><button class="btn-join-us">Join us</button></li>
+                    <li><a href="{% url 'create_collections' %}"><button class="btn-join-us">Join us</button></a></li>
                 </ul>
             </header>
             <main>
@@ -38,7 +38,7 @@
                                 collection with Begin2NFT
                             </h1>
                             <p>Maecenas at nibh porta, semper lacus et, luctus libero. Quisque quis lorem et odio vulputate congue. Curabitur pellentesque diam at nisl elementum consectetur.</p>
-                            <a class="let-it-go">
+                            <a href="{% url 'create_collections' %}" class="let-it-go">
                                 <h1>LET IT GO</h1>
                             </a>
                         </div>
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="header">
+                <div class="header" id="about">
                     <h1>About us</h1>
                 </div>
                 <div class="about">
@@ -65,64 +65,64 @@ Nam pellentesque purus id accumsan tristique. Vestibulum id congue ligula. Praes
                         </div>
                    </div>
                 </div>
-                <div class="questions">
-                    <div class="questions-header">
-                        <h1>frequently asked questions</h1>
-                    </div>
-                    <div class="questions">
-                        <div class="pesontedan">
-                            <input id="pesontedan-one" type="checkbox" name="pesontedans">
-                            <label for="pesontedan-one">What NFTs nulla vel orci ullamcorper fringilla?</label>
-                            <div class="pesontedan-content">
-                                <p>Curabitur porttitor consequat varius. Proin semper a metus in congue. Sed in ultrices dolor. Sed ullamcorper arcu vitae est consectetur iaculis. Nulla facilisi. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci, sed vehicula augue aliquet ut. Etiam pulvinar gravida iaculis. Phasellus bibendum risus eu dui lobortis</p>
-                            </div>
-                        </div>
-
-                        <div class="pesontedan">
-                            <input id="pesontedan-two" type="checkbox" name="pesontedans">
-                            <label for="pesontedan-two">How does ultricies sem?</label>
-                            <div class="pesontedan-content">
-                                <p>two</p>
-                            </div>
-                        </div>
-
-                        <div class="pesontedan">
-                              <input id="pesontedan-three" type="checkbox" name="pesontedans">
-                              <label for="pesontedan-three">Which is purus justo, mattis NFT convallis?</label>
-                              <div class="pesontedan-content">
-                                <p>three</p>
-                              </div>
-                        </div>
-
-                        <div class="pesontedan">
-                              <input id="pesontedan-four" type="checkbox" name="pesontedans">
-                              <label for="pesontedan-four">Why is vehicula elementum, augue nisi ferm?</label>
-                              <div class="pesontedan-content">
-                                <p>four</p>
-                              </div>
-                          </div>
-
-                        <div class="pesontedan">
-                              <input id="pesontedan-five" type="checkbox" name="pesontedans">
-                              <label for="pesontedan-five">What rola ed rhoncus lobortis tortor?</label>
-                              <div class="pesontedan-content">
-                                <p>five</p>
-                              </div>
-                          </div>
-
-                        <div class="pesontedan">
-                              <input id="pesontedan-six" type="checkbox" name="pesontedans">
-                              <label for="pesontedan-six">How liquam Begin2NFT purus non mauris tincidunt?</label>
-                              <div class="pesontedan-content">
-                                <p>Curabitur porttitor consequat varius. Proin semper a metus in congue. Sed in ultrices dolor. Sed ullamcorper arcu vitae est consectetur iaculis. Nulla facilisi. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci.
-
-        Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci, sed vehicula augue aliquet ut. Etiam pulvinar gravida iaculis. Phasellus bibendum risus eu dui lobortis
-        </p>
-                              </div>
-                          </div>
-                    </div>
-                </div>
-                <div class="my-area-header">
+{#                <div class="questions">#}
+{#                    <div class="questions-header" id="faq">#}
+{#                        <h1>frequently asked questions</h1>#}
+{#                    </div>#}
+{#                    <div class="questions">#}
+{#                        <div class="pesontedan">#}
+{#                            <input id="pesontedan-one" type="checkbox" name="pesontedans">#}
+{#                            <label for="pesontedan-one">What NFTs nulla vel orci ullamcorper fringilla?</label>#}
+{#                            <div class="pesontedan-content">#}
+{#                                <p>Curabitur porttitor consequat varius. Proin semper a metus in congue. Sed in ultrices dolor. Sed ullamcorper arcu vitae est consectetur iaculis. Nulla facilisi. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci, sed vehicula augue aliquet ut. Etiam pulvinar gravida iaculis. Phasellus bibendum risus eu dui lobortis</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="pesontedan">#}
+{#                            <input id="pesontedan-two" type="checkbox" name="pesontedans">#}
+{#                            <label for="pesontedan-two">How does ultricies sem?</label>#}
+{#                            <div class="pesontedan-content">#}
+{#                                <p>two</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="pesontedan">#}
+{#                              <input id="pesontedan-three" type="checkbox" name="pesontedans">#}
+{#                              <label for="pesontedan-three">Which is purus justo, mattis NFT convallis?</label>#}
+{#                              <div class="pesontedan-content">#}
+{#                                <p>three</p>#}
+{#                              </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="pesontedan">#}
+{#                              <input id="pesontedan-four" type="checkbox" name="pesontedans">#}
+{#                              <label for="pesontedan-four">Why is vehicula elementum, augue nisi ferm?</label>#}
+{#                              <div class="pesontedan-content">#}
+{#                                <p>four</p>#}
+{#                              </div>#}
+{#                          </div>#}
+{##}
+{#                        <div class="pesontedan">#}
+{#                              <input id="pesontedan-five" type="checkbox" name="pesontedans">#}
+{#                              <label for="pesontedan-five">What rola ed rhoncus lobortis tortor?</label>#}
+{#                              <div class="pesontedan-content">#}
+{#                                <p>five</p>#}
+{#                              </div>#}
+{#                          </div>#}
+{##}
+{#                        <div class="pesontedan">#}
+{#                              <input id="pesontedan-six" type="checkbox" name="pesontedans">#}
+{#                              <label for="pesontedan-six">How liquam Begin2NFT purus non mauris tincidunt?</label>#}
+{#                              <div class="pesontedan-content">#}
+{#                                <p>Curabitur porttitor consequat varius. Proin semper a metus in congue. Sed in ultrices dolor. Sed ullamcorper arcu vitae est consectetur iaculis. Nulla facilisi. Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci.#}
+{##}
+{#        Sed aliquam consequat volutpat. Pellentesque tincidunt tellus orci, sed vehicula augue aliquet ut. Etiam pulvinar gravida iaculis. Phasellus bibendum risus eu dui lobortis#}
+{#        </p>#}
+{#                              </div>#}
+{#                          </div>#}
+{#                    </div>#}
+{#                </div>#}
+                <div class="my-area-header" id="myarea">
                     <h1>My area</h1>
                 </div>
                 <div class="my-area">
@@ -138,33 +138,18 @@ Nam pellentesque purus id accumsan tristique. Vestibulum id congue ligula. Praes
                         </div>
 
 
-                            <div class="card">
-                              <img src="{% static 'img/about-us-background.png' %}" class="card-img-top" alt="...">
-                              <div class="card-body">
-                                <h5 class="card-title">NFT semper</h5>
-                                <p class="card-text">3 006 450 Scelerisque</p>
-                                <a href="#" class="btn btn-primary">Explore Now</a>
-                              </div>
-                            </div>
-
-{#                            <div class="card">#}
-{#                              <img src="{% static 'img/about-us-background.png' %}" class="card-img-top" alt="...">#}
-{#                              <div class="card-body">#}
-{#                                <h5 class="card-title">Posuere cubilia</h5>#}
-{#                                <p class="card-text">Maximus congue vel</p>#}
-{#                                <a href="#" class="btn btn-primary">Explore Now</a>#}
-{#                              </div>#}
-{#                            </div>#}
-{##}
-{#                            <div class="card">#}
-{#                              <img src="{% static 'img/about-us-background.png' %}" class="card-img-top" alt="...">#}
-{#                              <div class="card-body">#}
-{#                                <h5 class="card-title">Duis gravida NFTs</h5>#}
-{#                                <p class="card-text">Elementum vestibulum</p>#}
-{#                                <a href="#" class="btn btn-primary">Explore Now</a>#}
-{#                              </div>#}
-{#                            </div>#}
-
+                            {% if cards %}
+                                {% for card in cards %}
+                                    <div class="card">
+                                      <img src="{{ card.image.url }}" class="card-img-top" alt="...">
+                                      <div class="card-body">
+                                        <h5 class="card-title">{{ card.title }}</h5>
+                                        <p class="card-text">{{ card.description }}</p>
+                                        <a href="{{ card.help_link }}" class="btn btn-primary">Explore Now</a>
+                                      </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
 
                     </div>
                 </div>
@@ -180,7 +165,7 @@ Nam pellentesque purus id accumsan tristique. Vestibulum id congue ligula. Praes
                             <h1 class="title">Create your own unique <span>NFT</span> collection
                             </h1>
                             <p>Maecenas at nibh porta, semper lacus et, luctus libero. Quisque quis lorem et odio vulputate congue. Curabitur pellentesque diam at nisl elementum consectetur.</p>
-                            <a class="get-started" href="#">
+                            <a class="get-started" href="{% url 'create_collections' %}">
                                 <h1>GET STARTED!</h1>
                             </a>
                         </div>

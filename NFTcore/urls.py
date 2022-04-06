@@ -10,7 +10,8 @@ urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
-    path('create_collections/', FileFieldView.as_view(), name='profile-add'),
+    path('create_collections/', FileFieldView.as_view(), name='create_collections'),
+    path('collection-preview/', PreviewView.as_view(), name='collection-preview'),
 ]
 
 if settings.DEBUG:

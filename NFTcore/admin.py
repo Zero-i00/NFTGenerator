@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import User, File, FileGroup
+from .models import User, File, FileGroup, CourseCard
 
 
 @admin.register(User)
@@ -31,4 +31,6 @@ class FileGroupAdmin(admin.ModelAdmin):
     inlines = [
         FileInline,
     ]
+
+admin.site.register(CourseCard)
 

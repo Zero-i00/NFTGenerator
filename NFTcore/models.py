@@ -70,3 +70,14 @@ class FileGroup(models.Model):
 class File(models.Model):
     fg = models.ForeignKey(to=FileGroup, on_delete=models.CASCADE, default=0)
     file = models.FileField(upload_to='scripts/Input')
+
+
+class CourseCard(models.Model):
+    image = models.ImageField(upload_to='card/img')
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    help_link = models.URLField(max_length=255, default='')
+
+
+    def __str__(self):
+        return self.title

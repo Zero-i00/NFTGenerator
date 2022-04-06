@@ -63,6 +63,11 @@ import simplejson
 import random
 import sys
 from math import ceil
+import time
+
+
+start_time = time.time()
+
 
 pattern = re.compile(r"^\d+\.")
 body_folder_name = pattern.sub("", body_folder_name).strip().lower()
@@ -187,6 +192,7 @@ def make_art(collection_name, collection_description, collection_size, dimension
         if not is_SE:
             export_path_for_meta_data = os.path.join('scripts/Output', 'meta_data', f'{j + 1}.json')
             export_path_for_image = os.path.join('scripts/Output', 'generated_images', f'{j + 1}.png')
+
             if weight and height:
                 try:
                     merged_img.resize((weight, height)).save(export_path_for_image, format="png")
@@ -343,6 +349,9 @@ def make_unique_combinaison():
             # check_percentage_condition(body_only_counter,body_skin_clothes_counter,skin_body_without_clothes_counter,accessories_counter,ears_counter,neck_counter,SE_counter)
     if unique_combainaison not in extracted_data:
         print(unique_combainaison)
+        print("--- %s seconds ---" % (time.time() - start_time))
         extracted_data.append(unique_combainaison)
     unique_combainaison = []
+
+
 
