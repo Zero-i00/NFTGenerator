@@ -25,21 +25,18 @@
 {#                    <li><button class="btn-join-us">Join us</button></li>#}
 {#                </ul>#}
         </header>
-        <main>
+        <main style="background: url('/static/img/create-background.png') fixed">
             <div class="left-menu">
                 {% if all_layers %}
                     {% for layer in all_layers %}
-                        <div class="layer">
-                            <h1>{{ layer.layer_name }}</h1>
+                        <div class="layer {{ layer.title  }}">
+                            <h1>{{ layer.title }}</h1>
                         </div>
                     {% endfor %}
                 {% endif %}
-                <form enctype="multipart/form-data" method="post">
+            </div>
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="layer">
-                            {{ file_group_form.layer_name|add_class:'new-layer-name' }}
-                        <button name="create-layer" type="submit"><img class="plus-btn" src="{% static 'img/plus.png' %}" alt="+"></button>
-                    </div>
                     {% if messages  %}
                         <div class="info-container">
                             {% for message  in messages %}
@@ -49,51 +46,37 @@
                                 </div>
                             {% endfor %}
                         </div>
-                    {% else %}
-                        <div class="info-container">
-                            <div class="info-left"></div>
-                            <div class="info">
-                                <span>Not sure where to start? <a href="">Check out our intro video here.</a></span>
-                            </div>
-                        </div>
                     {% endif %}
-{#                    <div class="info-container">#}
-{#                        <div class="info-left"></div>#}
-{#                        <div class="info">#}
-{#                            <span>Not sure where to start? <a href="">Check out our intro video here.</a></span>#}
-{#                        </div>#}
-{#                    </div>#}
                     <div class="middle-menu">
-                        {{ file_group_form.attachments|add_class:'add-img-field'}}
-{#                        <label>Click or drop images here!</label>#}
-{#                        <label class="note-label">(image/png, image/jpeg)</label>#}
+                        {{ background_form.attachments|add_class:'add-img-field background_form'}}
+                        {{ rare_background_form.attachments|add_class:'add-img-field rare_background_form'}}
+                        {{ member_form.attachments|add_class:'add-img-field member_form'}}
+                        {{ pants_form.attachments|add_class:'add-img-field pants_form'}}
+                        {{ clothes_form.attachments|add_class:'add-img-field clothes_form'}}
+                        {{ expresion_form.attachments|add_class:'add-img-field expresion_form'}}
+                        {{ vr_form.attachments|add_class:'add-img-field vr_form'}}
+                        {{ hair_form.attachments|add_class:'add-img-field hair_form'}}
+                        {{ head_form.attachments|add_class:'add-img-field head_form'}}
+                        <label>Click or drop images here!</label>
+                        <label class="note-label">(image/png, image/jpeg)</label>
                     </div>
-                </form>
-            </div>
-            <div class="right-menu">
-                <form method="post">
-                    {% csrf_token %}
-                    <h3>Project Name</h3>
-                    {{ script_data_form.project_name|add_class:'form-input' }}
-                    <h3>Project Description</h3>
-                    {{ script_data_form.product_description|add_class:'form-input'}}
-                    <h3>Collection Size</h3>
-                    {{ script_data_form.collection_size|add_class:'form-input' }}
-                    <div class="dimension">
-                        <h3>Dimension</h3>
-                        {{ script_data_form.dimension_1|add_class:'dimension-input' }}
-                        {{ script_data_form.dimension_2|add_class:'dimension-input' }}
+                    <div class="right-menu">
+                            <h3>Project Name</h3>
+                        {{ script_data_form.project_name|add_class:'form-input' }}
+                        <h3>Project Description</h3>
+                        {{ script_data_form.product_description|add_class:'form-input'}}
+                        <h3>Collection Size</h3>
+                        {{ script_data_form.collection_size|add_class:'form-input' }}
+                        <div class="dimension">
+                            <h3>Dimension</h3>
+                            {{ script_data_form.dimension_1|add_class:'dimension-input' }}
+                            {{ script_data_form.dimension_2|add_class:'dimension-input' }}
+                        </div>
                     </div>
-                    <div class="seperator"></div>
-                    {% if all_layers %}
-                        <button name="preview-collection" class="btn-preview" type="submit">Preview</button>
-                        <button name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
-                    {% else %}
-                        <button disabled="disabled" style="background: #5A51A5;" name="preview-collection" class="btn-preview" type="submit">Preview</button>
-                        <button disabled="disabled" style="background: linear-gradient(87.54deg, #988BFF -15.44%, #80C1FF 106.51%);"  name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
-                    {% endif %}
-                </form>
-            </div>
+                <div class="seperator"></div>
+                <button name="preview-collection" class="btn-preview" type="submit">Preview</button>
+                <button name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
+            </form>
         </main>
     </body>
 {% endblock %}
@@ -104,5 +87,5 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src="{% static 'home/main.js' %}"></script>
+    <script src="{% static 'create/js/main.js' %}"></script>
 {% endblock %}

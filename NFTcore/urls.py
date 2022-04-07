@@ -11,7 +11,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('create_collections/', FileFieldView.as_view(), name='create_collections'),
-    path('collection-preview/', PreviewView.as_view(), name='collection-preview'),
+    # path('collection-preview/', PreviewView.as_view(), name='collection-preview'),
     path('download-img/', GeneratedImageView.as_view(), name='download-img'),
 ]
 

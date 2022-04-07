@@ -48,7 +48,7 @@ main {
     padding-top: 60px;
     width: 100%;
     height: 100%;
-    background: #0b0d1c;
+    /*background: #0b0d1c;*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -161,27 +161,24 @@ main .right-menu .dimension-input:focus {
     color: #FFFFFF;
 }
 
-/*main .left-menu {*/
-/*    position: absolute;*/
-/*    width: 95%;*/
-/*    top: 60px;*/
-/*    left: 20px;*/
-/*}*/
 
 main .layer {
     position: relative;
-    width: 326px;
+    width: 280px;
     height: 46px;
     margin-top: 10px;
     background: #325DAF;
     border-radius: 6px;
     padding: 12px;
+    border: 1px ;
     z-index: 1;
     text-align: center;
 }
 
+
+
 main .layer h1 {
-    width: 92px;
+    width: 152px;
     height: 20px;
 
     /*font-family: 'Montserrat';*/
@@ -249,12 +246,13 @@ main .middle-menu {
     height: 89px;
     background: rgba(0, 0, 0, 0.55);
     top: 120px;
-    margin: 0 30%;
+    left: 32%;
     border: 1px solid #626262;
     box-sizing: border-box;
     border-radius: 6px;
     /*display: flex;*/
     justify-content: center;
+    z-index: 1;
 }
 
 /*main .middle-menu label {*/
@@ -288,6 +286,7 @@ main .middle-menu {
 /*}*/
 
 main .add-img-field {
+    max-width: 300px;
     height: 89px;
      /*outline: 2px dashed #5d5d5d;*/
      /*outline-offset: -12px;*/
@@ -350,8 +349,8 @@ main .info-left {
     position: absolute;
     width: 666px;
     height: 48px;
-    top: 60px;
-    left: 30.8%;
+    top: 0;
+    left: 35%;
     background: #4C58EE;
     border-radius: 6px;
 
@@ -362,7 +361,7 @@ main .info-left-success {
     width: 666px;
     height: 48px;
     top: 60px;
-    left: 30.8%;
+    left: 31.5%;
     background: rgb(98,204,156);
     border-radius: 6px;
 }
@@ -372,7 +371,7 @@ main .info-success {
     width: 660px;
     height: 48px;
     top: 60px;
-    left: 31.2%;
+    left: 32%;
     padding: 14px 30px;
     background: rgb(186,231,210);
     border-radius: 0px 6px 6px 0px;
@@ -441,4 +440,37 @@ main .zip-download-img {
     top: 20%;
     left: 40.5%;
 
+}
+
+main .middle-menu label {
+    position: absolute;
+    width: 207px;
+    height: 20px;
+    top: 30%;
+    left: 35%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.4091px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #FFFFFF;
+
+}
+
+main .middle-menu .note-label {
+    position: absolute;
+    width: 207px;
+    height: 20px;
+    top: 50%;
+    left: 37%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.4091px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #FFFFFF;
 }

@@ -1,6 +1,9 @@
 import os
 import shutil
 import zipfile
+
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate
@@ -14,6 +17,11 @@ from .forms import FileGroupForm, ScriptDataForm
 from .models import *
 from .services import test
 
+collection_name = None
+collection_description = None
+number_of_combinations = None
+width = None
+height = None
 
 class Home(TemplateView):
     template_name = 'home/home.html'
@@ -28,161 +36,200 @@ class Home(TemplateView):
 
 
 
+def save_to_path(folder, folder_name, file_list):
+    file_count = 1
+    for element in file_list:
+        path = default_storage.save(f'./Input/{folder}.{folder_name}/{file_count}.png', ContentFile(element.read()))
+        export_img = os.path.join(f'Input{folder}.{folder_name}', path)
+        file_count += 1
+
 class FileFieldView(FormView):
     # form_class = FileFieldForm
     template_name = 'create/create_nft.html'  # Replace with your template.
 
 
     def get(self, request):
-        file_group_form = FileGroupForm(self.request.GET or None)
-        script_data_form = ScriptDataForm(self.request.GET or None)
+        background_form = FileGroupForm(self.request.GET or None)
+        rare_background_form = FileGroupForm(self.request.GET or None)
+        member_form = FileGroupForm(self.request.GET or None)
+        pants_form = FileGroupForm(self.request.GET or None)
+        clothes_form = FileGroupForm(self.request.GET or None)
+        expresion_form = FileGroupForm(self.request.GET or None)
+        vr_form = FileGroupForm(self.request.GET or None)
+        hair_form = FileGroupForm(self.request.GET or None)
+        head_form = FileGroupForm(self.request.GET or None)
 
-        all_layers = FileGroup.objects.all()
+        script_data_form = ScriptDataForm(self.request.GET or None)
+        all_layers = LayerGroup.objects.all()
 
         return render(request, self.template_name, {
-            'file_group_form': file_group_form,
+            'background_form': background_form,
+            'rare_background_form': rare_background_form,
             'script_data_form': script_data_form,
             'all_layers': all_layers,
+            'member_form': member_form,
+            'pants_form': pants_form,
+            'clothes_form': clothes_form,
+            'expresion_form': expresion_form,
+            'vr_form': vr_form,
+            'hair_form': hair_form,
+            'head_form': head_form,
+
         })
 
     def post(self, request, *args, **kwargs):
+        global collection_name, collection_description, number_of_combinations, width, height
+        # shutil.rmtree('media/Input')
 
-        file_group_form = FileGroupForm(request.POST, request.FILES)
+        background_form = FileGroupForm(request.POST, request.FILES)
+        rare_background_form = FileGroupForm(request.POST, request.FILES)
+        member_form = FileGroupForm(request.POST, request.FILES)
+        pants_form = FileGroupForm(request.POST, request.FILES)
+        clothes_form = FileGroupForm(request.POST, request.FILES)
+        expresion_form = FileGroupForm(request.POST, request.FILES)
+        vr_form = FileGroupForm(request.POST, request.FILES)
+        hair_form = FileGroupForm(request.POST, request.FILES)
+        head_form = FileGroupForm(request.POST, request.FILES)
+
         script_data_form = ScriptDataForm(request.POST)
+        all_layers = LayerGroup.objects.all()
 
-        all_layers = FileGroup.objects.all()
+        background_files = request.FILES.getlist('background_form')
+        rare_background_files = request.FILES.getlist('rare_background_form')
+        member_files = request.FILES.getlist('member_form')
+        pants_files = request.FILES.getlist('pants_form')
+        clothes_files = request.FILES.getlist('clothes_form')
+        expresion_files = request.FILES.getlist('expresion_form')
+        vr_files = request.FILES.getlist('vr_form')
+        hair_files = request.FILES.getlist('hair_form')
+        head_files = request.FILES.getlist('head_form')
 
-        files = request.FILES.getlist('attachments')
-
-        if 'create-layer' in request.POST:
-            if file_group_form.is_valid():
-                group = FileGroup.objects.create(user=request.user, layer_name=file_group_form.cleaned_data['layer_name'])
-
-                for image in files:
-                    file = File(fg=group, file=image)
-                    file.save()
+        save_to_path('01', 'Background', background_files)
+        save_to_path('02', 'Rare Background', rare_background_files)
+        save_to_path('03', 'Member', member_files)
+        save_to_path('04', 'Pants', pants_files)
+        save_to_path('05', 'Clothes', clothes_files)
+        save_to_path('06', 'Expresion', expresion_files)
+        save_to_path('07', 'Vr', vr_files)
+        save_to_path('08', 'Hair', hair_files)
+        save_to_path('09', 'Head', head_files)
 
         if script_data_form.is_valid():
 
-            file_count = 1
+            collection_name = script_data_form['project_name'].value()
+            collection_description = script_data_form['product_description'].value()
+            number_of_combinations = script_data_form['collection_size'].value()
+            weight = script_data_form['dimension_1'].value()
+            height = script_data_form['dimension_2'].value()
 
-            if not os.path.exists('scripts/Input'):
-                os.mkdir('scripts/Input')
             check_paths()
-            export_path_for_meta_data_global = os.path.join('scripts', 'Output', '_metadata', '_metadata.json')
+            export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
+
             with open(export_path_for_meta_data_global, 'a') as f:
                 f.write('[\n')
-
-            project_name = script_data_form['project_name'].value()
-            product_description = script_data_form['product_description'].value()
-            collection_size = script_data_form['collection_size'].value()
-            dimension_1 = script_data_form['dimension_1'].value()
-            dimension_2 = script_data_form['dimension_2'].value()
-
-            users_file_group = FileGroup.objects.filter(user=request.user)
-
-            for image in users_file_group:
-                all_images = File.objects.filter(fg=image) # file list
-                for file in all_images:
-                    if not os.path.exists(f'scripts/Input/0{file_count}'):
-                        path = os.mkdir(f'scripts/Input/0{file_count}')
-                        file = str(file.file).split('/')[-1]
-                        os.replace('media/scripts/Input/' + file, f'scripts/Input/0{file_count}/' + file)
-                    else:
-                        file = str(file.file).split('/')[-1]
-                        os.path.join(f'scripts/Input/0{file_count}/', file)
-                file_count += 1
-
-
-
-            if 'preview-collection' in request.POST:
-                make_art(project_name, product_description, 1, dimension_1, dimension_2)
-                print('preview')
-                return redirect('/collection-preview/')
-            elif 'generate-full-collection' in request.POST:
-                make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
-                print('all-collection')
-                messages.info(request, 'Your collection is being generated')
-                return redirect('/download-img/')
+            messages.info(request, 'Your collection is being generated')
+            make_art()
             with open(export_path_for_meta_data_global, 'a') as f:
                 f.write(']')
 
+            return redirect('/download-img/')
+
+            # if 'preview-collection' in request.POST:
+            #     make_art(project_name, product_description, 1, dimension_1, dimension_2)
+            #     print('preview')
+            #     return redirect('/collection-preview/')
+            # elif 'generate-full-collection' in request.POST:
+            #     make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
+            #     print('all-collection')
+            #     messages.info(request, 'Your collection is being generated')
+            #     return redirect('/download-img/')
+            # with open(export_path_for_meta_data_global, 'a') as f:
+            #     f.write(']')
+
 
         return render(request, self.template_name, {
-            'file_group_form': file_group_form,
+            'background_form': background_form,
+            'rare_background_form': rare_background_form,
+            'member_form': member_form,
+            'pants_form': pants_form,
+            'clothes_form': clothes_form,
+            'expresion_form': expresion_form,
+            'vr_form': vr_form,
+            'hair_form': hair_form,
+            'head_form': head_form,
             'script_data_form': script_data_form,
             'all_layers': all_layers,
         })
 
 
 
-class PreviewView(FormView):
-
-    template_name = 'create/preview.html'
-
-    def get(self, request):
-        script_data_form = ScriptDataForm(self.request.GET or None)
-
-        all_layers = FileGroup.objects.all()
-        generated_img = 'scripts/Output/generated_images/1.png'
-        media_path = 'static/generated_img/1.png'
-
-
-        shutil.copy2(generated_img, media_path)
-
-        return render(request, self.template_name, {
-            'script_data_form': script_data_form,
-            'all_layers': all_layers,
-            'preview_img': generated_img,
-        })
-
-    def post(self, request, *args, **kwargs):
-
-
-        script_data_form = ScriptDataForm(request.POST)
-        all_layers = FileGroup.objects.all()
-
-        if script_data_form.is_valid():
-
-            file_count = 1
-
-            if not os.path.exists('scripts/Input'):
-                os.mkdir('scripts/Input')
-            check_paths()
-            export_path_for_meta_data_global = os.path.join('scripts', 'Output', '_metadata', '_metadata.json')
-            with open(export_path_for_meta_data_global, 'a') as f:
-                f.write('[\n')
-
-            project_name = script_data_form['project_name'].value()
-            product_description = script_data_form['product_description'].value()
-            collection_size = script_data_form['collection_size'].value()
-            dimension_1 = script_data_form['dimension_1'].value()
-            dimension_2 = script_data_form['dimension_2'].value()
-
-            users_file_group = FileGroup.objects.filter(user=request.user)
-
-            for image in users_file_group:
-                all_images = File.objects.filter(fg=image)  # file list
-                for file in all_images:
-                    if not os.path.exists(f'scripts/Input/0{file_count}'):
-                        path = os.mkdir(f'scripts/Input/0{file_count}')
-                        file = str(file.file).split('/')[-1]
-                        os.replace('media/scripts/Input/' + file, f'scripts/Input/0{file_count}/' + file)
-                    else:
-                        file = str(file.file).split('/')[-1]
-                        os.path.join(f'scripts/Input/0{file_count}/', file)
-
-                    make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
-                    with open(export_path_for_meta_data_global, 'a') as f:
-                        f.write(']')
-                file_count += 1
-
-                return redirect('/download-img/')
-
-        return render(request, self.template_name, {
-            'script_data_form': script_data_form,
-            'all_layers': all_layers,
-        })
+# class PreviewView(FormView):
+#
+#     template_name = 'create/preview.html'
+#
+#     def get(self, request):
+#         script_data_form = ScriptDataForm(self.request.GET or None)
+#
+#         all_layers = LayerGroup.objects.all()
+#         generated_img = 'scripts/Output/generated_images/1.png'
+#         media_path = 'static/generated_img/1.png'
+#
+#
+#         shutil.copy2(generated_img, media_path)
+#
+#         return render(request, self.template_name, {
+#             'script_data_form': script_data_form,
+#             'all_layers': all_layers,
+#             'preview_img': generated_img,
+#         })
+#
+#     def post(self, request, *args, **kwargs):
+#
+#
+#         script_data_form = ScriptDataForm(request.POST)
+#         all_layers = LayerGroup.objects.all()
+#
+#         if script_data_form.is_valid():
+#
+#             # file_count = 1
+#
+#             # if not os.path.exists('scripts/Input'):
+#             #     os.mkdir('scripts/Input')
+#             # check_paths()
+#             # export_path_for_meta_data_global = os.path.join('scripts', 'Output', '_metadata', '_metadata.json')
+#             # with open(export_path_for_meta_data_global, 'a') as f:
+#             #     f.write('[\n')
+#
+#             collection_name = script_data_form['project_name'].value()
+#             collection_description = script_data_form['product_description'].value()
+#             number_of_combinations = script_data_form['collection_size'].value()
+#             width = script_data_form['dimension_1'].value()
+#             height = script_data_form['dimension_2'].value()
+#
+#             users_file_group = LayerGroup.objects.filter(user=request.user)
+#
+#             # for image in users_file_group:
+#             #     all_images = File.objects.filter(fg=image)  # file list
+#             #     for file in all_images:
+#             #         if not os.path.exists(f'scripts/Input/0{file_count}'):
+#             #             path = os.mkdir(f'scripts/Input/0{file_count}')
+#             #             file = str(file.file).split('/')[-1]
+#             #             os.replace('media/scripts/Input/' + file, f'scripts/Input/0{file_count}/' + file)
+#             #         else:
+#             #             file = str(file.file).split('/')[-1]
+#             #             os.path.join(f'scripts/Input/0{file_count}/', file)
+#             #
+#             #         make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
+#             #         with open(export_path_for_meta_data_global, 'a') as f:
+#             #             f.write(']')
+#             #     file_count += 1
+#
+#                 # return redirect('/download-img/')
+#
+#         return render(request, self.template_name, {
+#             'script_data_form': script_data_form,
+#             'all_layers': all_layers,
+#         })
 
 
 
@@ -201,7 +248,7 @@ class GeneratedImageView(TemplateView):
             # test.delay()
             file_paths = list()
 
-            for root, directories, files in os.walk('./scripts/Output/'):
+            for root, directories, files in os.walk('./Output/'):
                 for filename in files:
                     filepath = os.path.join(root, filename)
                     file_paths.append(filepath)

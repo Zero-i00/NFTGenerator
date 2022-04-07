@@ -3,7 +3,7 @@ from itertools import product
 from django import forms
 from django.forms import Form, ModelForm
 
-from NFTcore.models import User, FileGroup
+from NFTcore.models import User
 
 
 class UserRegistrationForm(ModelForm):
@@ -21,8 +21,8 @@ class UserRegistrationForm(ModelForm):
 #     layer_name = forms.CharField(max_length=255)
 
 class FileGroupForm(Form):
-    layer_name = forms.CharField(max_length=255)
-    attachments = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True, 'placeholder': 'New Layer'}))
+    # layer_name = forms.CharField(max_length=255)
+    attachments = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True, 'placeholder': 'New Layer'}), required=False)
 
 class ScriptDataForm(Form):
     project_name = forms.CharField(max_length=255) #required=False

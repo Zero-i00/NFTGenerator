@@ -1,19 +1,24 @@
+
+
+
+
 ############################## User parameters ######################################
 
 # 1 :__________ Number of Combinations ___________#
-number_of_combinations = 1
+number_of_combinations = 10  # 250
 
-# 2 : _____ image dimentions in pixel  ________#
+# 2 : _________ image dimentions in pixel  ________#
 # let it None if you want to save the default size
 weight = None
 height = None
 
-# 3 : _____ layer of rarity (special edition SE) ________#
+# 3 : _________ layer of rarity (special edition SE) ________#
 SE_folder_name = '12.Special Edition [se]'
 
-# 4 : _____ about the collection for the metada file ______________#
+# 4 : _________ about the collection for the metada file ______________#
 collection_name = 'CollectionName'
 collection_description = 'This an NFT collection by CollectionName'
+
 
 ######################## CUSTUM FEATURES ################
 # ______________ foler names  __________________#
@@ -51,6 +56,7 @@ ears = 3
 # Neck
 neck = 10
 
+
 ######################################################################################
 
 
@@ -63,46 +69,43 @@ import simplejson
 import random
 import sys
 from math import ceil
-import time
-
-
-start_time = time.time()
-
 
 pattern = re.compile(r"^\d+\.")
-body_folder_name = pattern.sub("", body_folder_name).strip().lower()
-skin_folder_name = pattern.sub("", skin_folder_name).strip().lower()
-clothes_folder_name = pattern.sub("", clothes_folder_name).strip().lower()
+body_folder_name = pattern.sub("" ,body_folder_name).strip().lower()
+skin_folder_name = pattern.sub("" ,skin_folder_name).strip().lower()
+clothes_folder_name = pattern.sub("" ,clothes_folder_name).strip().lower()
 
-hair_folder_name = pattern.sub("", hair_folder_name).strip().lower()
-caps_folder_name = pattern.sub("", caps_folder_name).strip().lower()
+hair_folder_name = pattern.sub("" ,hair_folder_name).strip().lower()
+caps_folder_name = pattern.sub("" ,caps_folder_name).strip().lower()
 
-accessories_folder_name = pattern.sub("", accessories_folder_name).strip().lower()
-ears_folder_name = pattern.sub("", ears_folder_name).strip().lower()
-hat_folder_name = pattern.sub('', hat_folder_name).strip().lower()
+accessories_folder_name = pattern.sub("" ,accessories_folder_name).strip().lower()
+ears_folder_name = pattern.sub("" ,ears_folder_name).strip().lower()
+hat_folder_name =pattern.sub('' ,hat_folder_name).strip().lower()
 
-neck_folder_name = pattern.sub("", neck_folder_name).strip().lower()
+neck_folder_name = pattern.sub("" ,neck_folder_name).strip().lower()
 
-SE_folder_name = pattern.sub("", SE_folder_name).strip().lower()
+SE_folder_name   = pattern.sub("" ,SE_folder_name).strip().lower()
+
+
 
 ## Body and Clothes
-body_only_number = ceil((body_only / 100) * number_of_combinations)
-body_skin_clothes_number = ceil((body_skin_clothes / 100) * number_of_combinations)
-skin_body_without_clothes_number = ceil((skin_body_without_clothes / 100) * number_of_combinations)
+body_only_number = ceil((body_only /100 ) *number_of_combinations)
+body_skin_clothes_number = ceil((body_skin_clothes /100 ) *number_of_combinations)
+skin_body_without_clothes_number = ceil((skin_body_without_clothes /100 ) *number_of_combinations)
 ## Caps and hair
-hair_only_number = ceil((hair_only / 100) * number_of_combinations)
-caps_only_number = ceil((caps_only / 100) * number_of_combinations)
-no_hair_no_caps_number = ceil((no_hair_no_caps / 100) * number_of_combinations)
+hair_only_number = ceil((hair_only /100 ) *number_of_combinations)
+caps_only_number = ceil((caps_only /100 ) *number_of_combinations)
+no_hair_no_caps_number = ceil((no_hair_no_caps /100 ) *number_of_combinations)
 ## Accessories and Ears
-accessories_number = ceil((accessories / 100) * number_of_combinations)
-ears_number = ceil((ears / 100) * number_of_combinations)
-hat_number = ceil((hat / 100) * number_of_combinations)
+accessories_number = ceil((accessories /100 ) *number_of_combinations)
+ears_number = ceil((ears /100 ) *number_of_combinations)
+hat_number =ceil((hat /100 ) *number_of_combinations)
 ## Neck
-neck_number = ceil((neck / 100) * number_of_combinations)
+neck_number = ceil((neck /100 ) *number_of_combinations)
 ## Special Edition
 # Special Edition
 SE = 20
-SE_number = ceil((SE / 100) * number_of_combinations)
+SE_number = ceil((SE /100 ) *number_of_combinations)
 
 # List
 ## Body and Clothes
@@ -131,32 +134,29 @@ cont_bd_sk_cl = 0
 cont_bd_sk = 0
 # already taken SE
 already_picked_SE = []
-
-
 def check_paths():
-    if not os.path.exists('scripts/Output'):
-        os.mkdir('scripts/Output')
-    if not os.path.exists('scripts/Output/generated_images'):
-        os.mkdir('scripts/Output/generated_images')
-    if not os.path.exists('scripts/Output/meta_data') :
-        os.mkdir('scripts/Output/meta_data')
-    if not os.path.exists('scripts/Output/_metadata'):
-        os.mkdir('scripts/Output/_metadata')
-
-        # global metadata file
-        # global_metada_data = []
+    if not os.path.exists('Output'):
+        os.mkdir('Output')
+    if not os.path.exists('Output/generated_images') :
+        os.mkdir('Output/generated_images')
+    if not os.path.exists('Output/meta_data'):
+        os.mkdir('Output/meta_data')
+    if not os.path.exists('Output/_metadata'):
+        os.mkdir('Output/_metadata')
 
 
-def make_art(collection_name, collection_description, collection_size, dimension_1, dimension_2):
+# global metadata file
+# global_metada_data = []
+def make_art() :
     check_paths()
     pattern = re.compile(r"^\d+\.")
-    while len(extracted_data) < number_of_combinations:
+    while len(extracted_data) < number_of_combinations :
         make_unique_combinaison()
-    print("------- Extracted data ---------->", len(extracted_data))
-    for j, unique_merged_img in enumerate(extracted_data):
+    print("------- Extracted data ---------->" ,len(extracted_data))
+    for j ,unique_merged_img in enumerate(extracted_data)  :
         # print(unique_merged_img)
         is_SE = False
-        meta_data = {}
+        meta_data ={}
         attributes = []
         merged_img = Image.open(unique_merged_img[0]).convert('RGBA')
         merged_img_layer_name = os.path.split(os.path.split(unique_merged_img[0])[0])[1]
@@ -179,8 +179,8 @@ def make_art(collection_name, collection_description, collection_size, dimension
                 print(unique_merged_img)
                 sys.exit()
             imgg = Image.open(unique_merged_img[i]).convert('RGBA')
-            # merged_img = Image.alpha_composite(merged_img, imgg)
-            # print(unique_merged_img[i])
+            merged_img = Image.alpha_composite(merged_img, imgg)
+        # print(unique_merged_img[i])
         if not is_SE:
             meta_data['name'] = f"{collection_name} {j + 1}"
         else:
@@ -190,9 +190,8 @@ def make_art(collection_name, collection_description, collection_size, dimension
         meta_data['attributes'] = attributes
         # save the image and its metadata
         if not is_SE:
-            export_path_for_meta_data = os.path.join('scripts/Output', 'meta_data', f'{j + 1}.json')
-            export_path_for_image = os.path.join('scripts/Output', 'generated_images', f'{j + 1}.png')
-
+            export_path_for_meta_data = os.path.join('Output', 'meta_data', f'{j + 1}.json')
+            export_path_for_image = os.path.join('Output', 'generated_images', f'{j + 1}.png')
             if weight and height:
                 try:
                     merged_img.resize((weight, height)).save(export_path_for_image, format="png")
@@ -203,8 +202,8 @@ def make_art(collection_name, collection_description, collection_size, dimension
             with open(export_path_for_meta_data, 'w') as f:
                 f.write(simplejson.dumps(meta_data, indent=4, sort_keys=True))
         else:
-            export_path_for_image = os.path.join('scripts/Output', 'generated_images', f'{j + 1}-SE.png')
-            export_path_for_meta_data = os.path.join('scripts/Output', 'meta_data', f'{j + 1}-SE.json')
+            export_path_for_image = os.path.join('Output', 'generated_images', f'{j + 1}-SE.png')
+            export_path_for_meta_data = os.path.join('Output', 'meta_data', f'{j + 1}-SE.json')
             if weight and height:
                 try:
                     merged_img.resize((weight, height)).save(export_path_for_image, format="png")
@@ -214,8 +213,8 @@ def make_art(collection_name, collection_description, collection_size, dimension
                 merged_img.save(export_path_for_image, format="png")
             with open(export_path_for_meta_data, 'w') as f:
                 f.write(simplejson.dumps(meta_data, indent=4, sort_keys=True))
-                # write to _metadata
-        export_path_for_meta_data_global = os.path.join('scripts', 'Output', '_metadata', '_metadata.json')
+        # write to _metadata
+        export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
         with open(export_path_for_meta_data_global, 'a') as f:
 
             f.write(f"{simplejson.dumps(meta_data, indent=4)}")
@@ -266,10 +265,10 @@ def make_unique_combinaison():
     global no_hair_no_caps_counter
     # already exist SE
     global already_picked_SE
-    all_layers = sorted(os.listdir(os.path.join('scripts', 'Input')))
+    all_layers = sorted(os.listdir(os.path.join(os.getcwd(), 'media/Input')))
     all_images_of_each_layers = []
     for layer in all_layers:
-        layer_path = os.path.join('scripts', 'Input', layer)
+        layer_path = os.path.join(os.getcwd(), 'media/Input', layer)
         layer_images_name = os.listdir(layer_path)
         all_layer_images_path = [os.path.join(layer_path, img) for img in layer_images_name]
         all_layer_images_path = sorted(all_layer_images_path)
@@ -277,81 +276,91 @@ def make_unique_combinaison():
 
     unique_combainaison = []
     spe_idx += 1
-
-    for layer in all_images_of_each_layers:
-        print(layer)
-        random_img = layer[random.randint(0, len(layer) - 1)]
-        folder_info = os.path.split(random_img)[0].lower()
-        folder_info = os.path.split(folder_info)[1]
-        ## body and clothes
-        if (body_only) and (body_folder_name in folder_info) and (body_only_number > body_only_counter):
-            body_only_counter += 1
-            unique_combainaison.append(random_img)
-        elif (body_only_counter >= body_only_number) and (body_skin_clothes) and (
-                (body_folder_name in folder_info) or (clothes_folder_name in folder_info) or (
-                skin_folder_name in folder_info)) and (body_skin_clothes_number > body_skin_clothes_counter):
-            cont_bd_sk_cl += 1
-            if cont_bd_sk_cl == 3:
-                cont_bd_sk_cl = 0
-                body_skin_clothes_counter += 1
-            unique_combainaison.append(random_img)
-        elif (body_skin_clothes_counter >= body_skin_clothes_number) and (skin_body_without_clothes) and (
-                (body_folder_name in folder_info) or (skin_folder_name in folder_info)) and (
-                skin_body_without_clothes_number > skin_body_without_clothes_counter):
-            # (body_skin_clothes_counter>=body_skin_clothes_number) and
-            if cont_bd_sk == 2:
-                cont_bd_sk = 0
-                skin_body_without_clothes_counter += 1
-            unique_combainaison.append(random_img)
+    while 1:
+        for layer in all_images_of_each_layers:
+            print(layer)
+            random_img = layer[random.randint(0, len(layer) - 1)]
+            folder_info = os.path.split(random_img)[0].lower()
+            folder_info = os.path.split(folder_info)[1]
+            ## body and clothes
+            if (body_only) and (body_folder_name in folder_info) and (body_only_number > body_only_counter):
+                body_only_counter += 1
+                unique_combainaison.append(random_img)
+            elif (body_only_counter >= body_only_number) and (body_skin_clothes) and (
+                    (body_folder_name in folder_info) or (clothes_folder_name in folder_info) or (
+                    skin_folder_name in folder_info)) and (body_skin_clothes_number > body_skin_clothes_counter):
+                cont_bd_sk_cl += 1
+                if cont_bd_sk_cl == 3:
+                    cont_bd_sk_cl = 0
+                    body_skin_clothes_counter += 1
+                unique_combainaison.append(random_img)
+            elif (body_skin_clothes_counter >= body_skin_clothes_number) and (skin_body_without_clothes) and (
+                    (body_folder_name in folder_info) or (skin_folder_name in folder_info)) and (
+                    skin_body_without_clothes_number > skin_body_without_clothes_counter):
+                # (body_skin_clothes_counter>=body_skin_clothes_number) and
+                if cont_bd_sk == 2:
+                    cont_bd_sk = 0
+                    skin_body_without_clothes_counter += 1
+                unique_combainaison.append(random_img)
             # hat
-        elif (hat) and (hat_folder_name in folder_info) and (hat_number > hat_counter):
-            hat_counter += 1
-            unique_combainaison.append(random_img)
-            # caps and hair
-        elif (hair_folder_name in folder_info) and (hair_only_counter < hair_only_number):
-            hair_only_counter += 1
-            unique_combainaison.append(random_img)
-        elif (hair_only_counter >= hair_only_number) and (caps_folder_name in folder_info) and (
-                caps_only_counter < caps_only_number):
-            caps_only_counter += 1
-            unique_combainaison.append(random_img)
-        elif ((hair_folder_name in folder_info) or (caps_folder_name in folder_info)) and (
-                hair_only_counter >= hair_only_number) and (caps_only_counter >= caps_only_number) and (no_hair_no_caps_counter < no_hair_no_caps_number * 2):
-            no_hair_no_caps_counter += 1
-        elif (no_hair_no_caps_counter >= no_hair_no_caps_number) and (
-                (hair_folder_name in folder_info) or (caps_folder_name in folder_info)):
-            unique_combainaison.append(random_img)
+            elif (hat) and (hat_folder_name in folder_info) and (hat_number > hat_counter):
+                hat_counter += 1
+                unique_combainaison.append(random_img)
+                # caps and hair
+            elif (hair_folder_name in folder_info) and (hair_only_counter < hair_only_number):
+                hair_only_counter += 1
+                unique_combainaison.append(random_img)
+            elif (hair_only_counter >= hair_only_number) and (caps_folder_name in folder_info) and (
+                    caps_only_counter < caps_only_number):
+                caps_only_counter += 1
+                unique_combainaison.append(random_img)
+            elif ((hair_folder_name in folder_info) or (caps_folder_name in folder_info)) and (
+                    hair_only_counter >= hair_only_number) and (caps_only_counter >= caps_only_number) and (
+                    no_hair_no_caps_counter < no_hair_no_caps_number * 2):
+                no_hair_no_caps_counter += 1
+            elif (no_hair_no_caps_counter >= no_hair_no_caps_number) and (
+                    (hair_folder_name in folder_info) or (caps_folder_name in folder_info)):
+                unique_combainaison.append(random_img)
             ## Ears and Accessories
-        elif (accessories) and (accessories_folder_name in folder_info) and (
-                accessories_number > accessories_counter):
-            accessories_counter += 1
-            unique_combainaison.append(random_img)
-        elif (accessories_counter >= accessories_number) and (ears) and (ears_folder_name in folder_info) and (
-                ears_number > ears_counter):
-            ears_counter += 1
-            unique_combainaison.append(random_img)
-            ## neck
-        elif (neck) and (neck_folder_name in folder_info) and (neck_number > neck_counter):
-            neck_counter += 1
-            unique_combainaison.append(random_img)
-            ## SE
-        elif (SE) and (get_sp_idx() >= spe_idx) and (SE_folder_name in folder_info) and (
-                random_img not in already_picked_SE):
+            elif (accessories) and (accessories_folder_name in folder_info) and (
+                    accessories_number > accessories_counter):
+                accessories_counter += 1
+                unique_combainaison.append(random_img)
+            elif (accessories_counter >= accessories_number) and (ears) and (ears_folder_name in folder_info) and (
+                    ears_number > ears_counter):
+                ears_counter += 1
+                unique_combainaison.append(random_img)
+                ## neck
+            elif (neck) and (neck_folder_name in folder_info) and (neck_number > neck_counter):
+                neck_counter += 1
+                unique_combainaison.append(random_img)
+                ## SE
+            elif (SE) and (get_sp_idx() >= spe_idx) and (SE_folder_name in folder_info) and (
+                    random_img not in already_picked_SE):
 
-            already_picked_SE.append(random_img)
-            unique_combainaison.append(random_img)
-        elif (body_folder_name not in folder_info) and (hat_folder_name not in folder_info) and (
-                hair_folder_name not in folder_info) and (caps_folder_name not in folder_info) and (
-                neck_folder_name not in folder_info) and (ears_folder_name not in folder_info) and (
-                accessories_folder_name not in folder_info) and (clothes_folder_name not in folder_info) and (
-                skin_folder_name not in folder_info) and (SE_folder_name not in folder_info):
-            unique_combainaison.append(random_img)
-            # check_percentage_condition(body_only_counter,body_skin_clothes_counter,skin_body_without_clothes_counter,accessories_counter,ears_counter,neck_counter,SE_counter)
-    if unique_combainaison not in extracted_data:
-        print(unique_combainaison)
-        print("--- %s seconds ---" % (time.time() - start_time))
-        extracted_data.append(unique_combainaison)
-    unique_combainaison = []
+                already_picked_SE.append(random_img)
+                unique_combainaison.append(random_img)
+            elif (body_folder_name not in folder_info) and (hat_folder_name not in folder_info) and (
+                    hair_folder_name not in folder_info) and (caps_folder_name not in folder_info) and (
+                    neck_folder_name not in folder_info) and (ears_folder_name not in folder_info) and (
+                    accessories_folder_name not in folder_info) and (clothes_folder_name not in folder_info) and (
+                    skin_folder_name not in folder_info) and (SE_folder_name not in folder_info):
+                unique_combainaison.append(random_img)
+                # check_percentage_condition(body_only_counter,body_skin_clothes_counter,skin_body_without_clothes_counter,accessories_counter,ears_counter,neck_counter,SE_counter)
+        if unique_combainaison not in extracted_data:
+            extracted_data.append(unique_combainaison)
+            break
+        unique_combainaison = []
+
+
+if __name__ == '__main__':
+    check_paths()
+    export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
+    with open(export_path_for_meta_data_global, 'a') as f:
+        f.write('[\n')
+    make_art()
+    with open(export_path_for_meta_data_global, 'a') as f:
+        f.write(']')
 
 
 

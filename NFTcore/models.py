@@ -1,4 +1,6 @@
 import uuid
+
+import blank
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
@@ -60,15 +62,27 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-class FileGroup(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=None)
-    layer_name = models.CharField(max_length=255)
+# class FileGroup(models.Model):
+#     user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=None, blank=True)
+#     layer_name = models.CharField(max_length=255)
+#
+#     def __str__(self):
+#         return self.layer_name
+#
+# class File(models.Model):
+#     fg = models.ForeignKey(to=FileGroup, on_delete=models.CASCADE, default=0)
+#     file = models.FileField(upload_to='scripts/Input')
+
+
+class LayerGroup(models.Model):
+    title = models.CharField(max_length=255)
+
 
     def __str__(self):
-        return self.layer_name
+        return self.title
 
 class File(models.Model):
-    fg = models.ForeignKey(to=FileGroup, on_delete=models.CASCADE, default=0)
+    lg = models.ForeignKey(to=LayerGroup, on_delete=models.CASCADE, default=0)
     file = models.FileField(upload_to='scripts/Input')
 
 
