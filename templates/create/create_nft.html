@@ -40,13 +40,29 @@
                             {{ file_group_form.layer_name|add_class:'new-layer-name' }}
                         <button name="create-layer" type="submit"><img class="plus-btn" src="{% static 'img/plus.png' %}" alt="+"></button>
                     </div>
-
-                    <div class="info-container">
-                        <div class="info-left"></div>
-                        <div class="info">
-                            <span>Not sure where to start? <a href="">Check out our intro video here.</a></span>
+                    {% if messages  %}
+                        <div class="info-container">
+                            {% for message  in messages %}
+                            <div class="info-left-success"></div>
+                                <div class="info-success">
+                                    <span>{{ message }}</span>
+                                </div>
+                            {% endfor %}
                         </div>
-                    </div>
+                    {% else %}
+                        <div class="info-container">
+                            <div class="info-left"></div>
+                            <div class="info">
+                                <span>Not sure where to start? <a href="">Check out our intro video here.</a></span>
+                            </div>
+                        </div>
+                    {% endif %}
+{#                    <div class="info-container">#}
+{#                        <div class="info-left"></div>#}
+{#                        <div class="info">#}
+{#                            <span>Not sure where to start? <a href="">Check out our intro video here.</a></span>#}
+{#                        </div>#}
+{#                    </div>#}
                     <div class="middle-menu">
                         {{ file_group_form.attachments|add_class:'add-img-field'}}
 {#                        <label>Click or drop images here!</label>#}
@@ -57,17 +73,25 @@
             <div class="right-menu">
                 <form method="post">
                     {% csrf_token %}
-                    {{ script_data_form.project_name|add_class:'form-input'|as_crispy_field }}
-                    {{ script_data_form.product_description|add_class:'form-input'|as_crispy_field }}
-                    {{ script_data_form.collection_size|add_class:'form-input'|as_crispy_field }}
+                    <h3>Project Name</h3>
+                    {{ script_data_form.project_name|add_class:'form-input' }}
+                    <h3>Project Description</h3>
+                    {{ script_data_form.product_description|add_class:'form-input'}}
+                    <h3>Collection Size</h3>
+                    {{ script_data_form.collection_size|add_class:'form-input' }}
                     <div class="dimension">
                         <h3>Dimension</h3>
                         {{ script_data_form.dimension_1|add_class:'dimension-input' }}
                         {{ script_data_form.dimension_2|add_class:'dimension-input' }}
                     </div>
                     <div class="seperator"></div>
-                    <button name="preview-collection" class="btn-preview" type="submit">Preview</button>
-                    <button name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
+                    {% if all_layers %}
+                        <button name="preview-collection" class="btn-preview" type="submit">Preview</button>
+                        <button name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
+                    {% else %}
+                        <button disabled="disabled" style="background: #5A51A5;" name="preview-collection" class="btn-preview" type="submit">Preview</button>
+                        <button disabled="disabled" style="background: linear-gradient(87.54deg, #988BFF -15.44%, #80C1FF 106.51%);"  name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
+                    {% endif %}
                 </form>
             </div>
         </main>

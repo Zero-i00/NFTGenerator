@@ -17,31 +17,9 @@ from .services import test
 
 class Home(TemplateView):
     template_name = 'home/home.html'
-
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            # download_files = request.GET.get('download-files')
-            #
             cards = CourseCard.objects.all()
-            #
-            # # test.delay()
-            # if download_files:
-            #     file_paths = list()
-            #
-            #     for root, directories, files in os.walk('./scripts/Output/'):
-            #         for filename in files:
-            #             filepath = os.path.join(root, filename)
-            #             file_paths.append(filepath)
-            #
-            #     with zipfile.ZipFile('file.zip', 'w') as zip:
-            #         for file in file_paths:
-            #             zip.write(file, os.path.basename(file))
-            #
-            #     with open('file.zip', 'rb') as file:
-            #         response = HttpResponse(file, content_type='application/force-download')
-            #         response['Content-Disposition'] = 'attachment; filename=file_nft.zip'
-            #         return response
-
             return render(request, self.template_name, {
                 'cards': cards,
             })
@@ -124,7 +102,8 @@ class FileFieldView(FormView):
             elif 'generate-full-collection' in request.POST:
                 make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
                 print('all-collection')
-                return redirect('/')
+                messages.info(request, 'Your collection is being generated')
+                return redirect('/download-img/')
             with open(export_path_for_meta_data_global, 'a') as f:
                 f.write(']')
 
@@ -198,12 +177,47 @@ class PreviewView(FormView):
                         f.write(']')
                 file_count += 1
 
-                return redirect('/')
+                return redirect('/download-img/')
 
         return render(request, self.template_name, {
             'script_data_form': script_data_form,
             'all_layers': all_layers,
         })
+
+
+
+class GeneratedImageView(TemplateView):
+
+    template_name = 'generated/generated.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return render(request, self.template_name, {})
+        else:
+            return redirect('login/')
+
+    def post(self, request):
+        if 'download-zip' in request.POST:
+            # test.delay()
+            file_paths = list()
+
+            for root, directories, files in os.walk('./scripts/Output/'):
+                for filename in files:
+                    filepath = os.path.join(root, filename)
+                    file_paths.append(filepath)
+
+            with zipfile.ZipFile('file.zip', 'w') as zip:
+                for file in file_paths:
+                    zip.write(file, os.path.basename(file))
+
+            with open('file.zip', 'rb') as file:
+                response = HttpResponse(file, content_type='application/force-download')
+                response['Content-Disposition'] = 'attachment; filename=file_nft.zip'
+                return response
+
+            FileGroup.objects.all().delete
+
+
 
 def login(request):
 

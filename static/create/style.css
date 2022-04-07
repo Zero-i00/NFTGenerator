@@ -99,6 +99,7 @@ main .form-input {
     width: 304px;
     height: 39px;
     margin: 10px auto;
+    padding: 10px;
     border: 1.25px solid #4144C8;
     box-sizing: border-box;
     border-radius: 3px;
@@ -120,7 +121,7 @@ main .form-input:focus {
 
 
 main .right-menu .dimension {
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -314,12 +315,24 @@ main .btn-preview {
     color: #E3E0FF;
 }
 
+main .right-menu h3 {
+    width: 184px;
+    height: 24px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.3708px;
+    line-height: 140%;
+
+    color: #FFFFFF;
+}
+
 main .btn-generate-collection {
     position: absolute;
     width: 214px;
     height: 40px;
     right: 10px;
-    background: #398CF0;
+    background: linear-gradient(87.54deg, #988BFF -15.44%, #80C1FF 106.51%);
     border-radius: 6px;
     font-style: normal;
     font-weight: 600;
@@ -342,6 +355,27 @@ main .info-left {
     background: #4C58EE;
     border-radius: 6px;
 
+}
+
+main .info-left-success {
+    position: absolute;
+    width: 666px;
+    height: 48px;
+    top: 60px;
+    left: 30.8%;
+    background: rgb(98,204,156);
+    border-radius: 6px;
+}
+
+main .info-success {
+    position: absolute;
+    width: 660px;
+    height: 48px;
+    top: 60px;
+    left: 31.2%;
+    padding: 14px 30px;
+    background: rgb(186,231,210);
+    border-radius: 0px 6px 6px 0px;
 }
 
 
@@ -377,4 +411,34 @@ main .info span a {
 
 
     color: #FFFFFF;
+}
+
+
+main .btn-zip-download {
+    position: absolute;
+    width: 256.8px;
+    height: 48px;
+    top: 60%;
+    left: 42%;
+    background: linear-gradient(89.09deg, #9D7DFF -79.86%, #7CC7FF 142.56%);
+    border-radius: 7.2px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17.2909px;
+    line-height: 140%;
+    /* or 24px */
+
+    border: rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+
+}
+
+
+main .zip-download-img {
+    position: absolute;
+    width: 300px;
+    height: 250px;
+    top: 20%;
+    left: 40.5%;
+
 }
