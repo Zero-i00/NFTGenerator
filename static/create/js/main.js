@@ -1,4 +1,12 @@
 
+// var myModal = document.getElementById('myModal')
+// var myInput = document.getElementById('myInput')
+//
+// myModal.addEventListener('shown.bs.modal', function () {
+//   myInput.focus()
+// })
+
+
 
 var background_layer = document.getElementsByClassName('Background')[0];
 var rare_background_layer = document.getElementsByClassName('Rare Background')[0];

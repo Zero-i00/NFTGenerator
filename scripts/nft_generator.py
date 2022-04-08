@@ -1,23 +1,14 @@
 
 
-
-
 ############################## User parameters ######################################
 
 # 1 :__________ Number of Combinations ___________#
-number_of_combinations = 10  # 250
+
+# number_of_combinations = 2  # 250
 
 # 2 : _________ image dimentions in pixel  ________#
 # let it None if you want to save the default size
-weight = None
-height = None
 
-# 3 : _________ layer of rarity (special edition SE) ________#
-SE_folder_name = '12.Special Edition [se]'
-
-# 4 : _________ about the collection for the metada file ______________#
-collection_name = 'CollectionName'
-collection_description = 'This an NFT collection by CollectionName'
 
 
 ######################## CUSTUM FEATURES ################
@@ -39,24 +30,6 @@ hat_folder_name = 'None'
 # neck
 neck_folder_name = '09.Head'
 
-# __________________ Percentages _______________#
-
-# Body and Clothes
-body_only = 13
-body_skin_clothes = 10
-skin_body_without_clothes = 5
-# Caps and hair
-hair_only = 10
-caps_only = 5
-no_hair_no_caps = 10
-# Accessories and Ears
-hat = 15
-accessories = 20
-ears = 3
-# Neck
-neck = 10
-
-
 ######################################################################################
 
 
@@ -69,6 +42,44 @@ import simplejson
 import random
 import sys
 from math import ceil
+import json
+
+with open("params.json", "r") as read_file:
+    params_data = json.load(read_file)
+
+with open('rarity.json', 'r') as read_file:
+    rarity_data = json.load(read_file)
+
+    for i in rarity_data:
+        for j in rarity_data[i]:
+            rarity_data[i] = int(j)
+
+    print(rarity_data)
+
+number_of_combinations = int(params_data['number_of_combinations'][0])
+weight = int(params_data['width'][0])
+height = int(params_data['height'][0])
+
+# 3 : _________ layer of rarity (special edition SE) ________#
+SE_folder_name = '12.Special Edition [se]'
+
+# 4 : _________ about the collection for the metada file ______________#
+collection_name = params_data['collection_name'][0]
+collection_description = params_data['collection_description'][0]
+
+body_only = rarity_data['body_only']
+body_skin_clothes = rarity_data['body_skin_clothes']
+skin_body_without_clothes = rarity_data['skin_body_without_clothes']
+# Caps and hair
+hair_only = rarity_data['hair_only']
+caps_only = rarity_data['caps_only']
+no_hair_no_caps = rarity_data['no_hair_no_caps']
+# Accessories and Ears
+hat = rarity_data['hat']
+accessories = rarity_data['accessories']
+ears = rarity_data['ears']
+# Neck
+neck = rarity_data['neck']
 
 pattern = re.compile(r"^\d+\.")
 body_folder_name = pattern.sub("" ,body_folder_name).strip().lower()

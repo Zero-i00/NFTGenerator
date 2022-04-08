@@ -1,3 +1,4 @@
+import json
 import os
 import shutil
 import zipfile
@@ -13,15 +14,10 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from scripts.nft_generator import check_paths, make_art
 from django.views.generic.edit import FormView
-from .forms import FileGroupForm, ScriptDataForm
+from .forms import *
 from .models import *
 from .services import test
 
-collection_name = None
-collection_description = None
-number_of_combinations = None
-width = None
-height = None
 
 class Home(TemplateView):
     template_name = 'home/home.html'
@@ -46,7 +42,8 @@ def save_to_path(folder, folder_name, file_list):
 class FileFieldView(FormView):
     # form_class = FileFieldForm
     template_name = 'create/create_nft.html'  # Replace with your template.
-
+    params_dict = {}
+    rarity_dict = {}
 
     def get(self, request):
         background_form = FileGroupForm(self.request.GET or None)
@@ -62,6 +59,9 @@ class FileFieldView(FormView):
         script_data_form = ScriptDataForm(self.request.GET or None)
         all_layers = LayerGroup.objects.all()
 
+
+        rarity_form = RarityForm(self.request.GET or None)
+
         return render(request, self.template_name, {
             'background_form': background_form,
             'rare_background_form': rare_background_form,
@@ -74,12 +74,13 @@ class FileFieldView(FormView):
             'vr_form': vr_form,
             'hair_form': hair_form,
             'head_form': head_form,
-
+            'rarity_form': rarity_form
         })
 
     def post(self, request, *args, **kwargs):
         global collection_name, collection_description, number_of_combinations, width, height
-        # shutil.rmtree('media/Input')
+        # shutil.rmtree('./Output/generated_images')
+
 
         background_form = FileGroupForm(request.POST, request.FILES)
         rare_background_form = FileGroupForm(request.POST, request.FILES)
@@ -90,6 +91,21 @@ class FileFieldView(FormView):
         vr_form = FileGroupForm(request.POST, request.FILES)
         hair_form = FileGroupForm(request.POST, request.FILES)
         head_form = FileGroupForm(request.POST, request.FILES)
+
+        rarity_form = RarityForm(request.POST)
+
+        if rarity_form.is_valid():
+            self.rarity_dict['body_only'] = rarity_form['body_only'].value(),
+            self.rarity_dict['body_skin_clothes'] = rarity_form['body_skin_clothes'].value()
+            self.rarity_dict['skin_body_without_clothes'] = rarity_form['skin_body_without_clothes'].value()
+            self.rarity_dict['hair_only'] = rarity_form['hair_only'].value()
+            self.rarity_dict['caps_only'] = rarity_form['caps_only'].value()
+            self.rarity_dict['no_hair_no_caps'] = rarity_form['no_hair_no_caps'].value()
+            self.rarity_dict['hat'] = rarity_form['hat'].value()
+            self.rarity_dict['accessories'] = rarity_form['accessories'].value()
+            self.rarity_dict['ears'] = rarity_form['ears'].value()
+            self.rarity_dict['neck'] = rarity_form['neck'].value()
+
 
         script_data_form = ScriptDataForm(request.POST)
         all_layers = LayerGroup.objects.all()
@@ -116,18 +132,28 @@ class FileFieldView(FormView):
 
         if script_data_form.is_valid():
 
-            collection_name = script_data_form['project_name'].value()
-            collection_description = script_data_form['product_description'].value()
-            number_of_combinations = script_data_form['collection_size'].value()
-            weight = script_data_form['dimension_1'].value()
-            height = script_data_form['dimension_2'].value()
+            messages.info(request, 'Your collection is being generated')
+
+            self.params_dict['collection_name'] = script_data_form['project_name'].value(),
+            self.params_dict['collection_description'] = script_data_form['product_description'].value(),
+            self.params_dict['number_of_combinations'] = script_data_form['collection_size'].value(),
+            self.params_dict['width'] = script_data_form['dimension_1'].value(),
+            self.params_dict['height'] = script_data_form['dimension_2'].value(),
+
+
+            # print(self.params_dict)
+
+            with open('params.json', 'w') as file:
+                json.dump(self.params_dict, file)
+
+            with open('rarity.json', 'w') as file:
+                json.dump(self.rarity_dict, file)
 
             check_paths()
             export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
 
             with open(export_path_for_meta_data_global, 'a') as f:
                 f.write('[\n')
-            messages.info(request, 'Your collection is being generated')
             make_art()
             with open(export_path_for_meta_data_global, 'a') as f:
                 f.write(']')
@@ -159,6 +185,8 @@ class FileFieldView(FormView):
             'head_form': head_form,
             'script_data_form': script_data_form,
             'all_layers': all_layers,
+
+            'rarity_form': rarity_form,
         })
 
 
