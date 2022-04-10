@@ -81,9 +81,8 @@ class LayerGroup(models.Model):
     def __str__(self):
         return self.title
 
-class File(models.Model):
-    lg = models.ForeignKey(to=LayerGroup, on_delete=models.CASCADE, default=0)
-    file = models.FileField(upload_to='scripts/Input')
+# class Image(models.Model):
+#     file = models.ImageField(upload_to='scripts/Input')
 
 
 class CourseCard(models.Model):

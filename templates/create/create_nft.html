@@ -13,10 +13,10 @@
             <div class="logo">
                 <h4 class="header-title">Layers</h4>
             </div>
-            <ul class="navigations">
-                <li>Layer: <span id="layer-name">Background</span></li>
-                <li><span id="count_images">0</span> Image(s)</li>
-            </ul>
+{#            <ul class="navigations">#}
+{#                <li>Layer: <span id="layer-name">Background</span></li>#}
+{#                <li><span id="count_images">0</span> Image(s)</li>#}
+{#            </ul>#}
         </header>
         <main style="background: url('/static/img/create-background.png') fixed">
             <div class="left-menu">
@@ -24,6 +24,7 @@
                     {% for layer in all_layers %}
                         <div class="layer {{ layer.title  }}">
                             <h1>{{ layer.title }}</h1>
+                            <div class="count_field"><span id="layer-count-{{ layer.title}}">0</span></div>
                         </div>
                     {% endfor %}
                 {% endif %}
@@ -40,10 +41,12 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                         <div class="info-left"></div>
+                        <div class="info-container">
+                             <div class="info-left"></div>
                             <div class="info">
                                 <span>To create a collection, fill all layers with images</span>
                             </div>
+                        </div>
                     {% endif %}
                     <div class="middle-menu">
                         {{ background_form.attachments|add_class:'add-img-field background_form'}}

@@ -3,8 +3,6 @@ from celery import Celery
 from django.core.mail import send_mail
 # from NFTGenerator.celery import app
 
-app = Celery('tasks', broker='amqp://cqjouzla:ZXdWkGjatNhWVZC-KbAXvCeeOMdiHTHp@jaguar.rmq.cloudamqp.com/cqjouzla', backend='db+sqlite:///db.sqlite3')
-
 
 
 def send(user_email, login, password):
@@ -17,7 +15,5 @@ def send(user_email, login, password):
         fail_silently=False,
     )
 
-@app.task
 def test():
     print('hello')
-

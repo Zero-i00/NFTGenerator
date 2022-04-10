@@ -16,7 +16,7 @@ from scripts.nft_generator import check_paths, make_art
 from django.views.generic.edit import FormView
 from .forms import *
 from .models import *
-from .services import test
+from .tasks import start_test
 
 
 class Home(TemplateView):
@@ -24,6 +24,8 @@ class Home(TemplateView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             cards = CourseCard.objects.all()
+
+            # start_test.delay()
             return render(request, self.template_name, {
                 'cards': cards,
             })
@@ -60,28 +62,7 @@ class FileFieldView(FormView):
         all_layers = LayerGroup.objects.all()
 
 
-        default_params_dict = {
-            "collection_name": ["None"], "collection_description": ["None"], "number_of_combinations": ["5"], "width": ["512"], "height": ["512"]
-        }
 
-        default_rarity_setting_dict = {
-            "body_only":  100,
-            "body_skin_clothes":  100,
-            "skin_body_without_clothes":  100,
-            "hair_only" :  100,
-            "caps_only":  100,
-            "no_hair_no_caps":  100,
-            "hat":  100,
-            "accessories":  100,
-            "ears":  100,
-            "neck":  100
-        }
-
-        with open('rarity.json', 'w') as file:
-            json.dump(default_rarity_setting_dict, file)
-
-        with open('params.json', 'w') as file:
-            json.dump(default_params_dict, file)
 
 
         rarity_form = RarityForm(self.request.GET or None)
@@ -116,24 +97,6 @@ class FileFieldView(FormView):
         hair_form = FileGroupForm(request.POST, request.FILES)
         head_form = FileGroupForm(request.POST, request.FILES)
 
-        rarity_form = RarityForm(request.POST)
-
-        if rarity_form.is_valid():
-            self.rarity_dict['body_only'] = rarity_form['body_only'].value(),
-            self.rarity_dict['body_skin_clothes'] = rarity_form['body_skin_clothes'].value()
-            self.rarity_dict['skin_body_without_clothes'] = rarity_form['skin_body_without_clothes'].value()
-            self.rarity_dict['hair_only'] = rarity_form['hair_only'].value()
-            self.rarity_dict['caps_only'] = rarity_form['caps_only'].value()
-            self.rarity_dict['no_hair_no_caps'] = rarity_form['no_hair_no_caps'].value()
-            self.rarity_dict['hat'] = rarity_form['hat'].value()
-            self.rarity_dict['accessories'] = rarity_form['accessories'].value()
-            self.rarity_dict['ears'] = rarity_form['ears'].value()
-            self.rarity_dict['neck'] = rarity_form['neck'].value()
-
-
-        script_data_form = ScriptDataForm(request.POST)
-        all_layers = LayerGroup.objects.all()
-
         background_files = request.FILES.getlist('background_form')
         rare_background_files = request.FILES.getlist('rare_background_form')
         member_files = request.FILES.getlist('member_form')
@@ -154,9 +117,28 @@ class FileFieldView(FormView):
         save_to_path('08', 'Hair', hair_files)
         save_to_path('09', 'Head', head_files)
 
-        if script_data_form.is_valid():
+        rarity_form = RarityForm(request.POST)
 
+        if rarity_form.is_valid():
+            self.rarity_dict['body_only'] = rarity_form['body_only'].value(),
+            self.rarity_dict['body_skin_clothes'] = rarity_form['body_skin_clothes'].value()
+            self.rarity_dict['skin_body_without_clothes'] = rarity_form['skin_body_without_clothes'].value()
+            self.rarity_dict['hair_only'] = rarity_form['hair_only'].value()
+            self.rarity_dict['caps_only'] = rarity_form['caps_only'].value()
+            self.rarity_dict['no_hair_no_caps'] = rarity_form['no_hair_no_caps'].value()
+            self.rarity_dict['hat'] = rarity_form['hat'].value()
+            self.rarity_dict['accessories'] = rarity_form['accessories'].value()
+            self.rarity_dict['ears'] = rarity_form['ears'].value()
+            self.rarity_dict['neck'] = rarity_form['neck'].value()
+
+
+        script_data_form = ScriptDataForm(request.POST)
+        all_layers = LayerGroup.objects.all()
+
+
+        if script_data_form.is_valid():
             messages.info(request, 'Your collection is being generated')
+
 
             self.params_dict['collection_name'] = script_data_form['project_name'].value(),
             self.params_dict['collection_description'] = script_data_form['product_description'].value(),
@@ -183,19 +165,6 @@ class FileFieldView(FormView):
                 f.write(']')
 
             return redirect('/download-img/')
-
-            # if 'preview-collection' in request.POST:
-            #     make_art(project_name, product_description, 1, dimension_1, dimension_2)
-            #     print('preview')
-            #     return redirect('/collection-preview/')
-            # elif 'generate-full-collection' in request.POST:
-            #     make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
-            #     print('all-collection')
-            #     messages.info(request, 'Your collection is being generated')
-            #     return redirect('/download-img/')
-            # with open(export_path_for_meta_data_global, 'a') as f:
-            #     f.write(']')
-
 
         return render(request, self.template_name, {
             'background_form': background_form,
@@ -285,6 +254,8 @@ class FileFieldView(FormView):
 
 
 
+
+
 class GeneratedImageView(TemplateView):
 
     template_name = 'generated/generated.html'
@@ -298,7 +269,7 @@ class GeneratedImageView(TemplateView):
 
     def post(self, request):
         if 'download-zip' in request.POST:
-            # test.delay()
+
             file_paths = list()
 
             for root, directories, files in os.walk('./Output/'):

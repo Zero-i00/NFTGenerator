@@ -138,18 +138,44 @@ Nam pellentesque purus id accumsan tristique. Vestibulum id congue ligula. Praes
                         </div>
 
 
-                            {% if cards %}
-                                {% for card in cards %}
-                                    <div class="card">
-                                      <img src="{{ card.image.url }}" class="card-img-top" alt="...">
-                                      <div class="card-body">
-                                        <h5 class="card-title">{{ card.title }}</h5>
-                                        <p class="card-text">{{ card.description }}</p>
-                                        <a href="{{ card.help_link }}" class="btn btn-primary">Explore Now</a>
-                                      </div>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
+{#                            {% if cards %}#}
+{#                                {% for card in cards %}#}
+{#                                    <div class="card">#}
+{#                                      <img src="{{ card.image.url }}" class="card-img-top" alt="...">#}
+{#                                      <div class="card-body">#}
+{#                                        <h5 class="card-title">{{ card.title }}</h5>#}
+{#                                        <p class="card-text">{{ card.description }}</p>#}
+{#                                        <a href="{{ card.help_link }}" class="btn btn-primary">Explore Now</a>#}
+{#                                      </div>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
+                        <div class="card">
+                          <img src="{% static 'img/create-nft-background.png' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">title</h5>
+                            <p class="card-text">description</p>
+                            <a href="javascript:void(0)" class="btn btn-primary">Explore Now</a>
+                          </div>
+                        </div>
+
+                        <div class="card">
+                          <img src="{% static 'img/create-nft-background.png' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">title</h5>
+                            <p class="card-text">description</p>
+                            <a href="javascript:void(0)" class="btn btn-primary">Explore Now</a>
+                          </div>
+                        </div>
+
+                        <div class="card">
+                          <img src="{% static 'img/create-nft-background.png' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">title</h5>
+                            <p class="card-text">description</p>
+                            <a href="javascript:void(0)" class="btn btn-primary">Explore Now</a>
+                          </div>
+                        </div>
 
                     </div>
                 </div>

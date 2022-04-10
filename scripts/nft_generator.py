@@ -46,6 +46,31 @@ import sys
 from math import ceil
 import json
 
+# default_params_dict = {
+#     "collection_name": ["None"], "collection_description": ["None"], "number_of_combinations": ["5"],
+#     "width": ["512"], "height": ["512"]
+# }
+#
+# default_rarity_setting_dict = {
+#     "body_only": 100,
+#     "body_skin_clothes": 100,
+#     "skin_body_without_clothes": 100,
+#     "hair_only": 100,
+#     "caps_only": 100,
+#     "no_hair_no_caps": 100,
+#     "hat": 100,
+#     "accessories": 100,
+#     "ears": 100,
+#     "neck": 100
+# }
+#
+# with open('rarity.json', 'w') as file:
+#     json.dump(default_rarity_setting_dict, file)
+#
+# with open('params.json', 'w') as file:
+#     json.dump(default_params_dict, file)
+
+
 with open("params.json", "r") as read_file:
     params_data = json.load(read_file)
     print(params_data)
@@ -68,22 +93,38 @@ height = int(params_data['height'][0])
 SE_folder_name = '12.Special Edition [se]'
 
 # 4 : _________ about the collection for the metada file ______________#
+
 collection_name = params_data['collection_name'][0]
 collection_description = params_data['collection_description'][0]
 
-body_only = rarity_data['body_only']
-body_skin_clothes = rarity_data['body_skin_clothes']
-skin_body_without_clothes = rarity_data['skin_body_without_clothes']
-# Caps and hair
-hair_only = rarity_data['hair_only']
-caps_only = rarity_data['caps_only']
-no_hair_no_caps = rarity_data['no_hair_no_caps']
-# Accessories and Ears
-hat = rarity_data['hat']
-accessories = rarity_data['accessories']
-ears = rarity_data['ears']
-# Neck
-neck = rarity_data['neck']
+try:
+    body_only = rarity_data['body_only']
+    body_skin_clothes = rarity_data['body_skin_clothes']
+    skin_body_without_clothes = rarity_data['skin_body_without_clothes']
+    # Caps and hair
+    hair_only = rarity_data['hair_only']
+    caps_only = rarity_data['caps_only']
+    no_hair_no_caps = rarity_data['no_hair_no_caps']
+    # Accessories and Ears
+    hat = rarity_data['hat']
+    accessories = rarity_data['accessories']
+    ears = rarity_data['ears']
+    # Neck
+    neck = rarity_data['neck']
+except KeyError:
+    body_only = 100
+    body_skin_clothes = 100
+    skin_body_without_clothes = 100
+    # Caps and hair
+    hair_only = 100
+    caps_only = 100
+    no_hair_no_caps = 100
+    # Accessories and Ears
+    hat = 100
+    accessories = 100
+    ears = 100
+    # Neck
+    neck = 100
 
 pattern = re.compile(r"^\d+\.")
 body_folder_name = pattern.sub("" ,body_folder_name).strip().lower()
