@@ -85,12 +85,12 @@ class LayerGroup(models.Model):
 #     file = models.ImageField(upload_to='scripts/Input')
 
 
-class CourseCard(models.Model):
-    image = models.ImageField(upload_to='card/img')
-    title = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
-    help_link = models.URLField(max_length=255, default='')
-
-
-    def __str__(self):
-        return self.title
+# class CourseCard(models.Model):
+#     image = models.ImageField(upload_to='card/img')
+#     title = models.CharField(max_length=255)
+#     description = models.CharField(max_length=255)
+#     help_link = models.URLField(max_length=255, default='')
+#
+#
+#     def __str__(self):
+#         return self.title

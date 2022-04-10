@@ -24,10 +24,10 @@ class Home(TemplateView):
     template_name = 'home/home.html'
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            cards = CourseCard.objects.all()
+            # cards = CourseCard.objects.all()
 
             return render(request, self.template_name, {
-                'cards': cards,
+                # 'cards': cards,
             })
         else:
             return redirect('login/')
