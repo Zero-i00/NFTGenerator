@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import User, LayerGroup
+from .models import *
 
 
 @admin.register(User)
@@ -34,5 +34,5 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(LayerGroup)
-# admin.site.register(Image)
+admin.site.register(Image)
 

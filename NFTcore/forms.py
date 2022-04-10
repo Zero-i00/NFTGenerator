@@ -1,7 +1,10 @@
+import os
 from itertools import product
 
 from django import forms
-from django.forms import Form, ModelForm
+from django.core.exceptions import ValidationError
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.forms import Form, ModelForm, FileInput
 
 from NFTcore.models import *
 
@@ -14,7 +17,8 @@ class UserRegistrationForm(ModelForm):
 
 class FileGroupForm(Form):
     # layer_name = forms.CharField(max_length=255)
-    attachments = forms.FileField(required=True, widget=forms.ClearableFileInput(attrs={'multiple': True, 'placeholder': 'New Layer'}))
+    attachments = forms.FileField(required=True, widget=forms.ClearableFileInput(attrs={'multiple': True, 'placeholder': 'New Layer', 'accept': 'application/png, application/jpg'}))
+
 
 class ScriptDataForm(Form):
     project_name = forms.CharField(max_length=255) #, required=False
@@ -35,5 +39,4 @@ class RarityForm(Form):
     accessories = forms.IntegerField(min_value=1, max_value=100)
     ears = forms.IntegerField(min_value=1, max_value=100)
     neck = forms.IntegerField(min_value=1, max_value=100)
-
 

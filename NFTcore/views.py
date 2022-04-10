@@ -41,6 +41,14 @@ def save_to_path(folder, folder_name, file_list):
         export_img = os.path.join(f'Input{folder}.{folder_name}', path)
         file_count += 1
 
+def check_image_type(list):
+    white_list = ['png', 'jpg', 'jpeg']
+    for i in list:
+        if str(i).split('.')[-1] in white_list:
+            return True
+        else:
+            return False
+
 class FileFieldView(FormView):
     # form_class = FileFieldForm
     template_name = 'create/create_nft.html'  # Replace with your template.
@@ -62,8 +70,6 @@ class FileFieldView(FormView):
         all_layers = LayerGroup.objects.all()
 
 
-
-
         rarity_form = RarityForm(self.request.GET or None)
 
         return render(request, self.template_name, {
@@ -82,7 +88,6 @@ class FileFieldView(FormView):
         })
 
     def post(self, request, *args, **kwargs):
-        global collection_name, collection_description, number_of_combinations, width, height
         # shutil.rmtree('./Output/generated_images')
 
 
@@ -96,6 +101,7 @@ class FileFieldView(FormView):
         hair_form = FileGroupForm(request.POST, request.FILES)
         head_form = FileGroupForm(request.POST, request.FILES)
 
+
         background_files = request.FILES.getlist('background_form')
         rare_background_files = request.FILES.getlist('rare_background_form')
         member_files = request.FILES.getlist('member_form')
@@ -105,6 +111,37 @@ class FileFieldView(FormView):
         vr_files = request.FILES.getlist('vr_form')
         hair_files = request.FILES.getlist('hair_form')
         head_files = request.FILES.getlist('head_form')
+
+
+        print(check_image_type(background_files))
+        if check_image_type(background_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(rare_background_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(member_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(pants_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(clothes_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(expresion_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(vr_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(hair_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+        elif check_image_type(head_files) == False:
+            messages.error(request, 'Use the correct image format')
+            return redirect('/create_collections/')
+
 
         save_to_path('01', 'Background', background_files)
         save_to_path('02', 'Rare Background', rare_background_files)
@@ -150,29 +187,35 @@ class FileFieldView(FormView):
                 json.dump(self.rarity_dict, file)
 
             # start_generate_nft.delay()
-            task = start_generate_nft.delay()
+            # task = start_generate_nft.delay()
             messages.info(request, 'Your collection is being generated. It might take a couple of hours')
-            task_id = task.task_id
-            res = AsyncResult(task_id)
-            print(res.ready())
-            if res.ready() == False:
-                return redirect('/download-img/')
-            # print(self.params_dict)
+            # task_id = task.task_id
+            # res = AsyncResult(task_id)
+            # print(res.ready())
+            # if res.ready() == False:
+            #     return redirect('/download-img/')
+            print(self.params_dict)
 
-            # with open('params.json', 'w') as file:
-            #     json.dump(self.params_dict, file)
-            #
-            # with open('rarity.json', 'w') as file:
-            #     json.dump(self.rarity_dict, file)
-            #
-            # check_paths()
-            # export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
-            #
-            # with open(export_path_for_meta_data_global, 'a') as f:
-            #     f.write('[\n')
-            # make_art()
-            # with open(export_path_for_meta_data_global, 'a') as f:
-            #     f.write(']')
+            with open('params.json', 'w') as file:
+                json.dump(self.params_dict, file)
+
+            with open('rarity.json', 'w') as file:
+                json.dump(self.rarity_dict, file)
+
+            check_paths()
+            export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
+
+            with open(export_path_for_meta_data_global, 'a') as f:
+                f.write('[\n')
+            make_art()
+
+            with open(export_path_for_meta_data_global, 'a') as f:
+                f.write(']')
+
+            return redirect('/download-img/')
+
+
+
 
 
         return render(request, self.template_name, {

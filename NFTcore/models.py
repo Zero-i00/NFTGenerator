@@ -2,6 +2,7 @@ import uuid
 
 import blank
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from .services import send
@@ -81,8 +82,8 @@ class LayerGroup(models.Model):
     def __str__(self):
         return self.title
 
-# class Image(models.Model):
-#     file = models.ImageField(upload_to='scripts/Input')
+class Image(models.Model):
+    file = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg'])])
 
 
 # class CourseCard(models.Model):
