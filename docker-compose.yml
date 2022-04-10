@@ -1,0 +1,39 @@
+#version: "3.9"
+
+#services:
+#  db:
+#    image: postgres
+#    environment:
+#      - TZ=UTC
+#      - POSTGRES_DB=test
+#      - POSTGRES_USER=test_user
+#      - POSTGRES_PASSWORD=passw0rd
+#
+#  web:
+#    build: .
+##    command: sh -c "gunicorn NFTGenerator.wsgi -b 0.0.0.0:8000"
+#    volumes:
+#      - .:/web
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - db
+
+
+version: "3.3"
+services:
+
+  db:
+    build: .
+    restart: always
+    environment:
+      - TZ=UTC
+      - POSTGRES_DB=test
+      - POSTGRES_USER=test_user
+      - POSTGRES_PASSWORD=passw0rd
+  web:
+    build: .
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000

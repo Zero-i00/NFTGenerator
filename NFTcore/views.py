@@ -16,7 +16,8 @@ from scripts.nft_generator import check_paths, make_art
 from django.views.generic.edit import FormView
 from .forms import *
 from .models import *
-from .tasks import start_test
+from .tasks import start_generate_nft, hello
+from celery.result import AsyncResult
 
 
 class Home(TemplateView):
@@ -25,7 +26,6 @@ class Home(TemplateView):
         if request.user.is_authenticated:
             cards = CourseCard.objects.all()
 
-            # start_test.delay()
             return render(request, self.template_name, {
                 'cards': cards,
             })
@@ -60,7 +60,6 @@ class FileFieldView(FormView):
 
         script_data_form = ScriptDataForm(self.request.GET or None)
         all_layers = LayerGroup.objects.all()
-
 
 
 
@@ -137,8 +136,6 @@ class FileFieldView(FormView):
 
 
         if script_data_form.is_valid():
-            messages.info(request, 'Your collection is being generated')
-
 
             self.params_dict['collection_name'] = script_data_form['project_name'].value(),
             self.params_dict['collection_description'] = script_data_form['product_description'].value(),
@@ -146,25 +143,37 @@ class FileFieldView(FormView):
             self.params_dict['width'] = script_data_form['dimension_1'].value(),
             self.params_dict['height'] = script_data_form['dimension_2'].value(),
 
-
-            # print(self.params_dict)
-
             with open('params.json', 'w') as file:
                 json.dump(self.params_dict, file)
 
             with open('rarity.json', 'w') as file:
                 json.dump(self.rarity_dict, file)
 
-            check_paths()
-            export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
+            # start_generate_nft.delay()
+            task = start_generate_nft.delay()
+            messages.info(request, 'Your collection is being generated. It might take a couple of hours')
+            task_id = task.task_id
+            res = AsyncResult(task_id)
+            print(res.ready())
+            if res.ready() == False:
+                return redirect('/download-img/')
+            # print(self.params_dict)
 
-            with open(export_path_for_meta_data_global, 'a') as f:
-                f.write('[\n')
-            make_art()
-            with open(export_path_for_meta_data_global, 'a') as f:
-                f.write(']')
+            # with open('params.json', 'w') as file:
+            #     json.dump(self.params_dict, file)
+            #
+            # with open('rarity.json', 'w') as file:
+            #     json.dump(self.rarity_dict, file)
+            #
+            # check_paths()
+            # export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
+            #
+            # with open(export_path_for_meta_data_global, 'a') as f:
+            #     f.write('[\n')
+            # make_art()
+            # with open(export_path_for_meta_data_global, 'a') as f:
+            #     f.write(']')
 
-            return redirect('/download-img/')
 
         return render(request, self.template_name, {
             'background_form': background_form,
