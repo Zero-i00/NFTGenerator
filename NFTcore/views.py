@@ -60,6 +60,30 @@ class FileFieldView(FormView):
         all_layers = LayerGroup.objects.all()
 
 
+        default_params_dict = {
+            "collection_name": ["None"], "collection_description": ["None"], "number_of_combinations": ["5"], "width": ["512"], "height": ["512"]
+        }
+
+        default_rarity_setting_dict = {
+            "body_only":  100,
+            "body_skin_clothes":  100,
+            "skin_body_without_clothes":  100,
+            "hair_only" :  100,
+            "caps_only":  100,
+            "no_hair_no_caps":  100,
+            "hat":  100,
+            "accessories":  100,
+            "ears":  100,
+            "neck":  100
+        }
+
+        with open('rarity.json', 'w') as file:
+            json.dump(default_rarity_setting_dict, file)
+
+        with open('params.json', 'w') as file:
+            json.dump(default_params_dict, file)
+
+
         rarity_form = RarityForm(self.request.GET or None)
 
         return render(request, self.template_name, {
@@ -267,6 +291,7 @@ class GeneratedImageView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+
             return render(request, self.template_name, {})
         else:
             return redirect('login/')

@@ -22,7 +22,7 @@ class UserRegistrationForm(ModelForm):
 
 class FileGroupForm(Form):
     # layer_name = forms.CharField(max_length=255)
-    attachments = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True, 'placeholder': 'New Layer'}), required=False)
+    attachments = forms.FileField(required=True, widget=forms.ClearableFileInput(attrs={'multiple': True, 'placeholder': 'New Layer'}))
 
 class ScriptDataForm(Form):
     project_name = forms.CharField(max_length=255) #, required=False

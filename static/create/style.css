@@ -44,6 +44,33 @@ body {
 
 }
 
+#header .navigations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 845px;
+}
+
+#header .navigations li {
+    list-style: none;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 6px 10px;
+    width: 133px;
+    height: 24px;
+    border-radius: 6px;
+    background: #325DAF;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10.8752px;
+    line-height: 140%;
+    /* or 15px */
+
+
+    color: #FFFFFF;
+}
+
+
 main {
     padding-top: 60px;
     width: 100%;
@@ -65,11 +92,45 @@ main {
     main .add-img-field{
         min-width: 656px;
     }
+    main .btn-generate-collection {
+        right: 20px;
+    }
+    main .btn-preview{
+        right: 260px;
+    }
 }
 
 @media screen and (max-width: 1300px) {
     main .info-container {
         display: none;
+    }
+    main .info {
+        max-width: 306px;
+    }
+    main .info-left {
+        max-width: 306px;
+    }
+    .info-left-success {
+      max-width: 306px;
+    }
+    .info-success {
+      max-width: 306px;
+    }
+    main .info span {
+        position: absolute;
+        top: 5px;
+    }
+    main .middle-menu label {
+        padding-right: 100px;
+    }
+    main .middle-menu .note-label {
+        display: none;
+    }
+    main .btn-generate-collection {
+        right: 0;
+    }
+    main .btn-preview{
+        right: 240px;
     }
 }
 
@@ -255,36 +316,6 @@ main .middle-menu {
     z-index: 1;
 }
 
-/*main .middle-menu label {*/
-/*    position: relative;*/
-/*    width: 207px;*/
-/*    height: 20px;*/
-/*    !*top: 20px;*!*/
-/*    margin-right: 150px;*/
-/*    font-style: normal;*/
-/*    font-weight: 600;*/
-/*    font-size: 14.4091px;*/
-/*    line-height: 140%;*/
-/*    !* or 20px *!*/
-
-/*    color: #FFFFFF;*/
-
-/*}*/
-
-/*main .middle-menu .note-label {*/
-/*    display: inline-block;*/
-/*    !*margin: 10px 270px;*!*/
-/*    font-style: italic;*/
-/*    font-weight: 600;*/
-/*    font-size: 10.8986px;*/
-/*    line-height: 140%;*/
-/*    !* identical to box height, or 15px *!*/
-
-
-/*    color: #FFFFFF;*/
-
-/*}*/
-
 main .add-img-field {
     max-width: 300px;
     height: 89px;
@@ -300,7 +331,6 @@ main .btn-preview {
     position: absolute;
     width: 91px;
     height: 40px;
-    right: 260px;
     background: #5D48FF;
     border-radius: 6px;
     font-style: normal;
@@ -330,7 +360,6 @@ main .btn-generate-collection {
     position: absolute;
     width: 214px;
     height: 40px;
-    right: 20px;
     background: linear-gradient(87.54deg, #988BFF -15.44%, #80C1FF 106.51%);
     border-radius: 6px;
     font-style: normal;
@@ -346,14 +375,14 @@ main .btn-generate-collection {
 
 
 main .info-left {
+    background: #4C58EE;
     position: absolute;
     width: 666px;
     height: 48px;
-    top: 0;
-    left: 35%;
-    background: #4C58EE;
-    border-radius: 6px;
+    top: 60px;
+    left: 31.5%;
 
+    border-radius: 6px;
 }
 
 main .info-left-success {
@@ -364,6 +393,19 @@ main .info-left-success {
     left: 31.5%;
     background: rgb(98,204,156);
     border-radius: 6px;
+}
+
+
+main .info {
+    background: linear-gradient(89.09deg, #9D7DFF -79.86%, #7CC7FF 142.56%);
+    position: absolute;
+    width: 660px;
+    height: 48px;
+    top: 60px;
+    left: 32%;
+    padding: 14px 30px;
+    border-radius: 0px 6px 6px 0px;
+
 }
 
 main .info-success {
@@ -378,17 +420,7 @@ main .info-success {
 }
 
 
-main .info {
-    position: absolute;
-    width: 660px;
-    height: 48px;
-    top: 60px;
-    left: 31.2%;
-    padding: 14px 30px;
-    background: linear-gradient(89.09deg, #9D7DFF -79.86%, #7CC7FF 142.56%);
-    border-radius: 0px 6px 6px 0px;
 
-}
 
 main .info span {
     font-style: normal;
@@ -464,7 +496,7 @@ main .middle-menu .note-label {
     width: 207px;
     height: 20px;
     top: 50%;
-    left: 37%;
+    left: 36%;
     font-style: normal;
     font-weight: 600;
     font-size: 14.4091px;

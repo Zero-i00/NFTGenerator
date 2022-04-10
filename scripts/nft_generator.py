@@ -15,6 +15,8 @@
 # ______________ foler names  __________________#
 # if you don't to apply the percentages , let it 'none' for the folder name
 # body, clothes and skin
+
+
 body_folder_name = 'None'
 skin_folder_name = 'None'
 clothes_folder_name = 'None'
@@ -46,15 +48,17 @@ import json
 
 with open("params.json", "r") as read_file:
     params_data = json.load(read_file)
+    print(params_data)
 
 with open('rarity.json', 'r') as read_file:
     rarity_data = json.load(read_file)
-
-    for i in rarity_data:
-        for j in rarity_data[i]:
-            rarity_data[i] = int(j)
-
     print(rarity_data)
+    try:
+        for i in rarity_data:
+            for j in rarity_data[i]:
+                rarity_data[i] = int(j)
+    except TypeError:
+        print(rarity_data)
 
 number_of_combinations = int(params_data['number_of_combinations'][0])
 weight = int(params_data['width'][0])

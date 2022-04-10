@@ -29,6 +29,60 @@ var vr_form = document.getElementsByClassName('vr_form')[0];
 var hair_form = document.getElementsByClassName('hair_form')[0];
 var head_form = document.getElementsByClassName('head_form')[0];
 
+
+var count_images = document.getElementById('count_images');
+var layer_name = document.getElementById('layer-name');
+
+
+
+background_form.addEventListener('change', function(event) {
+    length = background_form.files.length;
+    count_images.textContent = length;
+})
+
+rare_background_form.addEventListener('change', function(event) {
+    length = rare_background_form.files.length;
+    count_images.textContent = length;
+})
+
+member_form.addEventListener('change', function(event) {
+    length = member_form.files.length;
+    count_images.textContent = length;
+})
+
+pants_form.addEventListener('change', function(event) {
+    length = pants_form.files.length;
+    count_images.textContent = length;
+})
+
+clothes_form.addEventListener('change', function(event) {
+    length = clothes_form.files.length;
+    count_images.textContent = length;
+})
+
+expresion_form.addEventListener('change', function(event) {
+    length = expresion_form.files.length;
+    count_images.textContent = length;
+})
+
+vr_form.addEventListener('change', function(event) {
+    length = vr_form.files.length;
+    count_images.textContent = length;
+})
+
+hair_form.addEventListener('change', function(event) {
+    length = hair_form.files.length;
+    count_images.textContent = length;
+})
+
+head_form.addEventListener('change', function(event) {
+    length = head_form.files.length;
+    count_images.textContent = length;
+})
+
+
+
+
 background_form.name = 'background_form';
 rare_background_form.name = 'rare_background_form';
 member_form.name = 'member_form';
@@ -52,7 +106,7 @@ head_form.style.display = 'none';
 
 
 background_layer.addEventListener('click', function (e) {
-
+    layer_name.textContent = 'Background'
     background_layer.style.border = '1px solid #fff';
     rare_background_layer.style.border = '0';
     member_layer.style.border = '0';
@@ -76,7 +130,7 @@ background_layer.addEventListener('click', function (e) {
 })
 
 rare_background_layer.addEventListener('click', function (e) {
-
+    layer_name.textContent = 'Rare';
     background_layer.style.border = '0';
     member_layer.style.border = '0';
     pants_layer.style.border = '0';
@@ -100,8 +154,8 @@ rare_background_layer.addEventListener('click', function (e) {
 })
 
 member_layer.addEventListener('click', function (e) {
+    layer_name.textContent = 'Member'
     member_layer.style.border = '1px solid #fff';
-
     background_layer.style.border = '0';
     rare_background_layer.style.border = '0';
     pants_layer.style.border = '0';
@@ -124,6 +178,7 @@ member_layer.addEventListener('click', function (e) {
 })
 
 pants_layer.addEventListener('click', function (e) {
+    layer_name.textContent = 'Pants'
     pants_layer.style.border = '1px solid #fff';
 
     background_layer.style.border = '0';
@@ -147,6 +202,7 @@ pants_layer.addEventListener('click', function (e) {
 })
 
 clothes_layer.addEventListener('click', function (e) {
+    layer_name.textContent = 'Clothes'
     clothes_layer.style.border = '1px solid #fff';
 
     background_layer.style.border = '0';
@@ -170,6 +226,7 @@ clothes_layer.addEventListener('click', function (e) {
 })
 
 expresion_layer.addEventListener('click', function (e) {
+    layer_name.textContent = 'Expresion'
     expresion_layer.style.border = '1px solid #fff';
 
     background_layer.style.border = '0';
@@ -193,6 +250,7 @@ expresion_layer.addEventListener('click', function (e) {
 })
 
 vr_layer.addEventListener('click', function (e) {
+    layer_name.textContent = 'Headset'
     vr_layer.style.border = '1px solid #fff';
 
     background_layer.style.border = '0';
@@ -216,6 +274,7 @@ vr_layer.addEventListener('click', function (e) {
 })
 
 hair_layer.addEventListener('click', function (e) {
+    layer_name.textContent = 'Hair'
     hair_layer.style.border = '1px solid #fff';
 
     background_layer.style.border = '0';
@@ -239,6 +298,7 @@ hair_layer.addEventListener('click', function (e) {
 })
 
 head_layer.addEventListener('click', function (e) {
+    layer_name.textContent = 'Head'
     head_layer.style.border = '1px solid #fff';
 
     background_layer.style.border = '0';
@@ -260,3 +320,4 @@ head_layer.addEventListener('click', function (e) {
     hair_form.style.display = 'none';
     head_form.style.display = 'block';
 })
+
