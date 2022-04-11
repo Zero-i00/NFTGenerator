@@ -186,14 +186,14 @@ class FileFieldView(FormView):
             with open('rarity.json', 'w') as file:
                 json.dump(self.rarity_dict, file)
 
-            # start_generate_nft.delay()
-            # task = start_generate_nft.delay()
+            start_generate_nft.delay()
+            task = start_generate_nft.delay()
             messages.info(request, 'Your collection is being generated. It might take a couple of hours')
-            # task_id = task.task_id
-            # res = AsyncResult(task_id)
-            # print(res.ready())
-            # if res.ready() == False:
-            #     return redirect('/download-img/')
+            task_id = task.task_id
+            res = AsyncResult(task_id)
+            print(res.ready())
+            if res.ready() == False:
+                return redirect('/download-img/')
             print(self.params_dict)
 
             with open('params.json', 'w') as file:
