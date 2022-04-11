@@ -202,15 +202,15 @@ class FileFieldView(FormView):
             with open('rarity.json', 'w') as file:
                 json.dump(self.rarity_dict, file)
 
-            check_paths()
-            export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
-
-            with open(export_path_for_meta_data_global, 'a') as f:
-                f.write('[\n')
-            make_art()
-
-            with open(export_path_for_meta_data_global, 'a') as f:
-                f.write(']')
+            # check_paths()
+            # export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
+            #
+            # with open(export_path_for_meta_data_global, 'a') as f:
+            #     f.write('[\n')
+            # make_art()
+            #
+            # with open(export_path_for_meta_data_global, 'a') as f:
+            #     f.write(']')
 
             return redirect('/download-img/')
 
