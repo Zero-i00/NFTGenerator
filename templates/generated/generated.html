@@ -9,11 +9,25 @@
 
 {% block content %}
     <main style="background: #0b0d1c;">
-        <form method="post">
-            {% csrf_token %}
-            <img class="zip-download-img" src="{% static 'img/download-img.png' %}" alt="">
-            <button name="download-zip" class="btn-zip-download" type="submit">Download</button>
-        </form>
+        {% if not_download %}
+            <h1 class="wait-collection-text">Your collection is being generated. It might take a couple of hours</h1>
+        {% else %}
+            {% if messages  %}
+                <div class="info-container">
+                    {% for message  in messages %}
+                    <div class="info-left-success"></div>
+                        <div class="info-success">
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <img class="zip-download-img" src="{% static 'img/download-img.png' %}" alt="">
+                    <button name="download-zip" class="btn-zip-download" type="submit">Download</button>
+                </form>
+        {% endif %}
     </main>
 {% endblock %}
 

@@ -11,6 +11,11 @@ body {
     min-height: 100vh;
 }
 
+.wait-collection-text {
+    color: #fff;
+    margin: auto auto;
+}
+
 #header {
     position: absolute;
     width: 100%;

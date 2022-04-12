@@ -86,6 +86,7 @@ class Image(models.Model):
     file = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg'])])
 
 
+
 # class CourseCard(models.Model):
 #     image = models.ImageField(upload_to='card/img')
 #     title = models.CharField(max_length=255)

@@ -2,38 +2,38 @@
     "attributes": [
         {
             "trait_type": "Background",
-            "value": "1_VQcmgRW"
+            "value": "3_AnXUGMN"
         },
         {
             "trait_type": "Member",
-            "value": "1_l84Xckh"
+            "value": "1_PYOrUXg"
         },
         {
             "trait_type": "Pants",
-            "value": "5"
+            "value": "12"
         },
         {
             "trait_type": "Clothes",
-            "value": "6"
+            "value": "12"
         },
         {
             "trait_type": "Expresion",
-            "value": "1_znFC1Om"
+            "value": "3"
         },
         {
             "trait_type": "Vr",
-            "value": "1"
+            "value": "3_ECRaBW3"
         },
         {
             "trait_type": "Hair",
-            "value": "1"
+            "value": "13"
         },
         {
             "trait_type": "Head",
-            "value": "1_WrQTF77"
+            "value": "2"
         }
     ],
-    "description": "214",
-    "name": "1224 2",
+    "description": "123",
+    "name": "123 2",
     "tokenID": "2"
 }

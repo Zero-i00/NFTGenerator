@@ -15,7 +15,7 @@
 # ______________ foler names  __________________#
 # if you don't to apply the percentages , let it 'none' for the folder name
 # body, clothes and skin
-
+from enum import Flag
 
 body_folder_name = 'None'
 skin_folder_name = 'None'
@@ -235,7 +235,7 @@ def make_art() :
                 print(unique_merged_img)
                 sys.exit()
             imgg = Image.open(unique_merged_img[i]).convert('RGBA')
-            merged_img = Image.alpha_composite(merged_img, imgg)
+            # merged_img = Image.alpha_composite(merged_img, imgg)
         # print(unique_merged_img[i])
         if not is_SE:
             meta_data['name'] = f"{collection_name} {j + 1}"
@@ -409,6 +409,9 @@ def make_unique_combinaison():
         unique_combainaison = []
 
 
+
+
+
 if __name__ == '__main__':
     check_paths()
     export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
@@ -417,6 +420,7 @@ if __name__ == '__main__':
     make_art()
     with open(export_path_for_meta_data_global, 'a') as f:
         f.write(']')
+
 
 
 

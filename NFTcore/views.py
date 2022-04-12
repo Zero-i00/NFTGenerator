@@ -20,6 +20,7 @@ from .tasks import start_generate_nft, hello
 from celery.result import AsyncResult
 
 
+
 class Home(TemplateView):
     template_name = 'home/home.html'
     def get(self, request, *args, **kwargs):
@@ -186,21 +187,22 @@ class FileFieldView(FormView):
             with open('rarity.json', 'w') as file:
                 json.dump(self.rarity_dict, file)
 
-            start_generate_nft.delay()
-            task = start_generate_nft.delay()
-            messages.info(request, 'Your collection is being generated. It might take a couple of hours')
-            task_id = task.task_id
-            res = AsyncResult(task_id)
-            print(res.ready())
-            if res.ready() == False:
-                return redirect('/download-img/')
-            print(self.params_dict)
+            # start_generate_nft.delay()
+            # task = start_generate_nft.delay()
+            # task_id = task.task_id
+            # res = AsyncResult(task_id)
+            # print(res.ready())
+            # if res.ready() == False:
 
-            with open('params.json', 'w') as file:
-                json.dump(self.params_dict, file)
+            check_paths()
+            export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
+            with open(export_path_for_meta_data_global, 'a') as f:
+                f.write('[\n')
+            make_art()
+            with open(export_path_for_meta_data_global, 'a') as f:
+                f.write(']')
 
-            with open('rarity.json', 'w') as file:
-                json.dump(self.rarity_dict, file)
+            return redirect('/download-img/')
 
             # check_paths()
             # export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
@@ -212,7 +214,6 @@ class FileFieldView(FormView):
             # with open(export_path_for_meta_data_global, 'a') as f:
             #     f.write(']')
 
-            return redirect('/download-img/')
 
 
 
@@ -314,8 +315,16 @@ class GeneratedImageView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-
-            return render(request, self.template_name, {})
+            not_download = None
+            if os.listdir('Output/generated_images') == []:
+                not_download = True
+                print(not_download)
+            else:
+                not_download = False
+                print(not_download)
+            return render(request, self.template_name, {
+                'not_download': not_download,
+            })
         else:
             return redirect('login/')
 

@@ -32,7 +32,8 @@ var head_form = document.getElementsByClassName('head_form')[0];
 
 var count_images = document.getElementById('count_images');
 var layer_name = document.getElementById('layer-name');
-
+var help_text_img = document.getElementById('help_text_img');
+var note_label = document.getElementById('note_label');
 
 
 
@@ -41,56 +42,140 @@ var layer_name = document.getElementById('layer-name');
 background_form.addEventListener('change', function(event) {
     length = background_form.files.length;
     document.getElementById('layer-count-Background').textContent = length;
-
-      // var file = background_form.files[0],
-      //   ext = "не определилось",
-      //   parts = file.name.split('.');
-      // if (parts.length > 1) ext = parts.pop();
-      // if (ext == 'jpg'  || ext == 'png') {
-      //     background_form.value = "";
-      //     document.getElementsByClassName('layer').backgroundColor = '#000000';
-      // }
-      // console.log(ext)
+    if (length > 0) {
+        help_text_img.textContent = background_form.files[0].name;
+        help_text_img.style.cssText = `margin: 10px 30px`;
+        note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
+      // var file = background_form.files[0];
+      //   // ext = "не определилось",
+      //   // parts = file.name.split('.');
+      // console.log(file.name)
 })
 
 rare_background_form.addEventListener('change', function(event) {
     length = rare_background_form.files.length;
     document.getElementById('layer-count-Rare Background').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = rare_background_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 member_form.addEventListener('change', function(event) {
     length = member_form.files.length;
     document.getElementById('layer-count-Member').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = member_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 pants_form.addEventListener('change', function(event) {
     length = pants_form.files.length;
     document.getElementById('layer-count-Pants').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = pants_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 clothes_form.addEventListener('change', function(event) {
     length = clothes_form.files.length;
     document.getElementById('layer-count-Clothes').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = clothes_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 expresion_form.addEventListener('change', function(event) {
     length = expresion_form.files.length;
     document.getElementById('layer-count-Expresion').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = expresion_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 vr_form.addEventListener('change', function(event) {
     length = vr_form.files.length;
     document.getElementById('layer-count-Headset').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = vr_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 hair_form.addEventListener('change', function(event) {
     length = hair_form.files.length;
     document.getElementById('layer-count-Hair').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = hair_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 head_form.addEventListener('change', function(event) {
     length = head_form.files.length;
     document.getElementById('layer-count-Head').textContent = length;
+    if (length > 0) {
+    help_text_img.textContent = head_form.files[0].name;
+    help_text_img.style.cssText = `margin: 10px 30px`;
+    note_label.style.display = 'none';
+    }
+    else {
+        help_text_img.style.cssText = `margin: 1px auto`;
+        help_text_img.textContent = 'Click or drop images here!';
+        note_label.style.display = 'block';
+    }
 })
 
 

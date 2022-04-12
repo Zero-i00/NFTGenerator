@@ -24,19 +24,19 @@ class ScriptDataForm(Form):
     project_name = forms.CharField(max_length=255) #, required=False
     product_description = forms.CharField(max_length=5000)
     collection_size = forms.IntegerField(min_value=1, max_value=150000)
-    dimension_1 = forms.IntegerField(min_value=1)
-    dimension_2 = forms.IntegerField(min_value=1)
+    dimension_1 = forms.IntegerField(min_value=1, initial=512, show_hidden_initial=512)
+    dimension_2 = forms.IntegerField(min_value=1, initial=512, show_hidden_initial=512)
 
 
 class RarityForm(Form):
-    body_only = forms.IntegerField(min_value=1, max_value=100)
-    body_skin_clothes = forms.IntegerField(min_value=1, max_value=100)
-    skin_body_without_clothes = forms.IntegerField(min_value=1, max_value=100)
-    hair_only = forms.IntegerField(min_value=1, max_value=100)
-    caps_only = forms.IntegerField(min_value=1, max_value=100)
-    no_hair_no_caps = forms.IntegerField(min_value=1, max_value=100)
-    hat = forms.IntegerField(min_value=1, max_value=100)
-    accessories = forms.IntegerField(min_value=1, max_value=100)
-    ears = forms.IntegerField(min_value=1, max_value=100)
-    neck = forms.IntegerField(min_value=1, max_value=100)
+    body_only = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    body_skin_clothes = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    skin_body_without_clothes = forms.IntegerField(min_value=1, initial=100, max_value=100, show_hidden_initial=100)
+    hair_only = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    caps_only = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    no_hair_no_caps = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    hat = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    accessories = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    ears = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
+    neck = forms.IntegerField(min_value=1, max_value=100, initial=100, show_hidden_initial=100)
 
