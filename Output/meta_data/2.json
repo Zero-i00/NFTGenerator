@@ -2,35 +2,35 @@
     "attributes": [
         {
             "trait_type": "Background",
-            "value": "3_AnXUGMN"
+            "value": "4"
         },
         {
             "trait_type": "Member",
-            "value": "1_PYOrUXg"
+            "value": "2_BPzlCAY"
         },
         {
             "trait_type": "Pants",
-            "value": "12"
-        },
-        {
-            "trait_type": "Clothes",
-            "value": "12"
-        },
-        {
-            "trait_type": "Expresion",
             "value": "3"
         },
         {
+            "trait_type": "Clothes",
+            "value": "10"
+        },
+        {
+            "trait_type": "Expresion",
+            "value": "1_Z8PIlCc"
+        },
+        {
             "trait_type": "Vr",
-            "value": "3_ECRaBW3"
+            "value": "1_SvPDdYo"
         },
         {
             "trait_type": "Hair",
-            "value": "13"
+            "value": "1_SD6cJeQ"
         },
         {
             "trait_type": "Head",
-            "value": "2"
+            "value": "1_WWN0Qx8"
         }
     ],
     "description": "123",

@@ -8,19 +8,117 @@
 
 
 {% block content %}
-    <body>
-        <header id="header">
-            <div class="logo">
-                <h4 class="header-title">Layers</h4>
-            </div>
+{#    <body>#}
+{#        <header id="header">#}
+{#            <div class="logo">#}
+{#                <h4 class="header-title">Layers</h4>#}
+{#            </div>#}
 {#            <ul class="navigations">#}
 {#                <li>Layer: <span id="layer-name">Background</span></li>#}
 {#                <li><span id="count_images">0</span> Image(s)</li>#}
 {#            </ul>#}
-        </header>
-        <main style="background: url('/static/img/create-background.png') fixed">
-            <div class="left-menu">
-                {% if all_layers %}
+{#        </header>#}
+{#        <main style="background: url('/static/img/create-background.png') fixed">#}
+{#            <div class="left-menu">#}
+{#                {% if all_layers %}#}
+{#                    {% for layer in all_layers %}#}
+{#                        <div class="layer {{ layer.title  }}">#}
+{#                            <h1>{{ layer.title }}</h1>#}
+{#                            <div class="count_field"><span id="layer-count-{{ layer.title}}">0</span></div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                {% endif %}#}
+{#            </div>#}
+{#                <form method="post" enctype="multipart/form-data">#}
+{#                    {% csrf_token %}#}
+{#                    {% if messages  %}#}
+{#                        <div class="info-container">#}
+{#                            {% for message  in messages %}#}
+{#                            <div class="info-left-success"></div>#}
+{#                                <div class="info-success">#}
+{#                                    <span>{{ message }}</span>#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    {% else %}#}
+{#                        <div class="info-container">#}
+{#                             <div class="info-left"></div>#}
+{#                            <div class="info">#}
+{#                                <span>To create a collection, fill all layers with images</span>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                    <div class="middle-menu">#}
+{#                        {{ background_form.attachments|add_class:'add-img-field background_form'}}#}
+{#                        {{ rare_background_form.attachments|add_class:'add-img-field rare_background_form'}}#}
+{#                        {{ member_form.attachments|add_class:'add-img-field member_form'}}#}
+{#                        {{ pants_form.attachments|add_class:'add-img-field pants_form'}}#}
+{#                        {{ clothes_form.attachments|add_class:'add-img-field clothes_form'}}#}
+{#                        {{ expresion_form.attachments|add_class:'add-img-field expresion_form'}}#}
+{#                        {{ vr_form.attachments|add_class:'add-img-field vr_form'}}#}
+{#                        {{ hair_form.attachments|add_class:'add-img-field hair_form'}}#}
+{#                        {{ head_form.attachments|add_class:'add-img-field head_form'}}#}
+{#                        <label id="help_text_img">Click or drop images here!</label>#}
+{#                        <label class="note-label" id="note_label">(image/png, image/jpeg)</label>#}
+{#                    </div>#}
+{#                    <div class="right-menu">#}
+{#                            <h3>Project Name</h3>#}
+{#                        {{ script_data_form.project_name|add_class:'form-input' }}#}
+{#                        <h3>Project Description</h3>#}
+{#                        {{ script_data_form.product_description|add_class:'form-input'}}#}
+{#                        <h3>Collection Size</h3>#}
+{#                        {{ script_data_form.collection_size|add_class:'form-input' }}#}
+{#                        <div class="dimension">#}
+{#                            <h3>Dimension</h3>#}
+{#                            {{ script_data_form.dimension_1|add_class:'dimension-input' }}#}
+{#                            {{ script_data_form.dimension_2|add_class:'dimension-input' }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                <div class="seperator"></div>#}
+{#                <button type="button" class="btn-preview" data-bs-toggle="modal" data-bs-target="#exampleModal">#}
+{#                    Rarity#}
+{#                </button>#}
+{#                <button name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>#}
+{#            </form>#}
+{#            <!-- Modal -->#}
+{#                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+{#                  <div class="modal-dialog modal-dialog-centered">#}
+{#                    <div class="modal-content">#}
+{#                      <div class="modal-header">#}
+{#                        <h5 class="modal-title" id="exampleModalLabel">Rarity Settings</h5>#}
+{#                      </div>#}
+{#                        <form method="post">#}
+{#                            {% csrf_token %}#}
+{#                          <div class="modal-body">#}
+{#                              {% for field in rarity_form %}#}
+{#                                  <div class="layer-settings">#}
+{#                                    {{ field.label }}: {{ field|add_class:'percent'}}%#}
+{#                                  </div>#}
+{#                              {% endfor %}#}
+{#                            </div>#}
+{#                          <div class="modal-footer">#}
+{#                          <button type="button" class="btn-close-settings" data-bs-dismiss="modal">Close</button>#}
+{#                           <button type="submit" class="btn-save-rarity">Save changes</button>#}
+{#                          </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                  </div>#}
+{#            </div>#}
+{#        </main>#}
+{#    </body>#}
+
+            <header id="header">
+                <div class="logo">
+                    <h4 class="header-title">Layers</h4>
+                </div>
+    {#            <ul class="navigations">#}
+    {#                <li>Layer: <span id="layer-name">Background</span></li>#}
+    {#                <li><span id="count_images">0</span> Image(s)</li>#}
+    {#            </ul>#}
+            </header>
+            <main>
+                <div class="left-menu">
+                    {% if all_layers %}
                     {% for layer in all_layers %}
                         <div class="layer {{ layer.title  }}">
                             <h1>{{ layer.title }}</h1>
@@ -28,84 +126,81 @@
                         </div>
                     {% endfor %}
                 {% endif %}
-            </div>
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% if messages  %}
-                        <div class="info-container">
-                            {% for message  in messages %}
-                            <div class="info-left-success"></div>
-                                <div class="info-success">
-                                    <span>{{ message }}</span>
+
+                </div>
+                <div class="content">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <div class="right-menu">
+                                <h3>Project Name</h3>
+                                {{ script_data_form.project_name|add_class:'form-input' }}
+                                <h3>Project Description</h3>
+                                {{ script_data_form.product_description|add_class:'form-input'}}
+                                <h3>Collection Size</h3>
+                                {{ script_data_form.collection_size|add_class:'form-input' }}
+                                <div class="dimension">
+                                    <h3>Dimension</h3>
+                                    {{ script_data_form.dimension_1|add_class:'dimension-input' }}
+                                    {{ script_data_form.dimension_2|add_class:'dimension-input' }}
                                 </div>
-                            {% endfor %}
                         </div>
-                    {% else %}
-                        <div class="info-container">
-                             <div class="info-left"></div>
-                            <div class="info">
-                                <span>To create a collection, fill all layers with images</span>
+                        {% if messages  %}
+                            <div class="info-container">
+                                {% for message  in messages %}
+                                    <div class="info-success">
+                                        <span>{{ message }}</span>
+                                    </div>
+                                {% endfor %}
                             </div>
-                        </div>
-                    {% endif %}
-                    <div class="middle-menu">
-                        {{ background_form.attachments|add_class:'add-img-field background_form'}}
-                        {{ rare_background_form.attachments|add_class:'add-img-field rare_background_form'}}
-                        {{ member_form.attachments|add_class:'add-img-field member_form'}}
-                        {{ pants_form.attachments|add_class:'add-img-field pants_form'}}
-                        {{ clothes_form.attachments|add_class:'add-img-field clothes_form'}}
-                        {{ expresion_form.attachments|add_class:'add-img-field expresion_form'}}
-                        {{ vr_form.attachments|add_class:'add-img-field vr_form'}}
-                        {{ hair_form.attachments|add_class:'add-img-field hair_form'}}
-                        {{ head_form.attachments|add_class:'add-img-field head_form'}}
-                        <label id="help_text_img">Click or drop images here!</label>
-                        <label class="note-label" id="note_label">(image/png, image/jpeg)</label>
-                    </div>
-                    <div class="right-menu">
-                            <h3>Project Name</h3>
-                        {{ script_data_form.project_name|add_class:'form-input' }}
-                        <h3>Project Description</h3>
-                        {{ script_data_form.product_description|add_class:'form-input'}}
-                        <h3>Collection Size</h3>
-                        {{ script_data_form.collection_size|add_class:'form-input' }}
-                        <div class="dimension">
-                            <h3>Dimension</h3>
-                            {{ script_data_form.dimension_1|add_class:'dimension-input' }}
-                            {{ script_data_form.dimension_2|add_class:'dimension-input' }}
-                        </div>
-                    </div>
-                <div class="seperator"></div>
-                <button type="button" class="btn-preview" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Rarity
-                </button>
-                <button name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
-            </form>
-            <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Rarity Settings</h5>
-                      </div>
-                        <form method="post">
-                            {% csrf_token %}
-                          <div class="modal-body">
-                              {% for field in rarity_form %}
-                                  <div class="layer-settings">
-                                    {{ field.label }}: {{ field|add_class:'percent'}}%
-                                  </div>
-                              {% endfor %}
+                        {% else %}
+                            <div class="info-container">
+                                <div class="info">
+                                    <span>To create a collection, fill all layers with images</span>
+                                </div>
                             </div>
-                          <div class="modal-footer">
-                          <button type="button" class="btn-close-settings" data-bs-dismiss="modal">Close</button>
-                           <button type="submit" class="btn-save-rarity">Save changes</button>
+                        {% endif %}
+                        <div class="middle-menu">
+                            {{ background_form.attachments|add_class:'add-img-field background_form'}}
+                            {{ rare_background_form.attachments|add_class:'add-img-field rare_background_form'}}
+                            {{ member_form.attachments|add_class:'add-img-field member_form'}}
+                            {{ pants_form.attachments|add_class:'add-img-field pants_form'}}
+                            {{ clothes_form.attachments|add_class:'add-img-field clothes_form'}}
+                            {{ expresion_form.attachments|add_class:'add-img-field expresion_form'}}
+                            {{ vr_form.attachments|add_class:'add-img-field vr_form'}}
+                            {{ hair_form.attachments|add_class:'add-img-field hair_form'}}
+                            {{ head_form.attachments|add_class:'add-img-field head_form'}}
+                            <label id="help_text_img">Click or drop images here!</label>
+                            <label class="note-label" id="note_label">(image/png, image/jpeg)</label>
+                        </div>
+                        <button type="button" class="btn-preview" data-bs-toggle="modal" data-bs-target="#exampleModal">Rarity</button>
+                        <button name="generate-full-collection" class="btn-generate-collection" type="submit">Generate Collection</button>
+                </form>
+                <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Rarity Settings</h5>
                           </div>
-                        </form>
-                    </div>
-                  </div>
-            </div>
-        </main>
-    </body>
+                            <form method="post">
+                                {% csrf_token %}
+                              <div class="modal-body">
+                                  {% for field in rarity_form %}
+                                      <div class="layer-settings">
+                                        {{ field.label }}: {{ field|add_class:'percent'}}%
+                                      </div>
+                                  {% endfor %}
+                                </div>
+                              <div class="modal-footer">
+                              <button type="button" class="btn-close-settings" data-bs-dismiss="modal">Close</button>
+                               <button type="submit" class="btn-save-rarity">Save changes</button>
+                              </div>
+                            </form>
+                        </div>
+                      </div>
+                </div>
+            </main>
+        <body>
 {% endblock %}
 
 {% block js %}

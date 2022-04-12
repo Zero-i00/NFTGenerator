@@ -52,10 +52,6 @@ background_form.addEventListener('change', function(event) {
         help_text_img.textContent = 'Click or drop images here!';
         note_label.style.display = 'block';
     }
-      // var file = background_form.files[0];
-      //   // ext = "не определилось",
-      //   // parts = file.name.split('.');
-      // console.log(file.name)
 })
 
 rare_background_form.addEventListener('change', function(event) {
