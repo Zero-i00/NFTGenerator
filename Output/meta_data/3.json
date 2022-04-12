@@ -2,7 +2,7 @@
     "attributes": [
         {
             "trait_type": "Background",
-            "value": "1"
+            "value": "2"
         },
         {
             "trait_type": "Member",
@@ -10,30 +10,30 @@
         },
         {
             "trait_type": "Pants",
-            "value": "10"
+            "value": "11"
         },
         {
             "trait_type": "Clothes",
-            "value": "6"
+            "value": "7"
         },
         {
             "trait_type": "Expresion",
-            "value": "1"
+            "value": "5"
         },
         {
             "trait_type": "Vr",
-            "value": "1_9Z73YMA"
+            "value": "1_EfPZJXt"
         },
         {
             "trait_type": "Hair",
-            "value": "20"
+            "value": "2_0nN3gIt"
         },
         {
             "trait_type": "Head",
-            "value": "1_WrQTF77"
+            "value": "1"
         }
     ],
-    "description": "214",
-    "name": "1224 3",
+    "description": "123",
+    "name": "123 3",
     "tokenID": "3"
 }
