@@ -1330,7 +1330,7 @@ main .add-img-field {
 main .middle-menu label {
     position: absolute;
     top: 10%;
-    right: 35%;
+    right: 40%;
     font-style: normal;
     font-weight: 600;
     font-size: 14.4091px;
@@ -1345,7 +1345,7 @@ main .middle-menu label {
 main .middle-menu .note-label {
     position: absolute;
     top: 40%;
-    right: 35.5%;
+    right: 40.5%;
     pointer-events: none;
     font-style: normal;
     font-weight: 600;
