@@ -3,6 +3,7 @@ import os
 import shutil
 import zipfile
 
+from django.core.files import File as DjangoFile
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.http import HttpResponse
@@ -16,8 +17,7 @@ from scripts.nft_generator import check_paths, make_art
 from django.views.generic.edit import FormView
 from .forms import *
 from .models import *
-from .tasks import start_generate_nft, hello
-from celery.result import AsyncResult
+
 
 
 
@@ -72,6 +72,7 @@ class FileFieldView(FormView):
 
 
         rarity_form = RarityForm(self.request.GET or None)
+
 
         return render(request, self.template_name, {
             'background_form': background_form,
@@ -202,6 +203,17 @@ class FileFieldView(FormView):
             with open(export_path_for_meta_data_global, 'a') as f:
                 f.write(']')
 
+
+            # //////////////////// Create UsersCollection //////////////////
+            # file_obj = DjangoFile(open('file.zip', mode='rb'), name='file.zip')
+            # UsersCollection.objects.create(
+            #     user=request.user,
+            #     name= script_data_form['project_name'].value(),
+            #     size= int(script_data_form['collection_size'].value()),
+            #     download=file_obj,
+            # )
+            # //////////////////////////////////////////////////////////
+
             return redirect('/download-img/')
 
             # check_paths()
@@ -235,6 +247,40 @@ class FileFieldView(FormView):
             'rarity_form': rarity_form,
         })
 
+
+
+class ProfileView(TemplateView):
+    template_name = 'profile/index.html'
+
+    def get(self, request):
+        if request.user and request.user.is_authenticated:
+            user = User.objects.get(email=request.user.email)
+            users_collection = UsersCollection.objects.filter(user=request.user).first()
+            return render(request, self.template_name, {
+                'user': user,
+                'users_collection': users_collection,
+            })
+        else:
+            return redirect('login/')
+
+    def post(self, request):
+        if 'download-zip' in request.POST:
+            # print('hello')
+            file_paths = list()
+
+            for root, directories, files in os.walk('./Output/'):
+                for filename in files:
+                    filepath = os.path.join(root, filename)
+                    file_paths.append(filepath)
+
+            with zipfile.ZipFile('file.zip', 'w') as zip:
+                for file in file_paths:
+                    zip.write(file, os.path.basename(file))
+
+            with open('file.zip', 'rb') as file:
+                response = HttpResponse(file, content_type='application/force-download')
+                response['Content-Disposition'] = 'attachment; filename=file_nft.zip'
+                return response
 
 
 # class PreviewView(FormView):

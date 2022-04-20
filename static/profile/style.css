@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+body {
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+}
+
+
+main .left-bar {
+    position: relative;
+    float: left;
+    width: 16%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+}
+
+main .left-bar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main .left-bar li {
+    list-style: none;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+main .left-bar .top-part h1 {
+    width: 100%;
+    height: 25px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16.5525px;
+    line-height: 140%;
+    /* or 23px */
+
+
+    color: #FFFFFF;
+}
+
+main .left-bar .top-part img {
+    margin: 2px;
+}
+
+main .left-bar .top-part .generate-tool-btn {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #8879FF;
+    /*box-sizing: border-box;*/
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.413px;
+    line-height: 140%;
+    margin-top: 20px;
+    /* or 20px */
+    text-decoration: none;
+    background-color: transparent;
+    color: #8879FF;
+}
+
+main .left-bar .top-part .create-project-btn {
+    width: 100%;
+    height: 40px;
+    text-decoration: none;
+    background: #5D48FF;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.6552px;
+    line-height: 140%;
+    /* or 21px */
+    margin-top: 20px;
+    border: none;
+    color: #FFFFFF;
+
+}
+
+main .left-bar .bottom-bar {
+    /*position: absolute;*/
+    /*width: 75%;*/
+    /*bottom: 40px;*/
+    text-align: center;
+    /*margin-right: 20px;*/
+}
+
+main .left-bar .bottom-bar .my-profile-btn {
+    width: 100%;
+    height: 40px;
+
+    background: #5D48FF;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.6552px;
+    line-height: 140%;
+    /* or 21px */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: #FFFFFF;
+}
+
+main .left-bar .bottom-bar .logout-btn {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    border: 1px solid #8879FF;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.413px;
+    line-height: 140%;
+    /* or 20px */
+    text-decoration: none;
+    background-color: transparent;
+    color: #8879FF;
+    margin-bottom: 40px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+main .left-bar .bottom-bar a {
+    text-decoration: none;
+}
+
+main .left-bar .bottom-bar img {
+    margin-left: 5px;
+}
+
+main .content {
+    float: right;
+    width: 84%;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 40px;
+}
+
+
+main .content a {
+    width: 96px;
+    height: 17.08px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.9237px;
+    line-height: 140%;
+    /* or 21px */
+    text-decoration: none;
+
+    color: #5D48FF;
+}
+
+main .content .support-menu {
+    width: 359px;
+    height: 257px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 10px 10px 31px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    padding-top: 40px;
+    margin-top: 10px;
+    float: left;
+      /**
+     * Для эксплорера
+     */
+    -ms-user-select: none;
+
+    /**
+     * Для мозилы
+     */
+    -moz-user-select: none;
+
+    /**
+     * Для конкверора
+     */
+    -khtml-user-select: none;
+
+    /**
+     * Для Сафари и Хрома
+     */
+    -webkit-user-select: none;
+
+}
+
+main .content .support-menu .opp img {
+    margin: 10px;
+}
+
+main .content .support-menu .opp .support-vector {
+    position: absolute;
+    right: 0;
+}
+
+main .content .support-menu .opp h3 {
+    position: relative;
+    width: 318px;
+    height: 41px;
+    margin: 10px auto;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 12.0118px;
+    line-height: 140%;
+    /* or 17px */
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    color: #5D48FF;
+}
+
+main .content .main-profile {
+    width: 50%;
+    height: 257px;
+    /*display: flex;*/
+    float: right;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 10px 10px 31px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+
+main .content .main-collections {
+    width: 50%;
+    height: 745px;
+    /*display: flex;*/
+    float: right;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 10px 10px 31px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+
+main .content .main-profile .header {
+    width: 100%;
+    height: 40px;
+    padding: 20px;
+      /**
+     * Для эксплорера
+     */
+    -ms-user-select: none;
+
+    /**
+     * Для мозилы
+     */
+    -moz-user-select: none;
+
+    /**
+     * Для конкверора
+     */
+    -khtml-user-select: none;
+
+    /**
+     * Для Сафари и Хрома
+     */
+    -webkit-user-select: none;
+}
+
+main .content .main-profile .header h2 {
+    font-weight: 600;
+    font-size: 18.4992px;
+    line-height: 140%;
+    /* or 26px */
+
+
+    color: #5D48FF;
+}
+
+main .content .main-profile .header p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14.0626px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #A3A5B9;
+}
+
+main .content .main-profile .email-field {
+    width: 100%;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+main .content .main-profile .email-field h4 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.0626px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #5D48FF;
+}
+
+main .content .main-profile .email-field .field {
+    width: 100%;
+    height: 39px;
+
+    border: 1px solid #9C9C9C;
+    box-sizing: border-box;
+    border-radius: 7.2px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14.0626px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #000000;
+}
+
+main .content .main-collections .header {
+    width: 100%;
+    height: 40px;
+    padding: 20px;
+      /**
+     * Для эксплорера
+     */
+    -ms-user-select: none;
+
+    /**
+     * Для мозилы
+     */
+    -moz-user-select: none;
+
+    /**
+     * Для конкверора
+     */
+    -khtml-user-select: none;
+
+    /**
+     * Для Сафари и Хрома
+     */
+    -webkit-user-select: none;
+}
+
+main .content .main-collections .header h2 {
+    font-weight: 600;
+    font-size: 18.4992px;
+    line-height: 140%;
+    /* or 26px */
+
+
+    color: #5D48FF;
+}
+
+main .content .main-collections .header p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14.0626px;
+    line-height: 140%;
+    /* or 20px */
+
+
+    color: #A3A5B9;
+}
+
+main .content .main-collections .delimiter {
+    width: 100%;
+    height: 0px;
+
+    opacity: 0.7;
+    border: 1px solid #9C9C9C;
+    transform: rotate(0.08deg);
+
+}
+
+table {
+	width: 100%;
+    margin-top: 20px;
+}
+table th {
+	font-weight: bold;
+    margin-left: 10px;
+	padding: 10px 10px 10px 50px;
+    background: rgba(196, 196, 196, 0.64);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15.6087px;
+    line-height: 140%;
+    /* or 22px */
+
+
+    color: #000000;
+}
+
+
+table td {
+	padding: 10px 10px 10px 50px;
+    line-height: 140%;
+    /* or 26px */
+
+
+    color: #5D48FF;
+}
+
+table td button {
+    border: none;
+    color: #5D48FF;
+    background-color: transparent;
+    line-height: 140%;
+}
