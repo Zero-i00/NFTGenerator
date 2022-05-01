@@ -23,16 +23,8 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
 
 
-# class FileInline(admin.TabularInline):
-#     model = File
-
-# @admin.register(FileGroup)
-# class FileGroupAdmin(admin.ModelAdmin):
-#     inlines = [
-#         FileInline,
-#     ]
-
 
 admin.site.register(LayerGroup)
 admin.site.register(Image)
+admin.site.register(UsersCollection)
 
