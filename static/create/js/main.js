@@ -30,148 +30,83 @@ var hair_form = document.getElementsByClassName('hair_form')[0];
 var head_form = document.getElementsByClassName('head_form')[0];
 
 
-var count_images = document.getElementById('count_images');
-var layer_name = document.getElementById('layer-name');
 var help_text_img = document.getElementById('help_text_img');
 var note_label = document.getElementById('note_label');
 
+var help_info = document.getElementsByClassName('info')[0];
+var help_info_text = document.getElementById('help-info-text');
 
+var generate_btn = document.getElementsByClassName('btn-generate-collection')[0];
 
+generate_btn.addEventListener('click', function() {
+    var background_length = background_form.files.length;
+    var rare_background_length = rare_background_form.files.length;
+    var member_length= member_form.files.length;
+    var pants_length = pants_form.files.length;
+    var clothes_length= clothes_form.files.length;
+    var expresion_length = expresion_form.files.length;
+    var vr_length = vr_form.files.length;
+    var hair_length = hair_form.files.length;
+    var head_length = head_form.files.length;
 
+    if (background_length == 0 || rare_background_length == 0 || member_length == 0 || pants_length == 0 || clothes_length == 0 || expresion_length == 0 || vr_length == 0 || hair_length  == 0 || head_length == 0 ) {
+        help_info.style.background = 'rgb(225,135,135)';
+        help_info_text.textContent = 'All layers must be filled';
+    }
+})
 
 background_form.addEventListener('change', function(event) {
     length = background_form.files.length;
     document.getElementById('layer-count-Background').textContent = length;
-    if (length > 0) {
-        help_text_img.textContent = background_form.files[0].name;
-        help_text_img.style.cssText = `margin: 10px 30px`;
-        note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 rare_background_form.addEventListener('change', function(event) {
     length = rare_background_form.files.length;
     document.getElementById('layer-count-Rare Background').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = rare_background_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 member_form.addEventListener('change', function(event) {
     length = member_form.files.length;
     document.getElementById('layer-count-Member').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = member_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 pants_form.addEventListener('change', function(event) {
     length = pants_form.files.length;
     document.getElementById('layer-count-Pants').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = pants_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 clothes_form.addEventListener('change', function(event) {
     length = clothes_form.files.length;
     document.getElementById('layer-count-Clothes').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = clothes_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 expresion_form.addEventListener('change', function(event) {
     length = expresion_form.files.length;
     document.getElementById('layer-count-Expresion').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = expresion_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 vr_form.addEventListener('change', function(event) {
     length = vr_form.files.length;
     document.getElementById('layer-count-Headset').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = vr_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 hair_form.addEventListener('change', function(event) {
     length = hair_form.files.length;
     document.getElementById('layer-count-Hair').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = hair_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 head_form.addEventListener('change', function(event) {
     length = head_form.files.length;
     document.getElementById('layer-count-Head').textContent = length;
-    if (length > 0) {
-    help_text_img.textContent = head_form.files[0].name;
-    help_text_img.style.cssText = `margin: 10px 30px`;
-    note_label.style.display = 'none';
-    }
-    else {
-        help_text_img.style.cssText = `margin: 1px auto`;
-        help_text_img.textContent = 'Click or drop images here!';
-        note_label.style.display = 'block';
-    }
+
 })
 
 

@@ -13,6 +13,9 @@ urlpatterns = [
     path('create_collections/', FileFieldView.as_view(), name='create_collections'),
     # path('collection-preview/', PreviewView.as_view(), name='collection-preview'),
     path('download-img/', GeneratedImageView.as_view(), name='download-img'),
+    path('generation-in-progress/', generation_in_progress_view, name='generation_progress'),
+    path('test-task/', test_task_view),
+    path('profile/', ProfileView.as_view(), name='profile'),
 ]
 
 if settings.DEBUG:

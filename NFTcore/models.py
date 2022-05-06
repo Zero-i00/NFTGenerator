@@ -1,3 +1,4 @@
+import datetime
 import uuid
 
 import blank
@@ -85,8 +86,9 @@ class LayerGroup(models.Model):
 class Image(models.Model):
     file = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg'])])
 
-
-
+class Celery(models.Model):
+    task_id = models.UUIDField()
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
 # class CourseCard(models.Model):
 #     image = models.ImageField(upload_to='card/img')
 #     title = models.CharField(max_length=255)
@@ -96,3 +98,13 @@ class Image(models.Model):
 #
 #     def __str__(self):
 #         return self.title
+
+class UsersCollection(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=None, blank=True)
+    name = models.CharField(max_length=255)
+    size = models.IntegerField()
+    date = models.DateField(default=datetime.date.today)
+    download = models.FileField()
+
+    def __str__(self):
+        return self.name

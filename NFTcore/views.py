@@ -1,8 +1,7 @@
 import json
-import os
-import shutil
+import time
 import zipfile
-
+from django.core.files import File as DjangoFile
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.http import HttpResponse
@@ -16,7 +15,7 @@ from scripts.nft_generator import check_paths, make_art
 from django.views.generic.edit import FormView
 from .forms import *
 from .models import *
-from .tasks import start_generate_nft, hello
+from .tasks import start_generate_nft
 from celery.result import AsyncResult
 
 
@@ -57,6 +56,8 @@ class FileFieldView(FormView):
     rarity_dict = {}
 
     def get(self, request):
+        if Celery.objects.filter(user=User.objects.get(id=request.user.id)):
+            return redirect('generation_progress')
         background_form = FileGroupForm(self.request.GET or None)
         rare_background_form = FileGroupForm(self.request.GET or None)
         member_form = FileGroupForm(self.request.GET or None)
@@ -187,13 +188,12 @@ class FileFieldView(FormView):
             with open('rarity.json', 'w') as file:
                 json.dump(self.rarity_dict, file)
 
-            # start_generate_nft.delay()
-            # task = start_generate_nft.delay()
-            # task_id = task.task_id
-            # res = AsyncResult(task_id)
-            # print(res.ready())
-            # if res.ready() == False:
+            task = start_generate_nft.delay()
+            task_id = task.task_id
+            res = AsyncResult(task_id)
 
+            if res.ready() == False:
+                Celery.objects.create(task_id=task_id, user=User.objects.get(id=request.user.id))
             check_paths()
             export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
             with open(export_path_for_meta_data_global, 'a') as f:
@@ -201,8 +201,7 @@ class FileFieldView(FormView):
             make_art()
             with open(export_path_for_meta_data_global, 'a') as f:
                 f.write(']')
-
-            return redirect('/download-img/')
+            return redirect('/generation-in-progress/')
 
             # check_paths()
             # export_path_for_meta_data_global = os.path.join(os.getcwd(), 'Output', '_metadata', '_metadata.json')
@@ -234,79 +233,6 @@ class FileFieldView(FormView):
 
             'rarity_form': rarity_form,
         })
-
-
-
-# class PreviewView(FormView):
-#
-#     template_name = 'create/preview.html'
-#
-#     def get(self, request):
-#         script_data_form = ScriptDataForm(self.request.GET or None)
-#
-#         all_layers = LayerGroup.objects.all()
-#         generated_img = 'scripts/Output/generated_images/1.png'
-#         media_path = 'static/generated_img/1.png'
-#
-#
-#         shutil.copy2(generated_img, media_path)
-#
-#         return render(request, self.template_name, {
-#             'script_data_form': script_data_form,
-#             'all_layers': all_layers,
-#             'preview_img': generated_img,
-#         })
-#
-#     def post(self, request, *args, **kwargs):
-#
-#
-#         script_data_form = ScriptDataForm(request.POST)
-#         all_layers = LayerGroup.objects.all()
-#
-#         if script_data_form.is_valid():
-#
-#             # file_count = 1
-#
-#             # if not os.path.exists('scripts/Input'):
-#             #     os.mkdir('scripts/Input')
-#             # check_paths()
-#             # export_path_for_meta_data_global = os.path.join('scripts', 'Output', '_metadata', '_metadata.json')
-#             # with open(export_path_for_meta_data_global, 'a') as f:
-#             #     f.write('[\n')
-#
-#             collection_name = script_data_form['project_name'].value()
-#             collection_description = script_data_form['product_description'].value()
-#             number_of_combinations = script_data_form['collection_size'].value()
-#             width = script_data_form['dimension_1'].value()
-#             height = script_data_form['dimension_2'].value()
-#
-#             users_file_group = LayerGroup.objects.filter(user=request.user)
-#
-#             # for image in users_file_group:
-#             #     all_images = File.objects.filter(fg=image)  # file list
-#             #     for file in all_images:
-#             #         if not os.path.exists(f'scripts/Input/0{file_count}'):
-#             #             path = os.mkdir(f'scripts/Input/0{file_count}')
-#             #             file = str(file.file).split('/')[-1]
-#             #             os.replace('media/scripts/Input/' + file, f'scripts/Input/0{file_count}/' + file)
-#             #         else:
-#             #             file = str(file.file).split('/')[-1]
-#             #             os.path.join(f'scripts/Input/0{file_count}/', file)
-#             #
-#             #         make_art(project_name, product_description, collection_size, dimension_1, dimension_2)
-#             #         with open(export_path_for_meta_data_global, 'a') as f:
-#             #             f.write(']')
-#             #     file_count += 1
-#
-#                 # return redirect('/download-img/')
-#
-#         return render(request, self.template_name, {
-#             'script_data_form': script_data_form,
-#             'all_layers': all_layers,
-#         })
-
-
-
 
 
 class GeneratedImageView(TemplateView):
@@ -371,3 +297,57 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect('/')
+
+
+def generation_in_progress_view(request):
+    #return render(request, 'generated/expectation.html', context={})
+
+    try:
+        celery = Celery.objects.get(user=request.user.id)
+    except Celery.DoesNotExist:
+        return redirect('create_collections')
+    res = AsyncResult(str(celery.task_id))
+    print(res.ready())
+    print(res.state)
+    if not res.ready():
+        return render(request, 'generated/expectation.html', context={})
+    else:
+        return redirect('download-img')
+
+def test_task_view(request):
+    task = start_generate_nft.delay()
+    task_id = task.task_id
+    Celery.objects.create(task_id=task_id, user=User.objects.get(id=request.user.id))
+
+class ProfileView(TemplateView):
+    template_name = 'profile/index.html'
+
+    def get(self, request):
+        if request.user and request.user.is_authenticated:
+            user = User.objects.get(email=request.user.email)
+            users_collection = UsersCollection.objects.filter(user=request.user).first()
+            return render(request, self.template_name, {
+                'user': user,
+                'users_collection': users_collection,
+            })
+        else:
+            return redirect('login/')
+
+    def post(self, request):
+        if 'download-zip' in request.POST:
+            # print('hello')
+            file_paths = list()
+
+            for root, directories, files in os.walk('./Output/'):
+                for filename in files:
+                    filepath = os.path.join(root, filename)
+                    file_paths.append(filepath)
+
+            with zipfile.ZipFile('file.zip', 'w') as zip:
+                for file in file_paths:
+                    zip.write(file, os.path.basename(file))
+
+            with open('file.zip', 'rb') as file:
+                response = HttpResponse(file, content_type='application/force-download')
+                response['Content-Disposition'] = 'attachment; filename=file_nft.zip'
+                return response

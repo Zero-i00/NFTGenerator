@@ -2,6 +2,7 @@
     "attributes": [
         {
             "trait_type": "Background",
+<<<<<<< Updated upstream
             "value": "2"
         },
         {
@@ -35,5 +36,40 @@
     ],
     "description": "123",
     "name": "123 5",
+=======
+            "value": "4"
+        },
+        {
+            "trait_type": "Member",
+            "value": "1_HtPIl2b"
+        },
+        {
+            "trait_type": "Pants",
+            "value": "1_NbSszM1"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "16"
+        },
+        {
+            "trait_type": "Expresion",
+            "value": "1_ivnJJE4"
+        },
+        {
+            "trait_type": "Vr",
+            "value": "1_KEs1O2J"
+        },
+        {
+            "trait_type": "Hair",
+            "value": "5"
+        },
+        {
+            "trait_type": "Head",
+            "value": "1_TZWf3s6"
+        }
+    ],
+    "description": "12",
+    "name": "12 5",
+>>>>>>> Stashed changes
     "tokenID": "5"
 }

@@ -2,38 +2,38 @@
     "attributes": [
         {
             "trait_type": "Background",
-            "value": "1_wvryKVk"
-        },
-        {
-            "trait_type": "Member",
-            "value": "1_0rZuwJ1"
-        },
-        {
-            "trait_type": "Pants",
-            "value": "6"
-        },
-        {
-            "trait_type": "Clothes",
             "value": "4"
         },
         {
+            "trait_type": "Member",
+            "value": "1_SXvaEO1"
+        },
+        {
+            "trait_type": "Pants",
+            "value": "1_cYKqoDl"
+        },
+        {
+            "trait_type": "Clothes",
+            "value": "1_FoYtpIm"
+        },
+        {
             "trait_type": "Expresion",
-            "value": "1"
+            "value": "1_znFC1Om"
         },
         {
             "trait_type": "Vr",
-            "value": "1"
+            "value": "1_qyvX7W0"
         },
         {
             "trait_type": "Hair",
-            "value": "1_qQb66N3"
+            "value": "1"
         },
         {
             "trait_type": "Head",
-            "value": "1"
+            "value": "1_7FFlGGc"
         }
     ],
-    "description": "214",
-    "name": "1224 6",
+    "description": "12",
+    "name": "12 6",
     "tokenID": "6"
 }

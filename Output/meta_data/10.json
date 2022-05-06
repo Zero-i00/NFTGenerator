@@ -2,23 +2,23 @@
     "attributes": [
         {
             "trait_type": "Background",
-            "value": "1_VQcmgRW"
+            "value": "2"
         },
         {
             "trait_type": "Member",
-            "value": "1"
+            "value": "1_5pXVl0W"
         },
         {
             "trait_type": "Pants",
-            "value": "3"
+            "value": "1_cYKqoDl"
         },
         {
             "trait_type": "Clothes",
-            "value": "3"
+            "value": "18"
         },
         {
             "trait_type": "Expresion",
-            "value": "1_znFC1Om"
+            "value": "1_0qtZXtk"
         },
         {
             "trait_type": "Vr",
@@ -26,14 +26,14 @@
         },
         {
             "trait_type": "Hair",
-            "value": "1"
+            "value": "15"
         },
         {
             "trait_type": "Head",
-            "value": "1_WrQTF77"
+            "value": "1_BjgQvDN"
         }
     ],
-    "description": "214",
-    "name": "1224 10",
+    "description": "12",
+    "name": "12 10",
     "tokenID": "10"
 }

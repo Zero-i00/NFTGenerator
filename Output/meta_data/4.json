@@ -2,11 +2,15 @@
     "attributes": [
         {
             "trait_type": "Background",
+<<<<<<< Updated upstream
             "value": "3"
+=======
+            "value": "1_pAAroSx"
+>>>>>>> Stashed changes
         },
         {
             "trait_type": "Member",
-            "value": "1"
+            "value": "1_5pXVl0W"
         },
         {
             "trait_type": "Pants",
@@ -14,11 +18,19 @@
         },
         {
             "trait_type": "Clothes",
+<<<<<<< Updated upstream
             "value": "6"
         },
         {
             "trait_type": "Expresion",
             "value": "1_pcHPEA9"
+=======
+            "value": "14"
+        },
+        {
+            "trait_type": "Expresion",
+            "value": "1_opjAghD"
+>>>>>>> Stashed changes
         },
         {
             "trait_type": "Vr",
@@ -26,6 +38,7 @@
         },
         {
             "trait_type": "Hair",
+<<<<<<< Updated upstream
             "value": "15"
         },
         {
@@ -35,5 +48,16 @@
     ],
     "description": "123",
     "name": "123 4",
+=======
+            "value": "16"
+        },
+        {
+            "trait_type": "Head",
+            "value": "1_WrQTF77"
+        }
+    ],
+    "description": "12",
+    "name": "12 4",
+>>>>>>> Stashed changes
     "tokenID": "4"
 }

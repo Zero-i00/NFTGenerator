@@ -35,4 +35,5 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(LayerGroup)
 admin.site.register(Image)
-
+admin.site.register(Celery)
+admin.site.register(UsersCollection)
